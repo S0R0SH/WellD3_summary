@@ -1,0 +1,319 @@
+119
+Sand:pred clr,lt grn,gry and
+brn,fn gr,subrndd,pred qtz 
+grs,com calc,r-tr epid stng,
+tr-chlor,tr hem,tr-mnr mica
+flks.
+
+209
+Clay(Inorganic Fat Clay):lt
+brn-rd brn and gry,high
+plasticity,v stky,laminated,
+abun calc;intbdd w/Sand:pred
+clr,lt grn,gry and brn,fn 
+gr,subrndd,pred qtz grs,
+com calc.
+
+289
+Clay(Inorganic Fat Clay):tan,
+lt brn,gry,high plasticity,v
+stky,laminated,prly-mod water
+sol,com-abun calc.
+
+349
+Clay(Inorganic Fat Clay):tan,
+lt brn,rd-brn,gry,v plastic,v
+stky,laminated,prly-mod water
+sol,com-abun calc,intbdd w/
+Sand:pred clr,tan,gry,wht,
+v fn-fn gr,rndd-subrndd,pred
+qtz grs,com k-spar & mica.
+
+485
+Clay(Inorganic Fat Clay):
+alternating btwn lt brn,
+rd-brn,gry,v plastic,v stky,
+laminated,prly-mod water sol,
+com-abun calc,intbdd w/Sand:
+pred clr,tan,gry,wht,v fn-fn 
+gr,rndd-subrndd,pred qtz grs,
+com k-spar & mica.
+
+570
+Sandstone:clr to lt brn,pred
+qtz sand,fn grs,wkly-mod 
+cmntd,friable intrbdd w/Clay
+(Inorganic Fat Clay):
+alternating btwn lt brn,
+rd-brn,gry,v plastic,v stky,
+laminated,prly-mod water sol,
+com-abun calc intrbdd w/
+Siltstone:brn to dk brn,mod 
+cmntd,firm,aphan txt,com
+calc.
+
+685
+Clay(Inorganic Fat Clay):
+beige,lt brn,rd-brn,gry,v 
+plastic,v stky,laminated,
+prly-mod water sol,mnr-com
+calc intrbdd w/Siltstone:
+brn,rd-brn,mod cmntd,firm,
+aphan txt,mnr calc.
+
+770
+Clay(Inorganic Fat Clay):
+beige,lt brn,rd-brn,gry,loc
+pale blue,v sft-sft, v 
+plastic,v stky,laminated,
+prly-mod water sol,mnr calc
+intrbdd w/Siltstone: brn,
+rd-brn,mod cmntd,firm,
+aphan txt,mnr calc.
+
+850
+Sandstone:wht to lt grn,mod-
+well cmntd,dist gr bndrs,mnr
+chlor wash,tr mica flks;
+grades into Clay:altrntng 
+gray to red-brn,v plastic,
+v stky,com calc.
+
+930
+Sandstone:wht,loc pale grn,
+mod hd-hd,mod-well cmntd,
+dist gr bndrs,abs-r chlor 
+wash,tr mica flks.
+
+990
+Sandstone:wht,loc pale grn,
+mod hd-hd,mod-well cmntd,
+dist gr bndrs,abs-r chlor 
+wash,tr mica flks.
+
+1055
+Siltstone:brn,rd brn,firm,
+mod cmntd,aphan txt,grades
+into clay with depth,com-
+abun calc.
+
+1109
+Clay(Inorganic Fat Clay):
+alternating btwn lt brn,
+rd-brn,gry,v plastic,v stky,
+prly-mod water sol,com-abun 
+calc intrbdd w/Siltstone:brn 
+to dk brn,mod cmntd,firm,
+aphan txt,com calc.
+
+1210
+Sandstone:pred clr qtz grs
+w/multi-colrd grs,mod-dist 
+gr bndrs,v hd,well cmntd,tr 
+cube pyr,tr chlor.
+
+1290
+Sandstone:pred clr qtz grs
+w/multi-colrd grs,mod-dist 
+gr bndrs,hd,mod well cmntd,
+tr cube pyr,tr chlor. 
+
+1360
+Clay(Inorganic Fat Clay):
+alternating btwn lt brn,
+rd-brn,gry,v plastic,v stky,
+prly-mod water sol,tr-mnr 
+calc.
+
+1455
+Sandstone:pred clr qtz grs
+w/multi-colrd grs,
+mod-dist gr bndrs,hd-v hd,
+mod well cmntd,absnt-tr pyr,
+tr-chlor.
+
+1565
+Siltstone:lt gry-gry,occ rd 
+brn,soft,mod cmntd,aphan txt,
+occ laminated,prly water sol,
+abun calc,r calc,occ r pyr.
+
+1620
+Clay(Claystone):lt grn to lt
+gry-grn,v plastic,v wthrd,
+sft-frm clasts,com-abun calc.
+
+1670
+Sandstone:off wht to lt gry,
+pred qtz grs,silic,v hd,
+dist gr bndrs,tr cube pyr,tr
+tr calc,tr mica flks, wthrd 
+to Sand:mixed off wht-wht & 
+clr,pred qtz grs,ang-subrndd 
+intrbdd w/Siltstone:v lt 
+grn-gry,frm-mod hd,laminated.
+
+1815
+Sandstone:wht-lt gry,hd-v hd,
+mnr disagg grs,pred qtz grs 
+w/com felds grs,mod-occ str 
+silic cmt,v fn-occ med gr,
+ang-subrndd,mod srtd,r-mnr
+intrgran calc,r cubic pyr,
+r-tr chlor wash,occ wht &
+blk mica,r v fn blk org mat,
+intrbdd w/Siltstone:v lt 
+lt grn,lt-med gry,frm-mod 
+hd,sl fissile,com lams.
+
+1980
+Sandstone:wht,lt gry,frosted,
+pred hd,abun disagg grs,pred
+qtz grs,wk-mod silic cmt,wk
+calc cmt,v fn-fn gr,subang-
+rndd,mod srtd,tr-mnr qtz cmt,
+tr-mnr calc cmt,r disem/agg
+pyr,occ chlortzd grs/flakes/
+wash,tr wht mica,r-tr v fn 
+blk org mat.
+
+2070
+Siltstone:lt-med gry,pred 
+frm-occ mod hd,mass,mod calc,
+occ silty lams,sl fiss,abun 
+grdg to v fn sandstone,mnr-
+com calc,r-tr v fn disem & 
+occ agg pyr,tr blk org mat.
+
+2135
+Sandstone:wht,v lt gry,pred
+disagg grs-poss sand,frm-mod
+hd,v fri,v wk calc cmt,pred
+qtz grs,pred fn gr,subrndd-
+rndd,well srtd,r calc,r cube/
+agg pyr,r chlor flakes,tr v 
+fn blk org mat.
+
+2215
+Siltstone:buff-v lt gry,frm-
+occ mod hd,mass,mod calc,com
+blk org mat lams,occ silty
+lams,mnr-com calc,r v fn 
+disem pyr.
+
+2320
+Sandstone:wht-lt gry,hd-v hd,
+mnr disagg grs,pred qtz grs 
+w/com felds grs,mod-occ str 
+silic cmt,v fn-occ med gr,
+ang-subrndd,r-mnr qtz cmt,
+abs-tr cub pyr,tr mica flakes,
+intrbdd w/Siltstone:mixed 
+v lt-lt grn and gry,frm-mod 
+hd,sl fissile,com lams,mnr 
+calc.
+
+2423
+Siltstone:v lt-med gry,frm-
+mod hd,mass,mod-occ str calc,
+com silty & occ sandy lams,
+abun crs silt grdg to v fn 
+sandstone,r v fn disem pyr,
+r-tr blk org mat.
+
+2488
+Sandstone:wht,v lt gry,mod
+hd,v fri,pred disagg grs,
+wk silic/calc cmt,occ wht 
+calc clay mtx,pred qtz grs 
+w/occ felds & volc grs,pred 
+v fn-fn gr,subrndd-rndd,mod-
+well srtd,r-tr qtz cmt,tr 
+calc cmt,loc r intrgran
+sparry calc,r loose pyr cubes 
+& aggs,tr fn blk org mat.
+
+2590
+Sand:pred clr w/occ wht & v 
+lt grn grs,unconsol,fn-med 
+gr,subang-subrndd,pred qtz 
+grs w/occ felds grs,tr calc
+coated grs,tr-chlor,tr mica 
+flks.
+
+2655
+Siltstone:v lt-med gry,mod 
+hd-hd,mod-occ str calc,com 
+silty & occ sandy lams,abun 
+crs silt grdg to Sandstone:
+wht-lt grn,mod hd-hd,occ 
+fri,v fn gr,tr chlor wash.
+
+2722
+Sandstone:poss Sand,clr,
+frosted,occ grn & red,pred
+disagg/unconsol grs,pred
+qtz grs,pred fn gr,subrndd-
+rndd,well srtd,r-tr calc
+coated grs/wk cmt,r loose
+cube & agg pyr,r chlor &
+wht mica flakes,tr fn blk
+org mat.
+
+2820
+Sandstone:wht-lt gry,hd-v hd,
+mnr disagg grs,pred qtz grs 
+w/com felds grs,mod-occ str 
+silic cmt,v fn-occ med gr,
+ang-subrndd,r-mnr qtz cmt,
+abs-tr cub pyr,tr mica flakes,
+intrbdd w/Siltstone:pred dk
+gry,frm-hd,sl fissile,com
+lams,tr-mnr calc.
+
+2930
+Sandstone:clr,wht-lt gry,
+hd-v hd,mnr disagg grs,pred 
+qtz grs w/com felds grs,
+mod-occ str silic cmt,
+v fn-occ med gr,ang-subrndd,
+r-mnr qtz cmt,abs-r cub pyr,
+tr mica flakes,intrbdd 
+w/Siltstone:med-dk gry,frm-hd,
+sl fiss,com lams,tr-mnr calc.
+
+3005
+Siltstone:v lt-med gry,mod 
+hd-hd,mod-occ str calc,tr
+dissem pyr,com silty & occ 
+sandy lams,abun crs silt 
+grdg to Sandstone:wht-lt grn
+w/mnr clr qtz grs,mod hd-hd,
+occ fri,v fn gr,tr- mnr 
+chlor wash.
+
+3095
+Sandstone:clr,wht-lt gry,
+hd-v hd,pred disagg grs,pred 
+qtz grs w/com felds grs,
+mod-occ str silic cmt,fn-occ 
+med gr,ang-subrndd,r-mnr qtz 
+cmt,abs-tr cub/dissem pyr,
+tr mica flakes.
+
+3170
+Siltstone:lt-dk gry,hd-v hd,
+mod-occ str calc,sl fiss,tr
+chlor wash.
+
+3210
+Sandstone:off wht-lt gry,hd-v hd,
+com disagg grs,pred qtz grs 
+w/com felds grs,mod-occ str 
+silic cmt,v fn-occ med gr,
+ang-subrndd,r-mnr qtz cmt,
+abs-tr cub pyr,tr mica flakes,
+intrbdd w/Siltstone:mixed 
+gry-dk gry & grn,frm-mod 
+hd,sl fissile,com lams,mnr 
+calc.

@@ -1,0 +1,8 @@
+Q  =  Quartz
+C  =  Calcite          
+P  =  Pyrite           
+Pr =  Pyrrhotite 
+H  =  Hematite
+Ch =  Chlorite
+Cl =  Clay
+
