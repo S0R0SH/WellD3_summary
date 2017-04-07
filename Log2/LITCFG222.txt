@@ -1,0 +1,9 @@
++ TUFF
+{ TUFFSEDS
+} XLTUFF
+C ALLUV
+N ARGILITE
+T CHERT
+a Dike
+7 quartzt
+@ SCHIST

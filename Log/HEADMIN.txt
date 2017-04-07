@@ -1,0 +1,10 @@
+Q  =  Quartz
+C  =  Calcite          
+P  =  Pyrite           
+E  =  Epidote 
+R  =  Pyrrhotite
+Ch =  Chlorite
+X  =  Axinite
+A  =  Actinolite
+T  =  Tourmaline
+
