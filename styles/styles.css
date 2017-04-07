@@ -19,23 +19,63 @@ div.tooltip {
   /*stroke-width: .5px;*/
 }
 
-#col1 {
-	/*width: 200px;*/
-	background-color: lightgrey;
-}
-#col2 {
-	width: 300px;
-	background-color: lightgrey;
-}
-
-#col0 {
-}
 
 #lith-col {
 width: 100px;
 
 }
 
-.y-axis{
+/*.main {
+  background-color: lightgray;
+  border-radius: 10px;
+}*/
 
+.main {
+  background: url(../images/vintage_paper.jpg) transparent  5px 5px;
 }
+
+.column{
+  border-radius: 20px;
+}
+
+.depth-label .tick line{
+  visibility: hidden;
+}
+
+.depth-label .tick text{
+  text-anchor: middle;
+}
+
+.depth-label .domain{
+  visibility: hidden;
+}
+
+.y-axis .tick text{
+  /*visibility: hidden;*/
+}
+
+.y-axis .tick line{
+  /*stroke-dasharray: 4,1;*/
+  /*stroke-width: .5;*/
+  opacity: 1;
+}
+
+.red {
+  stroke: red;
+  color: red;
+}
+
+.y-axis .domain {
+  visibility: hidden;
+}
+
+.depth-label {
+/*  stroke: red;
+  transform: translate(15px, 10px);
+  transform: rotate(45deg);*/
+}
+
+
+
+
+

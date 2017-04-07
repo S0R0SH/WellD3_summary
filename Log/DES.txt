@@ -1,319 +1,420 @@
-119
-Sand:pred clr,lt grn,gry and
-brn,fn gr,subrndd,pred qtz 
-grs,com calc,r-tr epid stng,
-tr-chlor,tr hem,tr-mnr mica
-flks.
 
-209
-Clay(Inorganic Fat Clay):lt
-brn-rd brn and gry,high
-plasticity,v stky,laminated,
-abun calc;intbdd w/Sand:pred
-clr,lt grn,gry and brn,fn 
-gr,subrndd,pred qtz grs,
-com calc.
+95
+Greenstone Melange:rd-brn,orng,
+yel,yel-grn,mod hd,abun hem &
+limonite alteration,loc mott,
+aphan-crs gr,loc qtz vng.
 
-289
-Clay(Inorganic Fat Clay):tan,
-lt brn,gry,high plasticity,v
-stky,laminated,prly-mod water
-sol,com-abun calc.
+160
+Greenstone:lt-dk grn,yel/grn
+oxidation,dk brn/pur altrd,frm-
+v hd,com porph text,loc mott,
+aphan-crs gr,r-tr wht calc.
+Serpentine:brn-dk grn,sft,waxy,
+r calc,altrd to clay.
+Siliceous Graywacke:lt gry,med 
+grs,hd,fresh app,r qtz,r calc.
 
-349
-Clay(Inorganic Fat Clay):tan,
-lt brn,rd-brn,gry,v plastic,v
-stky,laminated,prly-mod water
-sol,com-abun calc,intbdd w/
-Sand:pred clr,tan,gry,wht,
-v fn-fn gr,rndd-subrndd,pred
-qtz grs,com k-spar & mica.
+280
+Greenstone:rd-brn,pur,lt-dk
+grn,frm-v hd,com porph text,
+loc mott,predom aphan,loc altrd
+to brick rd clay,abs-r qtz
+vng,r calc. 
 
-485
-Clay(Inorganic Fat Clay):
-alternating btwn lt brn,
-rd-brn,gry,v plastic,v stky,
-laminated,prly-mod water sol,
-com-abun calc,intbdd w/Sand:
-pred clr,tan,gry,wht,v fn-fn 
-gr,rndd-subrndd,pred qtz grs,
-com k-spar & mica.
+370
+Greenstone:fresh lt grn,loc brn 
+altr,frm-hd,com porph text,loc,
+mott,occ aphan,r-tr wht calc,loc
+highly altrd to Clay:lt grn,lt 
+gry grn,v sft,sticky,water sol,
+pr relic text.
 
-570
-Sandstone:clr to lt brn,pred
-qtz sand,fn grs,wkly-mod 
-cmntd,friable intrbdd w/Clay
-(Inorganic Fat Clay):
-alternating btwn lt brn,
-rd-brn,gry,v plastic,v stky,
-laminated,prly-mod water sol,
-com-abun calc intrbdd w/
-Siltstone:brn to dk brn,mod 
-cmntd,firm,aphan txt,com
-calc.
+460
+Lithic Graywacke:med-grn gry,occ
+dk gry,med hd-hd,med-crs gr,prly 
+sorted,mnr blk lithics,loc 
+gneissic app,r clay altrn,r qtz,
+r calc,r lt chlor wash.
 
-685
-Clay(Inorganic Fat Clay):
-beige,lt brn,rd-brn,gry,v 
-plastic,v stky,laminated,
-prly-mod water sol,mnr-com
-calc intrbdd w/Siltstone:
-brn,rd-brn,mod cmntd,firm,
-aphan txt,mnr calc.
+600
+Greenstone:lt-med grn,r lt blu,
+occ dk grn,mod hd-hd,britt,mod-
+str relic text,aphan-porph,com
+visable vesi,hvy chlor altrn,
+mott app,tr-com vng wht calc,r-
+tr agg pyr,mnr chlor,loc r hem.
+Clay:lt grn,grn gry,sft-v sft.
 
-770
-Clay(Inorganic Fat Clay):
-beige,lt brn,rd-brn,gry,loc
-pale blue,v sft-sft, v 
-plastic,v stky,laminated,
-prly-mod water sol,mnr calc
-intrbdd w/Siltstone: brn,
-rd-brn,mod cmntd,firm,
-aphan txt,mnr calc.
+720
+Greenstone:lt-med grn,loc dk 
+grn,mod hd-hd,britt,pr-mod 
+relic text,occ str relic text,
+aphan-porph,tr visable vesi,str
+chlor altr,mott app,r qtz,tr vng 
+calc,r-tr agg pyr,mnr chlor,loc 
+r hem.Clay:lt grn,grn gry,sft,r
+apparent text.
 
-850
-Sandstone:wht to lt grn,mod-
-well cmntd,dist gr bndrs,mnr
-chlor wash,tr mica flks;
-grades into Clay:altrntng 
-gray to red-brn,v plastic,
-v stky,com calc.
+840
+Greenstone:lt-med grn,occ v lt 
+grn,mod hd-pred hd,aphan-porp 
+w/tr-mnr str chlortzd phenos,
+mod-pred pr relict tex,loc r 
+vesic,com mott app,mod calc w/
+tr wht calc vng,absnt-r v fn 
+disem/vn/agg pyr,mnr chlor 
+wash/chlortzd phenos.
 
-930
-Sandstone:wht,loc pale grn,
-mod hd-hd,mod-well cmntd,
-dist gr bndrs,abs-r chlor 
-wash,tr mica flks.
+955
+Greenstone:v lt-med grn,loc 
+pale grn-off wht,mod hd-pred 
+hd,aphan-sl incr porp w/mod-str 
+chlortzd phenos,pred mod-com pr 
+relict tex,com mott app,r wht 
+qtz vng,loc r wht qtz amygds,
+sl dec intrstit calc,tr-mnr wht 
+calc vng,r fn disem/vn/agg pyr,
+mnr chlor wash/chlortzd phenos,
+occ lt gry grn Chert frags.
 
-990
-Sandstone:wht,loc pale grn,
-mod hd-hd,mod-well cmntd,
-dist gr bndrs,abs-r chlor 
-wash,tr mica flks.
+1110
+Greenstone:lt-med grn,dk grn,
+mod hd-hd,britt,mod relic text,
+aphan-porph,phenos dom hvy chlor
+altrn,com mott app,tr-mnr vng 
+wht calc,r-tr agg/disem pyr,mnr 
+chlor,loc disem/vng red hem.
 
-1055
-Siltstone:brn,rd brn,firm,
-mod cmntd,aphan txt,grades
-into clay with depth,com-
-abun calc.
-
-1109
-Clay(Inorganic Fat Clay):
-alternating btwn lt brn,
-rd-brn,gry,v plastic,v stky,
-prly-mod water sol,com-abun 
-calc intrbdd w/Siltstone:brn 
-to dk brn,mod cmntd,firm,
-aphan txt,com calc.
-
-1210
-Sandstone:pred clr qtz grs
-w/multi-colrd grs,mod-dist 
-gr bndrs,v hd,well cmntd,tr 
-cube pyr,tr chlor.
-
-1290
-Sandstone:pred clr qtz grs
-w/multi-colrd grs,mod-dist 
-gr bndrs,hd,mod well cmntd,
-tr cube pyr,tr chlor. 
+1230
+Greenstone:pale grn-med grn,
+occ dk grn,mod hd-hd,aphan-
+porp w/tr-mnr mod-str chlor-
+tzd phenos,mod relict tex,com 
+mott app,tr intrstit calc,tr-
+occ mnr wht calc vng,rloc tr 
+fn disem/agg/vn pyr,mnr chlor 
+wash/chlortzd mafics,loc red 
+hem vng/stng.
 
 1360
-Clay(Inorganic Fat Clay):
-alternating btwn lt brn,
-rd-brn,gry,v plastic,v stky,
-prly-mod water sol,tr-mnr 
-calc.
+Greenstone:med grn,dk grn,brn,
+mod hd-hd,britt,pr relic text,
+aphan-porph,mnr brn matrix,lrg
+phenos dom hvy chlor altrn,mott 
+app,occ Serp frags,mnr-com wht 
+calc,abs-r pyr,mnr-com chlor,tr
+to mnr disem/vng red hem.
+Chert:tan,brn,grn,wht,v hd,qtz
+micro vng,disem pyr.
+Argillite:dk gry-blk,pred mod 
+hd,com britt,wk phyl shn,com
+shrd/cata app,r qtz vng,r-tr
+wht calc vng,loc r disem pyr.
 
-1455
-Sandstone:pred clr qtz grs
-w/multi-colrd grs,
-mod-dist gr bndrs,hd-v hd,
-mod well cmntd,absnt-tr pyr,
-tr-chlor.
+1540
+Greenstone:lt-med grn,r dk grn,
+mod hd-hd,britt,pr relic text,
+aphan-porph,sm-md phenos dom hvy 
+chlor altrn,com mott app,mnr-com 
+vng calc,r disem pyr,mnr chlor.
 
-1565
-Siltstone:lt gry-gry,occ rd 
-brn,soft,mod cmntd,aphan txt,
-occ laminated,prly water sol,
-abun calc,r calc,occ r pyr.
+1660
+Lithic Graywacke:med-dk gry,hd,
+mod def gr bndrs,mnr shrd app.
+Serpentine:lt-med grn,dk grn,
+wht,tan,sft-hd,waxy luster,
+greasy,fibrous,r talc,r qtz,tr 
+disem pyr,mnr magnetite.
+MUM:med-v dk grn,blk,hd,abs-r
+relic text,str serpntzn,tr disem
+pyr,com disem magnetite.
 
-1620
-Clay(Claystone):lt grn to lt
-gry-grn,v plastic,v wthrd,
-sft-frm clasts,com-abun calc.
+1780
+Serpentine:pale-med grn,dk grn-
+dk blu grn,blk,mott lt grn/wht,
+mod hd-hd,loc r soft,translu-
+opq,waxy,com resinous luster,
+loc fibrous,com str shrd/cata 
+app,abun mott app,tr-abun MUM 
+frags,loc r-tr talc,r qtz vng,
+r-tr v fn disem pyr,com-abun 
+disem blk magn.
 
-1670
-Sandstone:off wht to lt gry,
-pred qtz grs,silic,v hd,
-dist gr bndrs,tr cube pyr,tr
-tr calc,tr mica flks, wthrd 
-to Sand:mixed off wht-wht & 
-clr,pred qtz grs,ang-subrndd 
-intrbdd w/Siltstone:v lt 
-grn-gry,frm-mod hd,laminated.
+1900
+Serpentine:lt-med grn,dk grn,
+blk,dec mott grn/wht,mod hd-hd,
+translu-opq,resinous luster,com
+waxy,com shrd/cata app,com mott 
+app,tr-com MUM frags,loc r talc,
+r qtz vng,tr disem/vn/agg pyr,
+mnr-com disem blk magn.
 
-1815
-Sandstone:wht-lt gry,hd-v hd,
-mnr disagg grs,pred qtz grs 
-w/com felds grs,mod-occ str 
-silic cmt,v fn-occ med gr,
-ang-subrndd,mod srtd,r-mnr
-intrgran calc,r cubic pyr,
-r-tr chlor wash,occ wht &
-blk mica,r v fn blk org mat,
-intrbdd w/Siltstone:v lt 
-lt grn,lt-med gry,frm-mod 
-hd,sl fissile,com lams.
+1985
+Peridotite:med-dk gry brn,com 
+lt gry brn,hd-v hd,sl-pred mod 
+altrd,med-crs grn gran tex,pred
+oliv & pyrox,loc r qtz vng,loc 
+r calc,tr disem/vn pyr,tr chlor 
+w/MUM:med-v dk grn,dk blu grn-
+blk,hd,pr-abs relict tex,mod-
+str serpntzn and Serpentine:v 
+lt-med grn,occ dk grn,mod hd-
+hd,translu,opq,resinous,waxy.
 
-1980
-Sandstone:wht,lt gry,frosted,
-pred hd,abun disagg grs,pred
-qtz grs,wk-mod silic cmt,wk
-calc cmt,v fn-fn gr,subang-
-rndd,mod srtd,tr-mnr qtz cmt,
-tr-mnr calc cmt,r disem/agg
-pyr,occ chlortzd grs/flakes/
-wash,tr wht mica,r-tr v fn 
-blk org mat.
+2115
+Serpentine:lt-med grn,incr v lt 
+grn-off wht,mnr v dk grn-blk,
+mod hd-hd,loc sft,translu,opq,
+resinous luster,com waxy,com 
+mott appr,loc shrd app,com-abun 
+MUM,occ Peridotite frags,tr-loc 
+mnr v fn disem pyr,mnr-loc com 
+disem magn.
 
-2070
-Siltstone:lt-med gry,pred 
-frm-occ mod hd,mass,mod calc,
-occ silty lams,sl fiss,abun 
-grdg to v fn sandstone,mnr-
-com calc,r-tr v fn disem & 
-occ agg pyr,tr blk org mat.
+2225
+Peridotite:lt-med gry brn,v lt 
+brn,occ gry grn,hd-v hd,sl-str 
+altrn,med-crs gr gran tex,pred 
+oliv & pyrox,com-abun partially 
+serpntzd,loc r qtz vng,r-mnr
+intrstit & wht vn calc,r disem 
+pyr,tr-com disem magn.
 
-2135
-Sandstone:wht,v lt gry,pred
-disagg grs-poss sand,frm-mod
-hd,v fri,v wk calc cmt,pred
-qtz grs,pred fn gr,subrndd-
-rndd,well srtd,r calc,r cube/
-agg pyr,r chlor flakes,tr v 
-fn blk org mat.
+2340
+Serpentine:lt-med grn,dk grn-blk,
+occ wht grn,loc blu,mod hd-hd,
+translu,opq,waxy luster,occ
+fibrous,com mott appr,com shrd
+appr,tr disem pyr,mnr agg/disem/
+vng grey magnetite.
 
-2215
-Siltstone:buff-v lt gry,frm-
-occ mod hd,mass,mod calc,com
-blk org mat lams,occ silty
-lams,mnr-com calc,r v fn 
-disem pyr.
+2455
+Serpentine:lt-med grn,dk blu 
+grn-blk,occ pale grn,mod hd-hd,
+loc sft,translu,opq,waxy-
+resinous luster,occ mott appr,
+loc shrd appr,loc v pr relict
+tex,com-abun MUM,loc r wht qtz 
+micro vng,r wht calc vng,tr 
+disem/vn/agg pyr,mnr-com disem 
+gry magn w/Peridotite:med gry 
+brn-med gry grn,mod hd-hd,mod-
+str serpntzd,fr-pr relic tex,
+r qtz vng,r-mnr wht calc vng,r
+disem pyr,com disem magn, and
+MUM:v dk grn-dk blu grn,blk,
+mod hd-hd,pr-abs relict tex,r 
+disem pyr,mnr-com disem magn. 
 
-2320
-Sandstone:wht-lt gry,hd-v hd,
-mnr disagg grs,pred qtz grs 
-w/com felds grs,mod-occ str 
-silic cmt,v fn-occ med gr,
-ang-subrndd,r-mnr qtz cmt,
-abs-tr cub pyr,tr mica flakes,
-intrbdd w/Siltstone:mixed 
-v lt-lt grn and gry,frm-mod 
-hd,sl fissile,com lams,mnr 
-calc.
+2665
+Serpentine:lt-med grn,dk grn,occ
+blu,gry-blk,loc sft,mod hd-hd,
+dull-waxy luster,abs-r relict 
+tex,loc r fiberous appr,tr disem
+&agg pyr,r chlor,abun grading to
+MUM:med-v dk grn,blk,dk gry,mod 
+hd-hd,abs-r relic tex,mod-str 
+serpntzn,loc r shrd appr,tr pyr,
+mnr disem/agg/vng magnetite.
 
-2423
-Siltstone:v lt-med gry,frm-
-mod hd,mass,mod-occ str calc,
-com silty & occ sandy lams,
-abun crs silt grdg to v fn 
-sandstone,r v fn disem pyr,
-r-tr blk org mat.
-
-2488
-Sandstone:wht,v lt gry,mod
-hd,v fri,pred disagg grs,
-wk silic/calc cmt,occ wht 
-calc clay mtx,pred qtz grs 
-w/occ felds & volc grs,pred 
-v fn-fn gr,subrndd-rndd,mod-
-well srtd,r-tr qtz cmt,tr 
-calc cmt,loc r intrgran
-sparry calc,r loose pyr cubes 
-& aggs,tr fn blk org mat.
-
-2590
-Sand:pred clr w/occ wht & v 
-lt grn grs,unconsol,fn-med 
-gr,subang-subrndd,pred qtz 
-grs w/occ felds grs,tr calc
-coated grs,tr-chlor,tr mica 
-flks.
-
-2655
-Siltstone:v lt-med gry,mod 
-hd-hd,mod-occ str calc,com 
-silty & occ sandy lams,abun 
-crs silt grdg to Sandstone:
-wht-lt grn,mod hd-hd,occ 
-fri,v fn gr,tr chlor wash.
-
-2722
-Sandstone:poss Sand,clr,
-frosted,occ grn & red,pred
-disagg/unconsol grs,pred
-qtz grs,pred fn gr,subrndd-
-rndd,well srtd,r-tr calc
-coated grs/wk cmt,r loose
-cube & agg pyr,r chlor &
-wht mica flakes,tr fn blk
-org mat.
-
-2820
-Sandstone:wht-lt gry,hd-v hd,
-mnr disagg grs,pred qtz grs 
-w/com felds grs,mod-occ str 
-silic cmt,v fn-occ med gr,
-ang-subrndd,r-mnr qtz cmt,
-abs-tr cub pyr,tr mica flakes,
-intrbdd w/Siltstone:pred dk
-gry,frm-hd,sl fissile,com
-lams,tr-mnr calc.
-
-2930
-Sandstone:clr,wht-lt gry,
-hd-v hd,mnr disagg grs,pred 
-qtz grs w/com felds grs,
-mod-occ str silic cmt,
-v fn-occ med gr,ang-subrndd,
-r-mnr qtz cmt,abs-r cub pyr,
-tr mica flakes,intrbdd 
-w/Siltstone:med-dk gry,frm-hd,
-sl fiss,com lams,tr-mnr calc.
+2800
+Serpentine:v lt-med grn,dk gry
+grn-blk,occ blu,mod hd-hd,loc
+sft,translu,waxy,resinous,loc
+fiberous,tr disem/agg/vn pyr,
+mnr disem magn,w/Peridotite:v 
+lt brn-med brn,off wht,mod hd-
+hd,loc sft,mod-str altrd,pred 
+med gr gran tex,gd-pr relic tex,
+sl-str serpntzd,r clr euhed qtz,
+r wht qtz vng,tr-abun wht calc 
+vng,r disem pyr,tr disem magn,
+and MUM:med-v dk grn,v dk blu 
+grn-blk,mod hd-hd,pr-abs relict 
+tex,abun grdg to Serp,r disem 
+pyr,mnr disem magn.
 
 3005
-Siltstone:v lt-med gry,mod 
-hd-hd,mod-occ str calc,tr
-dissem pyr,com silty & occ 
-sandy lams,abun crs silt 
-grdg to Sandstone:wht-lt grn
-w/mnr clr qtz grs,mod hd-hd,
-occ fri,v fn gr,tr- mnr 
-chlor wash.
+Serpentine:lt-med grn,occ dk 
+grn,abun wht grn,mod hd,loc sft
+translu,opq,waxy luster,occ
+fibrous,mott appr,tr disem/agg 
+pyr,mnr agg/disem/vng dk grey 
+magnetite.
 
-3095
-Sandstone:clr,wht-lt gry,
-hd-v hd,pred disagg grs,pred 
-qtz grs w/com felds grs,
-mod-occ str silic cmt,fn-occ 
-med gr,ang-subrndd,r-mnr qtz 
-cmt,abs-tr cub/dissem pyr,
-tr mica flakes.
+3090
+Serpentine:lt-med grn,dk grn,occ
+blk,tan,wht,mod hd-hd,loc sft,
+translu,opq,waxy luster,occ 
+fibrous,loc blchd wht,occ shrd,
+abs-mnr lg qtz vng,tr disem pyr,
+mnr-com agg/disem/vng dk magn.
+Peridotite:lt brn,tan,mod-hd,loc
+sft,med gr gran text,pr relic 
+text,str altrd,mod-str serpntzd.
+MUM:dk grn-blk,hd,abun grdg to
+Serp,r pyr,mnr-com disem magn.
 
-3170
-Siltstone:lt-dk gry,hd-v hd,
-mod-occ str calc,sl fiss,tr
-chlor wash.
+3215
+Clay:gry grn,gry,wht,v sft-sft,
+water sol,sticky,r relic text
+in grn frags.
 
-3210
-Sandstone:off wht-lt gry,hd-v hd,
-com disagg grs,pred qtz grs 
-w/com felds grs,mod-occ str 
-silic cmt,v fn-occ med gr,
-ang-subrndd,r-mnr qtz cmt,
-abs-tr cub pyr,tr mica flakes,
-intrbdd w/Siltstone:mixed 
-gry-dk gry & grn,frm-mod 
-hd,sl fissile,com lams,mnr 
-calc.
+3270
+Serpentine:lt-med grn,occ dk 
+grn,abun wht grn,mod hd,loc sft
+translu,opq,waxy luster,occ
+fibrous,mott appr,loc strngly
+silic @3270',tr disem/agg 
+pyr,mnr agg/disem/vng dk grey 
+magnetite.MUM:dk grn-blk,hd,
+grdg t/Serp,r-mnr pyr.Clay:lt 
+gry,wht,v sft-sft,water sol,
+sticky,r relic txt.
+
+3410
+Serpentine:lt-med grn,dk grn,
+blk,occ pale grn-blu,mod hd-hd,
+loc sft,translu,opq,waxy luster,
+occ fibrs,loc blchd,loc clay 
+altr,loc shrd,loc pr relict tex,
+com MUM grdg to Serp,loc tr wht 
+qtz vng,tr disem pyr,com-abun 
+disem/vng magnetite.
+
+3530
+Serpentine:med-dk grn,lt grn,
+gry-blk,occ pale grn-blu,mod hd-
+hd,loc sft,translu,opq,waxy 
+luster, occ fibrs,loc blchd,loc
+clay altr,loc silic,loc shrd,loc
+pr relict tex,com MUM grdg to 
+Serp,loc tr wht qtz vng,tr disem
+pyr,com-abun disem/vng mag.
+
+3625
+Serpentine:med-dk grn,lt grn,gry
+to blk,loc yel tan,occ blu-grn,
+mod hd-v hd,translu,opq,occ shrd
+app,loc med gr text,com blocky,
+tr disem pyr,abun MUM grdg-Serp.
+
+3720
+Blueshist:med-dk blu,hd-v hd,str
+fol,loc platey,massive app,com
+micaceous,occ mnr serpntzd altr,
+mnr qtz vng,r-tr clac vng,mnr 
+agg/disem pyr,loc r pyr cubes.
+
+3810
+Siliceous Graywacke:med-dk gry,
+wht,overall dk gry in sample,
+hd-v hd,gneissic texture,com
+argillaceous,com phyll shn,w/
+Serpentine:med-dk grn,gry to 
+blk,occ blu-grn,mod hd-v hd,
+translu,opq,occ shrd app,loc med
+gr text,com blocky,tr disem pyr,
+grdg to MUM,tr-mnr qtz vng,tr 
+calc vng,tr disem pyr,r-tr vng
+magnetite.
+
+3920
+Siliceous Graywacke:med-dk gry,
+wht,hd-v hd,gneissic texture,com
+argillacoues,tr-com phyll shn.
+
+4020
+Serpentine:med-dk grn,lt grn,
+occ pale grn,frm-mod hd,loc sft,
+translu,opq,waxy luster,fibrs 
+txt,loc blchd,com cly altr,loc 
+silic,loc shrd,loc pr relict 
+tex,com MUM,loc tr wht qtz vng,
+r-tr disem & vn pyr,com mag.
+
+4120
+Greenstone:pale grn-med grn,loc
+rd-brn,occ dk grn,mod hd-hd,
+aphan-porp,loc hvly frac,mod 
+relict tex,loc mott app,tr-mnr 
+intrstit & vng calc,tr-mnr qtz
+vng,r-tr pyr vng w/Siliceous
+Graywacke:med-dk gry,wht,hd-v 
+hd,gneissic texture,loc phyll
+shn,occ argillaceous.
+
+4230
+Siliceous Graywacke:lt gry med-
+dk gry,loc pall grn,occ wht, 
+hd-v hd,com frsh app,mod well 
+def gr bndrs,r-mnr qtz vng,r-tr 
+calc vng,r dissem pyr,com mass 
+arg,com serp,com-abund 
+greenstone.
+
+4330
+Siliceous Graywacke:med gry,loc
+dk gry,mod hd-hd,com frsh app,
+mod well def gr bndrs,tr-mnr qtz
+vng,r calc vng,r-tr dissem & vng 
+pyr,r-mnr yel epid,abs-r chlor 
+wash,loc r bronze pyrrhotite.
+
+4530
+Siliceous Graywacke:lt-med gry,
+occ dk gry,mod hd-hd,brit,frsh
+app,mod def gr bndrs,loc mnr fol
+of dk grs,t-mnr qtz vns,loc com
+clr-wht qtz w/euhed xtals,r-tr
+calc,r pyr,r-tr yel/grn epid,r
+lt grn chlor wash,intrbdd w/
+Argillite:dk gry-blk,mod hd,aphn
+app,mnr silty text,r qtz vng,r
+clac,r disem/vng pyr.
+
+4655
+Serpentine:lt-dk grn,blu,wht,sft
+to mod hd,waxy,translu,blocky,r
+disem pyr intrcltd w/Argillte &
+Graywacke,@4680 incr in mins,opn 
+space xtals of clr qtz and epid.
+
+4735
+Chert:brick rd,rd-brn,wht,tan,lt
+grn,v hd,microxln,mnr qtz micro 
+vng,disem pyr assoc w/qtz vng.
+
+4800
+Siliceous Graywacke:med-dk gry,
+mod hd-hd,prly-mod def gr bndrs,
+tr-mnr qtz vng,tr-mnr dissem & 
+vng pyr,tr-com disem & vng yel 
+epid,r-tr chlor wash intrcltd w/
+Greenstone:grn-gry,dk grn,mod 
+hd-hd,aphan-porp,loc frac,mod 
+relict tex,loc mott app, com 
+bladed actinolite,mnr qtz vng,
+tr-mnr disem and vng epidote.
+
+4920
+Greenstone:lt-med grn,dk grn,mod 
+hd-hd,aphan-porp w/mod-str 
+chlortzd phenos,occ pilotaxitic 
+text,com mott appr,tr-mnr qtz 
+vng,tr-mnr disem/agg/vn pyr,tr-
+com yel-grn epid,loc yel-orange 
+epid,tr bronze pyrr,r-tr chlor 
+wash,occ clay altrn-blchd appr.
+
+5020
+Greenstone:lt-med grn,grn-gry,dk
+grn,mod hd-hd,aphan-porp w/mod-
+str chlortzd phenos,occ pilotax 
+text,com mott appr,tr-mnr qtz 
+vng,tr-mnr disem/agg/vn pyr,tr-
+com yel-grn epid,loc yel-orange 
+epid,tr bronze pyrr,r-tr chlor 
+wash,occ clay altrn-blchd appr,
+loc r orpiment/realgar @5020'.

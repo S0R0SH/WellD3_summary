@@ -1,9 +1,6 @@
-All depths from KB
-KB=28.2'
 
- 
-Logging Geologists:
-pb = Patrick Broderick
-bm = Brandon Mills
-gf = George Fuerst
-mm = Mike McLaughlin
+All depths from Kelly Bushing. KB=29'
+
+Charley Wahl = cw
+Patrick Broderick = pb
+Michael McLaughlin = mm

@@ -1,0 +1,95 @@
+135
+  Loss over shakers
+
+209
+  Build pit volume
+
+298
+  no losses
+
+398
+  no losses
+
+459
+dump sand trap
+
+498
+  no losses
+
+598
+  no losses
+
+698
+  build volume
+
+748
+  no losses
+
+848
+  no losses
+
+998
+  no losses
+
+1098
+  no losses
+
+1198
+  no losses
+
+1368
+dump sand trap
+
+1448
+  no losses
+
+1608
+  build volume
+
+1648
+  no losses
+
+1748
+  no losses
+
+1868
+  no losses
+
+1948
+  no losses
+
+2048
+  no losses
+
+2148
+  no losses
+
+2248
+  no losses
+
+2448
+  no losses
+
+2458
+dump sand trap
+
+2548
+  no losses
+
+2758
+  no losses
+
+2858
+  no losses
+
+2958
+  no losses
+
+3058
+  no losses
+
+3158
+  no losses
+
+3258
+  no losses

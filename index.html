@@ -18,28 +18,19 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<body>
-
-	<div class="container">
-		<g id="div-container">
-    <div class="row">
-      <svg id='rop-col' class='col'></svg>
-      <svg id='depthlabel-col' ></svg>
-      <svg id="lith-col"></svg>
-      <svg id="min-col"></svg>
-      <svg id="temp-col"></svg>
-      <svg id='mud-col' class='col'></svg>
-      <svg id='press-col' class='col'></svg>
-      <svg id='des-col' class='col'></svg>
-    </div>
-	  </g>
-	</div>
 
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="data/depth_data.txt"></script>
+  <script src="data/depth_data_summary.txt"></script>
   <script src="data/msg.txt"></script>
   <script src="data/seed_data.txt"></script>
-  <script src="app.js"></script>
+  <script src="chart.js"></script>
+</head>
+<body>
+
+	<div class="container" id="svg-container">
+	</div>
+
+
 </body>
 </html>

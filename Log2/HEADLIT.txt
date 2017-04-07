@@ -1,0 +1,12 @@
+Shale,Clay
+ARGILITE,Shale
+SAND,Sand
+GRAVEL,Conglomerate
+SILTSTN,Siltstone
+SS,Sandstone
+ASH,Ash
+XTLTUFF,Tuff
+TUFFSEDS,Tuff Seds
+TUFFBREC,Tuff Breccia
+Basalt,Basalt
+andesite,Andesite

@@ -1,183 +1,600 @@
-94
-NB#1     11/19/12   pb
 
-109
-                    bm
+77
+NB#1 Smith 2JSC     2/28  pb
 
-210
-  WOB 0-2K
-  RPM 50
-  PP  500
-  SPM 53/51
+
+129
+                          cw
+
+169
+3/1
+
+169
+       WOB 15K
+       RPM 70/MM
+       PP  700
+       SPM 120/120
 
 259
-11/20               pb
+                          pb
 
-429
-348'/12.75hrs 11/21-23
+395
+                          cw
 
-446
-NB#2 Hughes GTX-CG1
+409
+       WOB 20K
+       RPM 65/MM
+       PP  1300
+       SPM 120/120
 
-457
-                    bm
+468
+3/2
 
-509
-  WOB 0-3K
-  RPM 95
-  PP  600 
-  SPM 61/61
+513
+                          mm
 
-629
-11/24               pb
+519
+458'/43hrs    3/3-5
 
-789
-wiper trip
+529
+NB#2 Smith G28B0DVCPS     mm
+w/MM & MWD
 
-809
-                    bm
+619
+                          cw
 
-819
-  WOB 3-9K
-  RPM 90
-  PP  640
-  SPM 61/61
+659
+       WOB 40K
+       RPM 65/MM
+       PP  1400
+       SPM 110/110
 
-914
-wiper trip
+715
+3/6
 
-938
-11/25               pb
+848
+                          mm
 
-1098
-wiper trip          bm
+959
+WOB 43K
+RPM 65/MM
+PP  1550
+SPM 110/110
 
-1269
-11/26               pb
+1059
+                          cw
 
-1289
-wiper trip
+1155
+3/7
 
-1319
-  WOB 4-9K
-  RPM 90
-  PP  750
-  SPM 61/61
+1209
+WOB 45K
+RPM 60/MM
+PP  1776
+SPM 110/110
 
-1378
-                    bm
+1235
+                          mm
 
-1490
-11/27               gf
+1287
+slide
 
-1569
-  WOB 4-15K
-  RPM 110
-  PP  805
-  SPM 60/60
+1296
+rotate
 
-1668
-                    bm
+1309
+                          cw
 
-1682
-11/28               gf
+1338
+3/8
 
-1688
-1255'/74.1hrs
+1398
+                          mm
 
-1695
-NB#3 Hughes GTX-CG1 bm
+1515
+                          cw
 
-1728
-11/30               gf
+1568
+3/9
 
-1762
-                    bm
+1606
+                          mm
 
-1759
-21'/25.3hrs     12/1-8
+1609
+WOB 40K
+RPM 55/MM
+PP  1890
+SPM 105/105 
 
-1770
-NB#4 CJ2OTO         gf
+1666
+slide
 
-1879
-                    mm
+1675
+                          cw
 
-1898
-  136'/6.1hrs  12/9-14 
+1679
+rotate
 
-1906
-NB#5 HDX-F31369    bm
+1696
+slide
 
-1981
-12/15 
+1706
+rotate
 
-2025
-                   mm
+1779
+                          mm
 
-2059
-      WOB 10-20K
-      RPM 60
-      PP  1030
-      SPM 60/60
+1809
+WOB 43K
+RPM 55/0/MM
+PP  1765
+SPM 105/105
 
-2230
-                    bm
+1861
+slide
 
-2296
-12/16
+1874
+rotate
 
-2407
-                    mm 
+1899
+slide
 
-2419
-      WOB 10K
-      RPM 60
-      PP  1070
-      SPM 62/62 
+1908
+rotate
 
-2564
-                    bm
+1924
+slide
 
-2591
-12/17
+1936
+rotate
 
-2665
-                    mm  
+1959
+1442'/110.5 hrs     3/11-12
 
-2719
-      WOB 5-10K
-      RPM 60
-      PP  1110
-      SPM 62/62
+1975
+NB#3  HTC GTX-CO9         cw
 
-2785
-                    bm
+1985
+slide
 
-2821
-12/18
+1999
+rotate
 
-2875
-   977'/73.5hrs
+2004
+                          mm
 
-2882
-NB#6 HC 7-1-0120    gf
+2013
+slide
+
+2029
+rotate
+
+2045 
+slide
+
+2049
+rotate
+
+2055
+91'/14.5 hrs        3/13
+
+2064
+NB#4 Smith RG2480         mm
+
+2117
+work on pump at shoe
+
+2125
+rotate              3/14  cw
+
+2139
+                          mm
+
+2169
+WOB 35K
+RPM 55/0/MM
+PP  2170
+SPM 105/105
+
+2209
+slide
+
+2227
+rotate
+
+2240
+slide
+
+2256
+rotate
+
+2268
+slide                     cw
+
+2284
+rotate
+
+2299
+slide
+
+2315
+rotate
+
+2426
+                          mm
+
+2459
+WOB 47K
+RPM 50/0/MM
+PP  2410
+SPM 100/100
+
+2524
+slide
+
+2537
+rotate
+
+2554 
+slide
+
+2569
+rotate
+
+2586
+slide
+
+2599
+rotate
+
+2629
+                          cw
+
+2649
+slide
+
+2664
+rotate
+
+2714
+slide
+
+2727
+rotate
+
+2734
+3/16
+
+2809                      
+                          mm
+
+2929
+816'/62.5 hrs    3/17-22
+
+2939
+NB#6 Smith Z816           cw
+
+2958
+3/23
+
+2969
+WOB 40K
+RPM 50/0/MM
+PP  1500
+SPM 60/60
+
+3038
+                          pb
+
+3049
+short trip to BHA
+
+3058
+slide
+
+3078
+rotate
+
+3084
+slide
+
+3089
+                          cw
+
+3099
+rotate
+
+3146
+slide
+
+3157
+rotate
+
+3196
+3/24
+
+3239'
+307'/23 hrs
+
+3246
+NB#7 Smith GFI35          pb
+
+3256
+rotate
+
+3278
+slide
+
+3286
+rotate
+
+3309
+                          cw
+
+3405
+3/25
+
+3419
+WOB 25K
+RPM 50/0/MM
+PP  1500
+SPM 70/70
+
+3508
+                          pb
+
+3559
+pull to shoe to service rig
+
+3605
+pump sweep                cw
+
+3705
+3/26
+
+3719
+WOB 30K
+RPM 50/0/MM
+PP  1750
+SPM 75/75
+
+3798
+                          pb
+
+3877
+wipe hole
+
+3938
+rotate
+
+3969
+slide                     eb
+
+3981
+rotate
+
+3993
+slide
+
+4010
+               3/27
+
+4009
+WOB 35K
+RPM 75/75
+PP  1850
+
+4039
+rotate
+
+4079
+                          pb
+
+4126
+wipe hole
+
+4136
+slide
+
+4146
+rotate
+
+4160
+                          eb
+
+4196
+slide
+
+4209
+3/28 rotate
+
+4255
+slide
+
+4266
+                          pb
+
+4286
+1046'/78 hrs 
+
+4296
+RRB#6 Smith Z816    3/29  cw
+
+4309
+rotate
+
+4319
+WOB 20K                   pb
+RPM 65/0/MM               
+PP  2225
+SPM 75/75
+
+4438
+Pull to shoe
+
+4445
+3/30  rotate              cw
+
+4468
+                          pb
+
+4476
+slide
+
+4486
+517'/46 hrs
 
 
-2972
-      WOB 10K
-      RPM 60
-      PP  1540
-      SPM 75/75
+4493
+RBB#7 Smith GFI35 
 
-3026
-12/19               bm
+4499
+1061'/79.5 hrs        3/31
 
-3127
-                    gf
+4509
+NB#8 Smith GFI135     4/1
 
-3224
-12/20               bm
+4535
+slide
 
-3323
-   448'/39.2hrs
+4539
+                          cw
+
+4549
+rotate
+
+4559
+       WOB 35K
+       RPM 60/0/MM
+       PP  1795
+       SPM 70/70
+
+4567
+slide
+
+4584
+rotate
+
+4599
+slide
+
+4614
+rotate
+
+4629
+slide
+
+4647
+rotate
+
+4664
+slide
+
+4674
+rotate
+
+4694
+slide
+
+4705
+rotate
+
+4719
+4/2
+
+4727
+slide
+
+4735
+rotate
+
+4757
+slide
+
+4766
+rotate                    pb
+
+4788
+wipe hole
+
+4798
+slide
+
+4806
+rotate
+
+4826
+slide
+
+4836
+rotate
+
+4857
+slide
+
+4866
+rotate
+
+4884
+slide
+
+4889
+                          cw
+
+4894
+rotate
+
+4909
+       WOB 35K
+       RPM 60/0/MM
+       PP  2145
+       SPM 75/75
+
+
+4915
+slide
+
+4926
+rotate
+
+4948
+   slide
+
+4959
+rotate
+
+4967
+4/3
+
+4979
+slide
+
+4989
+rotate
+
+5009
+slide
+
+5024
+rotate
+
+5046
+slide                     pb
+
+5058
+rotate
+
+5078
+slide
+
+5096
+rotate
+
+5105
+604'/56 hrs   4/4-5      cw
+
+5110
+RRB#8 Smith GFI135       eb
+
+5124
+1081'/82.5 hrs     4/6
