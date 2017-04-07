@@ -1,0 +1,19 @@
+ARGIL,Argillite
+CHERT,Chert
+PHYLL,Phyllite
+GRNSTN2,Greenstone
+SERP,Serpentine
+SCHIST,Blueschist
+FELSITE,Felsite
+RHYOLITE,Rhyolite
+CLY,Clay
+LITHGWKE,Lithic Graywacke
+ARGGWKE,Argillaceous Graywacke
+VOLCGWKE,Volcanic Graywacke
+SILIGWKE,Siliceous Graywacke
+WEAKFOL,Weak Foliation
+STRNGFOL,Strong Foliation
+MARGALTD,Marginal Alteration
+PERVALTD,Pervasive Alteration
+WEAKHORN,Weakly Hornfelsic
+STRGHORN,Strongly Hornfelsic

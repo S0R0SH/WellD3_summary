@@ -1,0 +1,18 @@
+- Clay
+g Gravel
+s Sandstone
+a Argillite
+p Phyllite
+y Schist/Mica Schist
+m Quartz Veining
+q Quartzite
+t Tuff
+f Tuff Seds
+d Diorite
+z Altered Zone
+k Dike
+i Silicic Breccia
+X Hornfels
+r Granodiorite
+c Felsite (aka Qtz Mica Schist)
+l Siltstone

@@ -1,0 +1,420 @@
+
+95
+Greenstone Melange:rd-brn,orng,
+yel,yel-grn,mod hd,abun hem &
+limonite alteration,loc mott,
+aphan-crs gr,loc qtz vng.
+
+160
+Greenstone:lt-dk grn,yel/grn
+oxidation,dk brn/pur altrd,frm-
+v hd,com porph text,loc mott,
+aphan-crs gr,r-tr wht calc.
+Serpentine:brn-dk grn,sft,waxy,
+r calc,altrd to clay.
+Siliceous Graywacke:lt gry,med 
+grs,hd,fresh app,r qtz,r calc.
+
+280
+Greenstone:rd-brn,pur,lt-dk
+grn,frm-v hd,com porph text,
+loc mott,predom aphan,loc altrd
+to brick rd clay,abs-r qtz
+vng,r calc. 
+
+370
+Greenstone:fresh lt grn,loc brn 
+altr,frm-hd,com porph text,loc,
+mott,occ aphan,r-tr wht calc,loc
+highly altrd to Clay:lt grn,lt 
+gry grn,v sft,sticky,water sol,
+pr relic text.
+
+460
+Lithic Graywacke:med-grn gry,occ
+dk gry,med hd-hd,med-crs gr,prly 
+sorted,mnr blk lithics,loc 
+gneissic app,r clay altrn,r qtz,
+r calc,r lt chlor wash.
+
+600
+Greenstone:lt-med grn,r lt blu,
+occ dk grn,mod hd-hd,britt,mod-
+str relic text,aphan-porph,com
+visable vesi,hvy chlor altrn,
+mott app,tr-com vng wht calc,r-
+tr agg pyr,mnr chlor,loc r hem.
+Clay:lt grn,grn gry,sft-v sft.
+
+720
+Greenstone:lt-med grn,loc dk 
+grn,mod hd-hd,britt,pr-mod 
+relic text,occ str relic text,
+aphan-porph,tr visable vesi,str
+chlor altr,mott app,r qtz,tr vng 
+calc,r-tr agg pyr,mnr chlor,loc 
+r hem.Clay:lt grn,grn gry,sft,r
+apparent text.
+
+840
+Greenstone:lt-med grn,occ v lt 
+grn,mod hd-pred hd,aphan-porp 
+w/tr-mnr str chlortzd phenos,
+mod-pred pr relict tex,loc r 
+vesic,com mott app,mod calc w/
+tr wht calc vng,absnt-r v fn 
+disem/vn/agg pyr,mnr chlor 
+wash/chlortzd phenos.
+
+955
+Greenstone:v lt-med grn,loc 
+pale grn-off wht,mod hd-pred 
+hd,aphan-sl incr porp w/mod-str 
+chlortzd phenos,pred mod-com pr 
+relict tex,com mott app,r wht 
+qtz vng,loc r wht qtz amygds,
+sl dec intrstit calc,tr-mnr wht 
+calc vng,r fn disem/vn/agg pyr,
+mnr chlor wash/chlortzd phenos,
+occ lt gry grn Chert frags.
+
+1110
+Greenstone:lt-med grn,dk grn,
+mod hd-hd,britt,mod relic text,
+aphan-porph,phenos dom hvy chlor
+altrn,com mott app,tr-mnr vng 
+wht calc,r-tr agg/disem pyr,mnr 
+chlor,loc disem/vng red hem.
+
+1230
+Greenstone:pale grn-med grn,
+occ dk grn,mod hd-hd,aphan-
+porp w/tr-mnr mod-str chlor-
+tzd phenos,mod relict tex,com 
+mott app,tr intrstit calc,tr-
+occ mnr wht calc vng,rloc tr 
+fn disem/agg/vn pyr,mnr chlor 
+wash/chlortzd mafics,loc red 
+hem vng/stng.
+
+1360
+Greenstone:med grn,dk grn,brn,
+mod hd-hd,britt,pr relic text,
+aphan-porph,mnr brn matrix,lrg
+phenos dom hvy chlor altrn,mott 
+app,occ Serp frags,mnr-com wht 
+calc,abs-r pyr,mnr-com chlor,tr
+to mnr disem/vng red hem.
+Chert:tan,brn,grn,wht,v hd,qtz
+micro vng,disem pyr.
+Argillite:dk gry-blk,pred mod 
+hd,com britt,wk phyl shn,com
+shrd/cata app,r qtz vng,r-tr
+wht calc vng,loc r disem pyr.
+
+1540
+Greenstone:lt-med grn,r dk grn,
+mod hd-hd,britt,pr relic text,
+aphan-porph,sm-md phenos dom hvy 
+chlor altrn,com mott app,mnr-com 
+vng calc,r disem pyr,mnr chlor.
+
+1660
+Lithic Graywacke:med-dk gry,hd,
+mod def gr bndrs,mnr shrd app.
+Serpentine:lt-med grn,dk grn,
+wht,tan,sft-hd,waxy luster,
+greasy,fibrous,r talc,r qtz,tr 
+disem pyr,mnr magnetite.
+MUM:med-v dk grn,blk,hd,abs-r
+relic text,str serpntzn,tr disem
+pyr,com disem magnetite.
+
+1780
+Serpentine:pale-med grn,dk grn-
+dk blu grn,blk,mott lt grn/wht,
+mod hd-hd,loc r soft,translu-
+opq,waxy,com resinous luster,
+loc fibrous,com str shrd/cata 
+app,abun mott app,tr-abun MUM 
+frags,loc r-tr talc,r qtz vng,
+r-tr v fn disem pyr,com-abun 
+disem blk magn.
+
+1900
+Serpentine:lt-med grn,dk grn,
+blk,dec mott grn/wht,mod hd-hd,
+translu-opq,resinous luster,com
+waxy,com shrd/cata app,com mott 
+app,tr-com MUM frags,loc r talc,
+r qtz vng,tr disem/vn/agg pyr,
+mnr-com disem blk magn.
+
+1985
+Peridotite:med-dk gry brn,com 
+lt gry brn,hd-v hd,sl-pred mod 
+altrd,med-crs grn gran tex,pred
+oliv & pyrox,loc r qtz vng,loc 
+r calc,tr disem/vn pyr,tr chlor 
+w/MUM:med-v dk grn,dk blu grn-
+blk,hd,pr-abs relict tex,mod-
+str serpntzn and Serpentine:v 
+lt-med grn,occ dk grn,mod hd-
+hd,translu,opq,resinous,waxy.
+
+2115
+Serpentine:lt-med grn,incr v lt 
+grn-off wht,mnr v dk grn-blk,
+mod hd-hd,loc sft,translu,opq,
+resinous luster,com waxy,com 
+mott appr,loc shrd app,com-abun 
+MUM,occ Peridotite frags,tr-loc 
+mnr v fn disem pyr,mnr-loc com 
+disem magn.
+
+2225
+Peridotite:lt-med gry brn,v lt 
+brn,occ gry grn,hd-v hd,sl-str 
+altrn,med-crs gr gran tex,pred 
+oliv & pyrox,com-abun partially 
+serpntzd,loc r qtz vng,r-mnr
+intrstit & wht vn calc,r disem 
+pyr,tr-com disem magn.
+
+2340
+Serpentine:lt-med grn,dk grn-blk,
+occ wht grn,loc blu,mod hd-hd,
+translu,opq,waxy luster,occ
+fibrous,com mott appr,com shrd
+appr,tr disem pyr,mnr agg/disem/
+vng grey magnetite.
+
+2455
+Serpentine:lt-med grn,dk blu 
+grn-blk,occ pale grn,mod hd-hd,
+loc sft,translu,opq,waxy-
+resinous luster,occ mott appr,
+loc shrd appr,loc v pr relict
+tex,com-abun MUM,loc r wht qtz 
+micro vng,r wht calc vng,tr 
+disem/vn/agg pyr,mnr-com disem 
+gry magn w/Peridotite:med gry 
+brn-med gry grn,mod hd-hd,mod-
+str serpntzd,fr-pr relic tex,
+r qtz vng,r-mnr wht calc vng,r
+disem pyr,com disem magn, and
+MUM:v dk grn-dk blu grn,blk,
+mod hd-hd,pr-abs relict tex,r 
+disem pyr,mnr-com disem magn. 
+
+2665
+Serpentine:lt-med grn,dk grn,occ
+blu,gry-blk,loc sft,mod hd-hd,
+dull-waxy luster,abs-r relict 
+tex,loc r fiberous appr,tr disem
+&agg pyr,r chlor,abun grading to
+MUM:med-v dk grn,blk,dk gry,mod 
+hd-hd,abs-r relic tex,mod-str 
+serpntzn,loc r shrd appr,tr pyr,
+mnr disem/agg/vng magnetite.
+
+2800
+Serpentine:v lt-med grn,dk gry
+grn-blk,occ blu,mod hd-hd,loc
+sft,translu,waxy,resinous,loc
+fiberous,tr disem/agg/vn pyr,
+mnr disem magn,w/Peridotite:v 
+lt brn-med brn,off wht,mod hd-
+hd,loc sft,mod-str altrd,pred 
+med gr gran tex,gd-pr relic tex,
+sl-str serpntzd,r clr euhed qtz,
+r wht qtz vng,tr-abun wht calc 
+vng,r disem pyr,tr disem magn,
+and MUM:med-v dk grn,v dk blu 
+grn-blk,mod hd-hd,pr-abs relict 
+tex,abun grdg to Serp,r disem 
+pyr,mnr disem magn.
+
+3005
+Serpentine:lt-med grn,occ dk 
+grn,abun wht grn,mod hd,loc sft
+translu,opq,waxy luster,occ
+fibrous,mott appr,tr disem/agg 
+pyr,mnr agg/disem/vng dk grey 
+magnetite.
+
+3090
+Serpentine:lt-med grn,dk grn,occ
+blk,tan,wht,mod hd-hd,loc sft,
+translu,opq,waxy luster,occ 
+fibrous,loc blchd wht,occ shrd,
+abs-mnr lg qtz vng,tr disem pyr,
+mnr-com agg/disem/vng dk magn.
+Peridotite:lt brn,tan,mod-hd,loc
+sft,med gr gran text,pr relic 
+text,str altrd,mod-str serpntzd.
+MUM:dk grn-blk,hd,abun grdg to
+Serp,r pyr,mnr-com disem magn.
+
+3215
+Clay:gry grn,gry,wht,v sft-sft,
+water sol,sticky,r relic text
+in grn frags.
+
+3270
+Serpentine:lt-med grn,occ dk 
+grn,abun wht grn,mod hd,loc sft
+translu,opq,waxy luster,occ
+fibrous,mott appr,loc strngly
+silic @3270',tr disem/agg 
+pyr,mnr agg/disem/vng dk grey 
+magnetite.MUM:dk grn-blk,hd,
+grdg t/Serp,r-mnr pyr.Clay:lt 
+gry,wht,v sft-sft,water sol,
+sticky,r relic txt.
+
+3410
+Serpentine:lt-med grn,dk grn,
+blk,occ pale grn-blu,mod hd-hd,
+loc sft,translu,opq,waxy luster,
+occ fibrs,loc blchd,loc clay 
+altr,loc shrd,loc pr relict tex,
+com MUM grdg to Serp,loc tr wht 
+qtz vng,tr disem pyr,com-abun 
+disem/vng magnetite.
+
+3530
+Serpentine:med-dk grn,lt grn,
+gry-blk,occ pale grn-blu,mod hd-
+hd,loc sft,translu,opq,waxy 
+luster, occ fibrs,loc blchd,loc
+clay altr,loc silic,loc shrd,loc
+pr relict tex,com MUM grdg to 
+Serp,loc tr wht qtz vng,tr disem
+pyr,com-abun disem/vng mag.
+
+3625
+Serpentine:med-dk grn,lt grn,gry
+to blk,loc yel tan,occ blu-grn,
+mod hd-v hd,translu,opq,occ shrd
+app,loc med gr text,com blocky,
+tr disem pyr,abun MUM grdg-Serp.
+
+3720
+Blueshist:med-dk blu,hd-v hd,str
+fol,loc platey,massive app,com
+micaceous,occ mnr serpntzd altr,
+mnr qtz vng,r-tr clac vng,mnr 
+agg/disem pyr,loc r pyr cubes.
+
+3810
+Siliceous Graywacke:med-dk gry,
+wht,overall dk gry in sample,
+hd-v hd,gneissic texture,com
+argillaceous,com phyll shn,w/
+Serpentine:med-dk grn,gry to 
+blk,occ blu-grn,mod hd-v hd,
+translu,opq,occ shrd app,loc med
+gr text,com blocky,tr disem pyr,
+grdg to MUM,tr-mnr qtz vng,tr 
+calc vng,tr disem pyr,r-tr vng
+magnetite.
+
+3920
+Siliceous Graywacke:med-dk gry,
+wht,hd-v hd,gneissic texture,com
+argillacoues,tr-com phyll shn.
+
+4020
+Serpentine:med-dk grn,lt grn,
+occ pale grn,frm-mod hd,loc sft,
+translu,opq,waxy luster,fibrs 
+txt,loc blchd,com cly altr,loc 
+silic,loc shrd,loc pr relict 
+tex,com MUM,loc tr wht qtz vng,
+r-tr disem & vn pyr,com mag.
+
+4120
+Greenstone:pale grn-med grn,loc
+rd-brn,occ dk grn,mod hd-hd,
+aphan-porp,loc hvly frac,mod 
+relict tex,loc mott app,tr-mnr 
+intrstit & vng calc,tr-mnr qtz
+vng,r-tr pyr vng w/Siliceous
+Graywacke:med-dk gry,wht,hd-v 
+hd,gneissic texture,loc phyll
+shn,occ argillaceous.
+
+4230
+Siliceous Graywacke:lt gry med-
+dk gry,loc pall grn,occ wht, 
+hd-v hd,com frsh app,mod well 
+def gr bndrs,r-mnr qtz vng,r-tr 
+calc vng,r dissem pyr,com mass 
+arg,com serp,com-abund 
+greenstone.
+
+4330
+Siliceous Graywacke:med gry,loc
+dk gry,mod hd-hd,com frsh app,
+mod well def gr bndrs,tr-mnr qtz
+vng,r calc vng,r-tr dissem & vng 
+pyr,r-mnr yel epid,abs-r chlor 
+wash,loc r bronze pyrrhotite.
+
+4530
+Siliceous Graywacke:lt-med gry,
+occ dk gry,mod hd-hd,brit,frsh
+app,mod def gr bndrs,loc mnr fol
+of dk grs,t-mnr qtz vns,loc com
+clr-wht qtz w/euhed xtals,r-tr
+calc,r pyr,r-tr yel/grn epid,r
+lt grn chlor wash,intrbdd w/
+Argillite:dk gry-blk,mod hd,aphn
+app,mnr silty text,r qtz vng,r
+clac,r disem/vng pyr.
+
+4655
+Serpentine:lt-dk grn,blu,wht,sft
+to mod hd,waxy,translu,blocky,r
+disem pyr intrcltd w/Argillte &
+Graywacke,@4680 incr in mins,opn 
+space xtals of clr qtz and epid.
+
+4735
+Chert:brick rd,rd-brn,wht,tan,lt
+grn,v hd,microxln,mnr qtz micro 
+vng,disem pyr assoc w/qtz vng.
+
+4800
+Siliceous Graywacke:med-dk gry,
+mod hd-hd,prly-mod def gr bndrs,
+tr-mnr qtz vng,tr-mnr dissem & 
+vng pyr,tr-com disem & vng yel 
+epid,r-tr chlor wash intrcltd w/
+Greenstone:grn-gry,dk grn,mod 
+hd-hd,aphan-porp,loc frac,mod 
+relict tex,loc mott app, com 
+bladed actinolite,mnr qtz vng,
+tr-mnr disem and vng epidote.
+
+4920
+Greenstone:lt-med grn,dk grn,mod 
+hd-hd,aphan-porp w/mod-str 
+chlortzd phenos,occ pilotaxitic 
+text,com mott appr,tr-mnr qtz 
+vng,tr-mnr disem/agg/vn pyr,tr-
+com yel-grn epid,loc yel-orange 
+epid,tr bronze pyrr,r-tr chlor 
+wash,occ clay altrn-blchd appr.
+
+5020
+Greenstone:lt-med grn,grn-gry,dk
+grn,mod hd-hd,aphan-porp w/mod-
+str chlortzd phenos,occ pilotax 
+text,com mott appr,tr-mnr qtz 
+vng,tr-mnr disem/agg/vn pyr,tr-
+com yel-grn epid,loc yel-orange 
+epid,tr bronze pyrr,r-tr chlor 
+wash,occ clay altrn-blchd appr,
+loc r orpiment/realgar @5020'.
