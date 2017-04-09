@@ -62,17 +62,17 @@ $(document).ready(function(){
 
 	// createBorder(svg, chartWidth, chartHeight, 1);
 
-	var ropLine = d3.line()
+	var ropTrack = d3.line()
 		.x(function(d) { return ropScale(d[1]) })
 		.y(function(d) { return yScale(d[0]) })
 		.curve(d3.curveStepAfter);
 
-	var mudLine = d3.line()
+	var mudTrack = d3.line()
 		.x(function(d) { return mudScale(d[7]) })
 		.y(function(d) { return yScale(d[0]) })
 		// .curve(d3.curveStepAfter);
 
-	var wobLine = d3.line()
+	var wobTrack = d3.line()
 		.x(function(d) { return wobScale(d[2]) })
 		.y(function(d) { return yScale(d[0]) })
 
@@ -95,8 +95,8 @@ $(document).ready(function(){
 		.attr("visibility", function(d){ return (d%500 === 0)  ?  "visible" : "hidden" })
 		.attr("stroke-width", function(d){ return (d%500 === 0 ) ?  "1" : ".25" })
 
-	drawTrack(tracksColumn, data, ropLine, "red", 1, 'none');
-	drawTrack(tracksColumn, data, wobLine, "black", 1, 'none');
+	drawTrack(tracksColumn, data, ropTrack, "red", 1);
+	drawTrack(tracksColumn, data, wobTrack, "black", 1);
 
 	// var line = d3.select('.main')
 	// 	.append('line')
@@ -131,42 +131,34 @@ $(document).ready(function(){
 
 		}
 
-		var s = new XMLSerializer();
-		console.log(s)
 
-		// var d = svg;
-		// console.log(d)
-		// var str = s.serializeToString(d);
-		// console.log(str);
-
-		createSVGCode()
-		// submit_download_form("pdf")
+		// createSVGCode()
 
 });
 
-		function submit_download_form(output_format) {
-			// Get the d3js SVG element
-			var tmp = document.getElementById("svg-container");
-			var svg = tmp.getElementsByTagName("svg")[0];
-			// Extract the data as SVG text string
-			var svg_xml = (new XMLSerializer).serializeToString(svg);
+function submit_download_form(output_format) {
+	// Get the d3js SVG element
+	var tmp = document.getElementById("svg-container");
+	var svg = tmp.getElementsByTagName("svg")[0];
+	// Extract the data as SVG text string
+	var svg_xml = (new XMLSerializer).serializeToString(svg);
 
-			// Submit the <FORM> to the server.
-			// The result will be an attachment file to download.
-			// var form = document.getElementById("svgform");
-			form['output_format'].value = output_format;
-			form['data'].value = svg_xml ;
-			form.submit();
-		}
+	// Submit the <FORM> to the server.
+	// The result will be an attachment file to download.
+	// var form = document.getElementById("svgform");
+	form['output_format'].value = output_format;
+	form['data'].value = svg_xml ;
+	form.submit();
+}
 
 function getLith() {
 	var lithArr = [];
 	lith.forEach(function(d){
-		var lithObj = {};
-		var d = d.split(' ')
-		lithObj.depth = d[0];
-		lithObj.lith = d[1];
-		lithArr.push(lithObj);
+	var lithObj = {};
+	var d = d.split(' ')
+	lithObj.depth = d[0];
+	lithObj.lith = d[1];
+	lithArr.push(lithObj);
 	});
 }
 
@@ -226,14 +218,14 @@ function writeText(data, col, scale, fontSize) {
 			.style('fill', 'gray')
 }
 
-function drawTrack(column, data, track, color, lineWidth, fill){
+function drawTrack(column, data, track, color, lineWidth, fill='none'){
 		return column.append('path')
 		.data([data])
 		.attr('class', 'line')
 		.attr('d', track)
 		.attr("stroke-width", lineWidth)
 		.attr("stroke", color)
-		.attr("fill", fill);
+		.style("fill", fill);
 }
 
 function processText(text) {
@@ -249,11 +241,11 @@ function createSVGCode()
 	// Extract the data as SVG text string
 	var svg_xml = (new XMLSerializer).serializeToString(svg);
 
-	console.log(svg_xml)
 
 	//Optional: prettify the XML with proper indentations
-	// svg_xml = vkbeautify.xml(svg_xml);
+	svg_xml = vkbeautify.xml(svg_xml);
 
+	console.log(svg_xml)
 	// Set the content of the <pre> element with the XML
 	// $("#svg_code").text(svg_xml);
 
@@ -403,7 +395,7 @@ function createSVGCode()
 // 	.domain([0, ropMaxScale])
 // 	.range([widths.ropCol, 0])
 
-// var ropLine = d3.line()
+// var ropTrack = d3.line()
 // 	.x(function(d){ return ropScale(d[1]) })
 // 	.y(function(d){ return yScale(d[0]) })
 // 	.curve(d3.curveStepAfter)
@@ -411,7 +403,7 @@ function createSVGCode()
 // ropCol.append("path")
 // 	.data([depth_data])
 // 	.attr("class", "line")
-// 	.attr("d", ropLine)
+// 	.attr("d", ropTrack)
 // 	.attr("stroke-width", .75)
 // 	.attr("stroke", "red")
 
