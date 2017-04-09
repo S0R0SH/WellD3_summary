@@ -139,11 +139,25 @@ $(document).ready(function(){
 		// var str = s.serializeToString(d);
 		// console.log(str);
 
-		CreateSvgCode()
-
-
+		createSVGCode()
+		// submit_download_form("pdf")
 
 });
+
+		function submit_download_form(output_format) {
+			// Get the d3js SVG element
+			var tmp = document.getElementById("svg-container");
+			var svg = tmp.getElementsByTagName("svg")[0];
+			// Extract the data as SVG text string
+			var svg_xml = (new XMLSerializer).serializeToString(svg);
+
+			// Submit the <FORM> to the server.
+			// The result will be an attachment file to download.
+			// var form = document.getElementById("svgform");
+			form['output_format'].value = output_format;
+			form['data'].value = svg_xml ;
+			form.submit();
+		}
 
 function getLith() {
 	var lithArr = [];
@@ -226,7 +240,7 @@ function processText(text) {
 	console.log(text)
 }
 
-function show_svg_code()
+function createSVGCode()
 {
 	// Get the d3js SVG element
 	var tmp  = document.getElementById("svg-container");  //svg-container
