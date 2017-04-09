@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 	var wobScale = d3.scaleLinear()
 		.range([0, columnDimension4.width])
-		.domain([0, 100]);
+		.domain([0, 200]);
 
 	var mudScale = d3.scaleLinear()
 		.range([0, columnDimension4.width/4])
@@ -106,7 +106,7 @@ $(document).ready(function(){
 	// 	.attr('y2', chartHeight + margin)
 	// 	.attr('stroke', 'red')
 	// 	.attr('stroke-width', 3);
-	getLith();
+
 
 		var charCapacity = 36;
 
@@ -118,21 +118,14 @@ $(document).ready(function(){
 			[1100, 'Lorem']
 		]
 
-		// splitText
-
-		// console.log(txt)
-
 		// writeText(txt2, dataColumn, yScale, textSize);
 
 		var text = writeText(desMsg, dataColumn, yScale, textSize);
-		// console.log(text);
-
-		function splitText(text, length) {
-
-		}
-
 
 		// createSVGCode()
+		var lith = getLith();
+
+		console.log(lith[50])
 
 });
 
@@ -154,12 +147,14 @@ function submit_download_form(output_format) {
 function getLith() {
 	var lithArr = [];
 	lith.forEach(function(d){
-	var lithObj = {};
-	var d = d.split(' ')
-	lithObj.depth = d[0];
-	lithObj.lith = d[1];
-	lithArr.push(lithObj);
+		var lithObj = {};
+		var d = d.split(' ')
+		lithObj.depth = d[0];
+		lithObj.lith = d[1].split(',');
+		lithArr.push(lithObj);
 	});
+
+	return lithArr;
 }
 
 function createYGridlines(yScale, tickSize, height){
@@ -215,7 +210,7 @@ function writeText(data, col, scale, fontSize) {
 			.attr('x', 5)
 			.attr('class', 'text des-msg')
 			.style('font-size', fontSize)
-			.style('fill', 'gray')
+			.style('fill', 'black')
 }
 
 function drawTrack(column, data, track, color, lineWidth, fill='none'){
@@ -252,7 +247,6 @@ function createSVGCode()
 	//Optional: Use Google-Code-Prettifier to add colors.
 	// prettyPrint();
 }
-
 
 
 
