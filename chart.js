@@ -7,6 +7,7 @@ $(document).ready(function(){
 	var chartWidth = pageWidth - (margin * 2);
 	var maxDepth = d3.max(depth_data, function(d) { return d[0]} );
 	var data = depth_data_summary;
+	var textSize = 12;
 
 	// console.log("Max Depth: ", maxDepth);
 
@@ -19,18 +20,23 @@ $(document).ready(function(){
 	var columnDimensions = [columnDimension1, columnDimension2, columnDimension3, columnDimension4, columnDimension5];
 
 	var ropScale = d3.scaleLinear()
-		.range([columnDimension4.width, 0])
-		.domain([0, 100]);
+		.range([0, columnDimension4.width])
+		.domain([200, 0]);
 
 	var wobScale = d3.scaleLinear()
 		.range([0, columnDimension4.width])
 		.domain([0, 100]);
+
+	var mudScale = d3.scaleLinear()
+		.range([0, columnDimension4.width/4])
+		.domain([200, 600]);
 
 	var yScale = d3.scaleLinear()
 		.range([0, chartHeight])
 		.domain([0, maxDepth]);
 
 	var group = d3.select("#svg-container")
+		.attr('width', pageWidth)
 		.append('g')
 
 	var svg = d3.select('g')
@@ -61,6 +67,11 @@ $(document).ready(function(){
 		.y(function(d) { return yScale(d[0]) })
 		.curve(d3.curveStepAfter);
 
+	var mudLine = d3.line()
+		.x(function(d) { return mudScale(d[7]) })
+		.y(function(d) { return yScale(d[0]) })
+		// .curve(d3.curveStepAfter);
+
 	var wobLine = d3.line()
 		.x(function(d) { return wobScale(d[2]) })
 		.y(function(d) { return yScale(d[0]) })
@@ -84,30 +95,66 @@ $(document).ready(function(){
 		.attr("visibility", function(d){ return (d%500 === 0)  ?  "visible" : "hidden" })
 		.attr("stroke-width", function(d){ return (d%500 === 0 ) ?  "1" : ".25" })
 
-	tracksColumn.append('path')
-		.data([data])
-		.attr('class', 'line')
-		.attr('d', ropLine)
-		.attr("stroke-width", 1)
-		.attr("stroke", "Maroon")
+	drawTrack(tracksColumn, data, ropLine, "red", 1, 'none');
+	drawTrack(tracksColumn, data, wobLine, "black", 1, 'none');
 
-	tracksColumn.append('path')
-		.data([data])
-		.attr('class', 'line')
-		.attr('d', wobLine)
-		.attr("stroke-width", 1)
-		.attr("stroke", "black")
+	// var line = d3.select('.main')
+	// 	.append('line')
+	// 	.attr('x1', 50)
+	// 	.attr('y1', margin)
+	// 	.attr('x2', 50)
+	// 	.attr('y2', chartHeight + margin)
+	// 	.attr('stroke', 'red')
+	// 	.attr('stroke-width', 3);
+	getLith();
 
-	var line = d3.select('.main')
-		.append('line')
-		.attr('x1', 50)
-		.attr('y1', margin)
-		.attr('x2', 50)
-		.attr('y2', chartHeight + margin)
-		.attr('stroke', '#B3B7B7')
-		.attr('stroke-width', 0)
+		var charCapacity = 36;
+
+		var txt = [
+			[1000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod']
+		]
+
+		var txt2 = [
+			[1100, 'Lorem']
+		]
+
+		// splitText
+
+		// console.log(txt)
+
+		// writeText(txt2, dataColumn, yScale, textSize);
+
+		var text = writeText(desMsg, dataColumn, yScale, textSize);
+		// console.log(text);
+
+		function splitText(text, length) {
+
+		}
+
+		var s = new XMLSerializer();
+		console.log(s)
+
+		// var d = svg;
+		// console.log(d)
+		// var str = s.serializeToString(d);
+		// console.log(str);
+
+		CreateSvgCode()
+
+
 
 });
+
+function getLith() {
+	var lithArr = [];
+	lith.forEach(function(d){
+		var lithObj = {};
+		var d = d.split(' ')
+		lithObj.depth = d[0];
+		lithObj.lith = d[1];
+		lithArr.push(lithObj);
+	});
+}
 
 function createYGridlines(yScale, tickSize, height){
 	return d3.axisRight(yScale)
@@ -130,6 +177,18 @@ var createColumn = function(height, width, x, y){
 		.attr('y', y)
 }
 
+var createDivColumn = function(height, width, x, y){
+	return d3.select('body')
+		.append('div')
+		.attr("class", "column")
+		.attr("height", height)
+		.attr('width', width)
+		.attr('position', 'absolute')
+		.attr('left', x)
+		.attr('top', y)
+		.attr('background-color', 'powderblue')
+}
+
 var createBorder = function(selector, w, h, borderWidth) {
 	selector.append('rect')
 		.attr('width', w)
@@ -138,6 +197,54 @@ var createBorder = function(selector, w, h, borderWidth) {
 		.attr('fill', 'none')
 		.attr("stroke-width", borderWidth)
 		.attr("stroke", "#B3B7B7")
+}
+
+function writeText(data, col, scale, fontSize) {
+	return col.selectAll('text')
+			.data(data)
+			.enter()
+			.append('text')
+			.text(function(d){ return d[1] })
+			.attr('y', function(d){ return scale(d[0]) })
+			.attr('x', 5)
+			.attr('class', 'text des-msg')
+			.style('font-size', fontSize)
+			.style('fill', 'gray')
+}
+
+function drawTrack(column, data, track, color, lineWidth, fill){
+		return column.append('path')
+		.data([data])
+		.attr('class', 'line')
+		.attr('d', track)
+		.attr("stroke-width", lineWidth)
+		.attr("stroke", color)
+		.attr("fill", fill);
+}
+
+function processText(text) {
+	console.log(text)
+}
+
+function show_svg_code()
+{
+	// Get the d3js SVG element
+	var tmp  = document.getElementById("svg-container");  //svg-container
+	var svg = tmp.getElementsByTagName("svg")[0];  //first svg within svg-container
+
+	// Extract the data as SVG text string
+	var svg_xml = (new XMLSerializer).serializeToString(svg);
+
+	console.log(svg_xml)
+
+	//Optional: prettify the XML with proper indentations
+	// svg_xml = vkbeautify.xml(svg_xml);
+
+	// Set the content of the <pre> element with the XML
+	// $("#svg_code").text(svg_xml);
+
+	//Optional: Use Google-Code-Prettifier to add colors.
+	// prettyPrint();
 }
 
 
