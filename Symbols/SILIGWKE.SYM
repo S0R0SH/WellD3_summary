@@ -1,0 +1,10 @@
+; Calpine %lith symbol for Silicic Graywacke
+0.08; Cell size
+C1
+D  200 800 200 800 U
+D  800 800 800 800 U
+D 200 200 200 200 U
+D 800 200 800 200 U
+C16
+D 0 0 1000 0 1000 1000 0 1000 F U
+

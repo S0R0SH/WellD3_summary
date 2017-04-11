@@ -1,0 +1,9 @@
+; Geysers %lith symbol for Greenstone
+0.08; Cell size
+; Greenstone with pen 1
+C1
+
+D  200 500 800 500 U
+D  400 800 400 200 U
+D  600 800 600 200 U
+

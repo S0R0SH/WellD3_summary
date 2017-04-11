@@ -1,0 +1,11 @@
+; Geysers %lith symbol for Felsite
+0.08; Cell size
+; Felsite with pen 1
+C1
+D  500 800 500 200 U
+D  200 500 800 500 U
+D  300 700 700 300 U
+D  300 300 700 700 U
+C15
+D 0 0 1000 0 1000 1000 0 1000 F U
+

@@ -1,0 +1,6 @@
+; Calpine %lith symbol for weakly foliated
+0.075; Cell size
+C1
+
+D  300 500 700 500 U
+

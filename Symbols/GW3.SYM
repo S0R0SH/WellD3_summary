@@ -1,0 +1,10 @@
+; Geysers %lith symbol for Graywacke:(Type marg 3)
+0.08 ; Cellsize
+;Graywacke (Type marg 3), with pen 1
+COLOUR 4
+
+D
+0 500 50 550 100 575 150 590 200 600 250 605 300 600 350 590 400 575 450 550
+500 500 550 450 600 425 650 410 700 400 750 395 800 400 850 410 900 425 950 450
+1000 500 U D 200 200 800 800  U
+

@@ -1,0 +1,6 @@
+1.0 ; Symbol cell size
+; Elog run symbol
+COLOUR 1
+D
+0 1000 500 500 0 500 375 125 425 175 500 0 325 75 375 125
+FILL
