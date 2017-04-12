@@ -128,5 +128,34 @@ function createScale(range, dom){
 	.domain(dom);
 }
 
+//Text wrapping code adapted from Mike Bostock
+var wrap = function wrap(text, width) {
+  text.each(function () {
+    var text = (0, _d3Selection.select)(this),
+        words = text.text().split(/[ \t\r\n]+/).reverse(),
+
+    // lineNumber = 0,
+    lineHeight = .2,
+        //ems
+    // y = text.attr("y"),
+    dy = parseFloat(text.attr("dy")) || 0;
+
+    var word = void 0,
+        line = [],
+        tspan = text.text(null).append("tspan").attr("x", 0).attr("dy", dy + "em");
+
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width && line.length > 1) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan").attr("x", 0).attr("dy", lineHeight + dy + "em").text(word);
+      }
+    }
+  });
+};
+
 
 

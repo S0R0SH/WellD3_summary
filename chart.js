@@ -9,23 +9,36 @@ $(document).ready(function(){
 	var data = depth_data_summary;
 	var textSize = 12;
 
-	var columnDimension1 = { height: chartHeight, width: (chartWidth * 0.066667) };
-	var columnDimension2 = { height: chartHeight, width: (chartWidth * 0.100000) };
-	var columnDimension3 = { height: chartHeight, width: (chartWidth * 0.100000) };
-	var columnDimension4 = { height: chartHeight, width: (chartWidth * 0.366667) };
-	var columnDimension5 = { height: chartHeight, width: (chartWidth * 0.366667) };
+	var depthColDimension = { height: chartHeight, width: (chartWidth * 0.066667) };
+	var lithColDimension  = { height: chartHeight, width: (chartWidth * 0.100000) };
+	var minColDimension   = { height: chartHeight, width: (chartWidth * 0.100000) };
+	var trakColDimension  = { height: chartHeight, width: (chartWidth * 0.500000) };
+	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.233333) };
 
-	var columnDimensions = [columnDimension1, columnDimension2, columnDimension3, columnDimension4, columnDimension5];
+	var columnDimensions = [
+			depthColDimension,
+			lithColDimension,
+			minColDimension ,
+			trakColDimension,
+			descColDimension
+	];
 
-	var ropScale = createScale([0, columnDimension4.width], [200, 0])
+	// test: do column widths = 1?
+	columnWidthsEqual1(columnDimensions, chartWidth);
+
+	var ropScale = createScale([0, trakColDimension.width], [200, 0])
 
 	// call create scale function for these
 	var wobScale = d3.scaleLinear()
-		.range([0, columnDimension4.width])
+		.range([0, trakColDimension.width])
+		.domain([0, 200]);
+
+	var xScale = d3.scaleLinear()
+		.range([0, trakColDimension.width])
 		.domain([0, 200]);
 
 	var mudScale = d3.scaleLinear()
-		.range([0, columnDimension4.width/4])
+		.range([0, trakColDimension.width/4])
 		.domain([200, 600]);
 
 	var yScale = d3.scaleLinear()
@@ -45,11 +58,11 @@ $(document).ready(function(){
 			.attr('id', 'svg-group')
 			.attr("transform", "translate(10, 10)");
 
-	var depthLabels  = createColumn(columnDimension1.height,columnDimension1.width, 0, 0);
-	var lithColumn   = createColumn(columnDimension2.height,columnDimension2.width,columnDimension1.width, 0);
-	var minColumn    = createColumn(columnDimension3.height,columnDimension3.width,columnDimension1.width + columnDimension2.width, 0);
-	var tracksColumn = createColumn(columnDimension4.height,columnDimension4.width,columnDimension1.width + columnDimension2.width + columnDimension3.width, 0);
-	var dataColumn   = createColumn(columnDimension5.height,columnDimension5.width,columnDimension1.width + columnDimension2.width + columnDimension3.width + columnDimension4.width, 0);
+	var depthLabels  = createColumn(depthColDimension.height,depthColDimension.width, 0, 0);
+	var lithColumn   = createColumn(lithColDimension.height,lithColDimension.width,depthColDimension.width, 0);
+	var minColumn    = createColumn(minColDimension.height,minColDimension .width,depthColDimension.width + lithColDimension.width, 0);
+	var dataColumn   	= createColumn(trakColDimension.height,trakColDimension.width,depthColDimension.width + lithColDimension.width + minColDimension.width, 0);
+	var tracksColumn = createColumn(descColDimension.height,descColDimension.width,depthColDimension.width + lithColDimension.width + minColDimension.width + trakColDimension.width, 0);
 
 	var columns = [depthLabels, lithColumn, minColumn, tracksColumn, dataColumn];
 
@@ -73,6 +86,7 @@ $(document).ready(function(){
 		.x(function(d) { return wobScale(d[2]) })
 		.y(function(d) { return yScale(d[0]) })
 
+
 		for (var i = 1; i < 4; i++ ){
 			columns[i].append('g')
 				.attr('class', 'y-axis')
@@ -92,32 +106,20 @@ $(document).ready(function(){
 		.attr("visibility", function(d){ return (d%500 === 0)  ?  "visible" : "hidden" })
 		.attr("stroke-width", function(d){ return (d%500 === 0 ) ?  "1" : ".25" })
 
-	var ropPath = drawTrack(tracksColumn, data, ropTrack, "red", 1);
-	var wobPath = drawTrack(tracksColumn, data, wobTrack, "black", 1);
+	var ropPath = drawTrack(tracksColumn, data, ropTrack, "firebrick", 2);
+	var wobPath = drawTrack(tracksColumn, data, wobTrack, "midnightblue", 2);
 
 	var ropTotalLength = ropPath.node().getTotalLength();
 	var wobTotalLength = wobPath.node().getTotalLength();
 
 	var timeLength = 1000;
 
-	animateLine(ropPath, ropTotalLength, timeLength, d3.easeExp)
-	animateLine(wobPath, wobTotalLength, timeLength, d3.easeBounce)
-
+	animateLine(ropPath, ropTotalLength, timeLength, d3.easeLinear)
+	animateLine(wobPath, wobTotalLength, timeLength, d3.easeLinear)
 
 	var charCapacity = 36;
 
-	var txt = [
-		[1000, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod']
-	]
-
-	var txt2 = [
-		[1100, 'Lorem']
-	]
-
 	var text = writeText(desMsg, dataColumn, yScale, textSize);
-
-
-	var tempLith = {depth: "630", lith: ['G', 'G', 'G', 'S', 'S']}
 
 	function formatLith(lith){
 		var symArr = [];
@@ -130,20 +132,44 @@ $(document).ready(function(){
 		console.log(symArr)
 	}
 
-	formatLith(tempLith)
-	console.log(lith)
+	const type = d3.annotationCallout
 
+	const annotation = [{
+		note: { label: "Longer text to show text wrapping"},
+		x: wobScale(20),
+		y: yScale(1500),
+		dy: 50,
+		dx: 50,
+		connector: { "end": "arrow" }
+	},
+	{
+		x: xScale(40), "y": yScale(2720.22046937348),
+		dx: 50, "dy": 10,
+		connector: { "end": "arrow" },
+		subject: { "radius": 140.31076794375 },
+		note: { "label": "Losing 20 bbls/hr" }
+	}]
+
+	const makeAnnotations = d3.annotation()
+		.editMode(true)
+		.type(type)
+		.annotations(annotation)
+
+		tracksColumn.append("g")
+			.attr("class", "annotation")
+			.call(makeAnnotations)
 
 });
 
 function animateLine(path, lineLength, timeLength,easeStyle){
 		path
-	  .attr("stroke-dasharray", lineLength + " " + lineLength)
-	  .attr("stroke-dashoffset", lineLength)
-	  .transition()
-	    .duration(timeLength)
-	    .ease(easeStyle)
-	    .attr("stroke-dashoffset", 0);
+		.attr("stroke-dasharray", lineLength + " " + lineLength)
+		.attr("stroke-dashoffset", lineLength)
+		.transition()
+			.duration(timeLength)
+			.ease(easeStyle)
+			.attr("stroke-dashoffset", 1)
+			// .attr("stroke-dasharray", "4, 2" );
 }
 
 function addLith(data, yScale, col, x) {
@@ -158,6 +184,19 @@ function addLith(data, yScale, col, x) {
 		.attr('stroke-width', 1);
 
 }
+
+// tests ======================================
+
+// test: do column widths = 1?
+function columnWidthsEqual1(columns, chartWidth){
+	var w = 0;
+	columns.forEach(function(d){
+		w += d.width/chartWidth
+	})
+	console.log("Column widths = 1: ", w === 1)
+}
+
+
 
 
 
