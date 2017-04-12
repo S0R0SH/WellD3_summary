@@ -92,8 +92,27 @@ $(document).ready(function(){
 		.attr("visibility", function(d){ return (d%500 === 0)  ?  "visible" : "hidden" })
 		.attr("stroke-width", function(d){ return (d%500 === 0 ) ?  "1" : ".25" })
 
-	drawTrack(tracksColumn, data, ropTrack, "red", 1);
-	drawTrack(tracksColumn, data, wobTrack, "black", 1);
+	var ropPath = drawTrack(tracksColumn, data, ropTrack, "red", 1);
+	var wobPath = drawTrack(tracksColumn, data, wobTrack, "black", 1);
+
+	var ropTotalLength = ropPath.node().getTotalLength();
+	var wobTotalLength = wobPath.node().getTotalLength();
+
+	ropPath
+	  .attr("stroke-dasharray", ropTotalLength + " " + ropTotalLength)
+	  .attr("stroke-dashoffset", ropTotalLength)
+	  .transition()
+	    .duration(2000)
+	    .ease(d3.easeLinear)
+	    .attr("stroke-dashoffset", 0);
+
+	wobPath
+		.attr("stroke-dasharray", wobTotalLength + " " + wobTotalLength)
+		.attr("stroke-dashoffset", wobTotalLength)
+		.transition()
+			.duration(2000)
+			.ease(d3.easeLinear)
+			.attr("stroke-dashoffset", 0);
 
 
 	var charCapacity = 36;
@@ -106,11 +125,8 @@ $(document).ready(function(){
 		[1100, 'Lorem']
 	]
 
-	// writeText(txt2, dataColumn, yScale, textSize);
-
 	var text = writeText(desMsg, dataColumn, yScale, textSize);
 
-	// console.log(lith[50])
 
 	var tempLith = {depth: "630", lith: ['G', 'G', 'G', 'S', 'S']}
 
