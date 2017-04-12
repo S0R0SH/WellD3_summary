@@ -98,21 +98,10 @@ $(document).ready(function(){
 	var ropTotalLength = ropPath.node().getTotalLength();
 	var wobTotalLength = wobPath.node().getTotalLength();
 
-	ropPath
-	  .attr("stroke-dasharray", ropTotalLength + " " + ropTotalLength)
-	  .attr("stroke-dashoffset", ropTotalLength)
-	  .transition()
-	    .duration(2000)
-	    .ease(d3.easeLinear)
-	    .attr("stroke-dashoffset", 0);
+	var timeLength = 1000;
 
-	wobPath
-		.attr("stroke-dasharray", wobTotalLength + " " + wobTotalLength)
-		.attr("stroke-dashoffset", wobTotalLength)
-		.transition()
-			.duration(2000)
-			.ease(d3.easeLinear)
-			.attr("stroke-dashoffset", 0);
+	animateLine(ropPath, ropTotalLength, timeLength, d3.easeExp)
+	animateLine(wobPath, wobTotalLength, timeLength, d3.easeBounce)
 
 
 	var charCapacity = 36;
@@ -146,6 +135,16 @@ $(document).ready(function(){
 
 
 });
+
+function animateLine(path, lineLength, timeLength,easeStyle){
+		path
+	  .attr("stroke-dasharray", lineLength + " " + lineLength)
+	  .attr("stroke-dashoffset", lineLength)
+	  .transition()
+	    .duration(timeLength)
+	    .ease(easeStyle)
+	    .attr("stroke-dashoffset", 0);
+}
 
 function addLith(data, yScale, col, x) {
 	return col.append('rect')
