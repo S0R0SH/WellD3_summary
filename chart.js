@@ -23,7 +23,7 @@ $(document).ready(function(){
 			descColDimension
 	];
 
-	// test: do column widths = 1?
+	// test: do column widths / total width = 1?
 	columnWidthsEqual1(columnDimensions, chartWidth);
 
 	var ropScale = createScale([0, trakColDimension.width], [200, 0])
@@ -61,7 +61,7 @@ $(document).ready(function(){
 	var depthLabels  = createColumn(depthColDimension.height,depthColDimension.width, 0, 0);
 	var lithColumn   = createColumn(lithColDimension.height,lithColDimension.width,depthColDimension.width, 0);
 	var minColumn    = createColumn(minColDimension.height,minColDimension .width,depthColDimension.width + lithColDimension.width, 0);
-	var dataColumn   	= createColumn(trakColDimension.height,trakColDimension.width,depthColDimension.width + lithColDimension.width + minColDimension.width, 0);
+	var dataColumn   = createColumn(trakColDimension.height,trakColDimension.width,depthColDimension.width + lithColDimension.width + minColDimension.width, 0);
 	var tracksColumn = createColumn(descColDimension.height,descColDimension.width,depthColDimension.width + lithColDimension.width + minColDimension.width + trakColDimension.width, 0);
 
 	var columns = [depthLabels, lithColumn, minColumn, tracksColumn, dataColumn];
@@ -70,7 +70,7 @@ $(document).ready(function(){
 		createBorder(d, columnDimensions[i].width, chartHeight, 1.5)
 	})
 
-	// createBorder(svg, chartWidth, chartHeight, 1);
+	createBorder(svg, chartWidth, chartHeight, 1);
 
 	var ropTrack = d3.line()
 		.x(function(d) { return ropScale(d[1]) })
@@ -86,12 +86,11 @@ $(document).ready(function(){
 		.x(function(d) { return wobScale(d[2]) })
 		.y(function(d) { return yScale(d[0]) })
 
-
-		for (var i = 1; i < 4; i++ ){
-			columns[i].append('g')
-				.attr('class', 'y-axis')
-				.call(createYGridlines(yScale, columnDimensions[i].width, chartHeight))
-		}
+	for (var i = 1; i < 4; i++ ){
+		columns[i].append('g')
+			.attr('class', 'y-axis')
+			.call(createYGridlines(yScale, columnDimensions[i].width, chartHeight))
+	}
 
 	depthLabels.append('g')
 		.attr('transform', "translate(17, 1)")
@@ -106,12 +105,14 @@ $(document).ready(function(){
 		.attr("visibility", function(d){ return (d%500 === 0)  ?  "visible" : "hidden" })
 		.attr("stroke-width", function(d){ return (d%500 === 0 ) ?  "1" : ".25" })
 
+	// Draw data tracks
 	var ropPath = drawTrack(tracksColumn, data, ropTrack, "firebrick", 2);
 	var wobPath = drawTrack(tracksColumn, data, wobTrack, "midnightblue", 2);
 
 	var ropTotalLength = ropPath.node().getTotalLength();
 	var wobTotalLength = wobPath.node().getTotalLength();
 
+	// time it takes for tracks to animate
 	var timeLength = 1000;
 
 	animateLine(ropPath, ropTotalLength, timeLength, d3.easeLinear)
@@ -120,17 +121,6 @@ $(document).ready(function(){
 	var charCapacity = 36;
 
 	var text = writeText(desMsg, dataColumn, yScale, textSize);
-
-	function formatLith(lith){
-		var symArr = [];
-		lith.lith.forEach(function(d){
-			if (!symArr.includes(d)){
-				symArr.push(d)
-			}
-		});
-
-		console.log(symArr)
-	}
 
 	const type = d3.annotationCallout
 
