@@ -12,33 +12,33 @@ $(document).ready(function(){
 	var depthColDimension = { height: chartHeight, width: (chartWidth * 0.066667) };
 	var lithColDimension  = { height: chartHeight, width: (chartWidth * 0.100000) };
 	var minColDimension   = { height: chartHeight, width: (chartWidth * 0.100000) };
-	var trakColDimension  = { height: chartHeight, width: (chartWidth * 0.500000) };
-	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.233333) };
+	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.500000) };
+	var trackColDimension = { height: chartHeight, width: (chartWidth * 0.233333) };
 
 	var columnDimensions = [
 			depthColDimension,
 			lithColDimension,
-			minColDimension ,
-			trakColDimension,
-			descColDimension
+			minColDimension,
+			descColDimension,
+			trackColDimension
 	];
 
 	// test: do column widths / total width = 1?
 	columnWidthsEqual1(columnDimensions, chartWidth);
 
-	var ropScale = createScale([0, trakColDimension.width], [200, 0])
+	var ropScale = createScale([0, trackColDimension.width], [200, 0])
 
 	// call create scale function for these
 	var wobScale = d3.scaleLinear()
-		.range([0, trakColDimension.width])
+		.range([0, trackColDimension.width])
 		.domain([0, 200]);
 
 	var xScale = d3.scaleLinear()
-		.range([0, trakColDimension.width])
+		.range([0, trackColDimension.width])
 		.domain([0, 200]);
 
 	var mudScale = d3.scaleLinear()
-		.range([0, trakColDimension.width/4])
+		.range([0, trackColDimension.width/4])
 		.domain([200, 600]);
 
 	var yScale = d3.scaleLinear()
@@ -58,13 +58,19 @@ $(document).ready(function(){
 			.attr('id', 'svg-group')
 			.attr("transform", "translate(10, 10)");
 
-	var depthLabels  = createColumn(depthColDimension.height,depthColDimension.width, 0, 0);
-	var lithColumn   = createColumn(lithColDimension.height,lithColDimension.width,depthColDimension.width, 0);
-	var minColumn    = createColumn(minColDimension.height,minColDimension .width,depthColDimension.width + lithColDimension.width, 0);
-	var dataColumn   = createColumn(trakColDimension.height,trakColDimension.width,depthColDimension.width + lithColDimension.width + minColDimension.width, 0);
-	var tracksColumn = createColumn(descColDimension.height,descColDimension.width,depthColDimension.width + lithColDimension.width + minColDimension.width + trakColDimension.width, 0);
+	var depthColumn  = createColumn(chartHeight, depthColDimension.width, 0, 0);
+	var lithColumn   = createColumn(chartHeight, lithColDimension.width, depthColDimension.width, 0);
+	var minColumn    = createColumn(chartHeight, minColDimension .width, lithColDimension.width + depthColDimension.width, 0);
+	var descColumn   = createColumn(chartHeight, descColDimension.width, minColDimension.width + lithColDimension.width + depthColDimension.width, 0);
+	var tracksColumn = createColumn(chartHeight, trackColDimension.width, descColDimension.width + minColDimension.width + lithColDimension.width + depthColDimension.width, 0);
 
-	var columns = [depthLabels, lithColumn, minColumn, tracksColumn, dataColumn];
+	// depthColDimension
+	// lithColDimension
+	// minColDimension
+	// descColDimension
+	// trackColDimension
+
+	var columns = [depthColumn, lithColumn, minColumn, descColumn, tracksColumn];
 
 	columns.forEach(function(d, i){
 		createBorder(d, columnDimensions[i].width, chartHeight, 1.5)
@@ -86,13 +92,12 @@ $(document).ready(function(){
 		.x(function(d) { return wobScale(d[2]) })
 		.y(function(d) { return yScale(d[0]) })
 
-	for (var i = 1; i < 4; i++ ){
-		columns[i].append('g')
-			.attr('class', 'y-axis')
-			.call(createYGridlines(yScale, columnDimensions[i].width, chartHeight))
+	for (var i = 0; i < 4; i++ ){
+		if (i === 3 || i === 0) { continue };
+		addHorizontalGridlines(columns[i], yScale, columnDimensions[i].width, chartHeight)
 	}
 
-	depthLabels.append('g')
+	depthColumn.append('g')
 		.attr('transform', "translate(17, 1)")
 		.attr('class', 'depth-label')
 		.call(createYGridlines(yScale, 0, chartHeight))
@@ -118,9 +123,7 @@ $(document).ready(function(){
 	animateLine(ropPath, ropTotalLength, timeLength, d3.easeLinear)
 	animateLine(wobPath, wobTotalLength, timeLength, d3.easeLinear)
 
-	var charCapacity = 36;
-
-	var text = writeText(desMsg, dataColumn, yScale, textSize);
+	var text = writeText(desMsg, descColumn, yScale, textSize);
 
 	const type = d3.annotationCallout
 
@@ -175,9 +178,17 @@ function addLith(data, yScale, col, x) {
 
 }
 
+function addHorizontalGridlines(column, yScale, width, height) {
+		column.append('g')
+			.attr('class', 'y-axis')
+			.call(createYGridlines(yScale, width, height))
+}
+
+
+
 // tests ======================================
 
-// test: do column widths = 1?
+// do column widths = 1?
 function columnWidthsEqual1(columns, chartWidth){
 	var w = 0;
 	columns.forEach(function(d){
