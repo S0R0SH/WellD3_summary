@@ -22,7 +22,7 @@ $(document).ready(function(){
 			descColDimension,
 			trackColDimension
 	];
-
+	var spiral = "m 347.14285,528.07648 c 0.14325,5.08546 -6.78443,2.70209 -8.45238,0.23809 -4.52003,-6.67728 1.48621,-14.87387 7.97619,-17.14285 11.60907,-4.05869 23.14837,5.08737 25.83334,16.19048 3.94029,16.29425 -8.70157,31.56897 -24.40477,34.5238 -20.92989,3.93832 -40.04589,-12.3157 -43.21428,-32.61905 -3.9871,-25.54971 15.92864,-48.55073 40.83334,-51.90476 30.16292,-4.06218 57.0715,19.5407 60.59523,49.04763 4.15259,34.77289 -23.15216,65.60225 -57.26192,69.2857 -39.38106,4.2527 -74.13965,-26.76322 -77.97618,-65.4762 -4.3593,-43.98814 30.37403,-82.68172 73.69049,-86.66665 48.59453,-4.47049 91.22719,33.98463 95.35713,81.90477 4.58502,53.20044 -37.59511,99.7752 -90.11906,104.04761"
 	// test: do column widths / total width = 1?
 	columnWidthsEqual1(columnDimensions, chartWidth);
 
@@ -63,6 +63,8 @@ $(document).ready(function(){
 	var minColumn    = createColumn(chartHeight, minColDimension .width, lithColDimension.width + depthColDimension.width, 0);
 	var descColumn   = createColumn(chartHeight, descColDimension.width, minColDimension.width + lithColDimension.width + depthColDimension.width, 0);
 	var tracksColumn = createColumn(chartHeight, trackColDimension.width, descColDimension.width + minColDimension.width + lithColDimension.width + depthColDimension.width, 0);
+
+	var fullPage = createColumn(chartHeight, pageWidth, 0, 0);
 
 	// depthColDimension
 	// lithColDimension
@@ -167,8 +169,48 @@ $(document).ready(function(){
 			.attr("class", "annotation")
 			.call(makeAnnotations)
 
+	// addLith(selector, depth, w, h, color)
+	for (var i = 0; i < 5000; i += 100) {
+		addLith(lithColumn, yScale(i), lithColDimension.width, yScale(100), getRandomColor())
+	}
+
+	// var twist = fullPage.append("svg")
+	// 		.attr('width', 600)
+	// 		.attr('height', 800)
+	// 		.attr('x', 0)
+	// 		.attr('y', 0)
+	// 		.append("path")
+	// 			.attr('dx', 200)
+	//       .attr("d", spiral)
+	//       .attr("fill", "none")
+	//       .attr("stroke-width", 20)
+	//       .attr("stroke", getRandomColor())
+	//       .attr('viewbox', 0, 0, 50, 50 )
+
+   animateLine(twist, twist.node().getTotalLength(), 5000, d3.easeBounce)
 
 });
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++ ) {
+      color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function addLith(selector, depth, w, h, color) {
+	selector.append('rect')
+		.attr('width', w)
+		.attr('height', h)
+		.attr('x', 0)
+		.attr('y', depth)
+		.attr('class', 'lith')
+		.attr('fill', color)
+		.attr("stroke-width", 0)
+		.attr("stroke", "#B3B7B7")
+}
 
 function animateLine(path, lineLength, timeLength,easeStyle){
 		path
@@ -179,19 +221,6 @@ function animateLine(path, lineLength, timeLength,easeStyle){
 			.ease(easeStyle)
 			.attr("stroke-dashoffset", 1)
 			// .attr("stroke-dasharray", "4, 2" );
-}
-
-function addLith(data, yScale, col, x) {
-	return col.append('rect')
-		.data(lith)
-		.attr('width', 15)
-		.attr('height', yScale(100))
-		.attr('x', x)
-		.attr('y', 50)
-		.attr('stroke', 'purple')
-		.attr('fill', 'green')
-		.attr('stroke-width', 1);
-
 }
 
 function addHorizontalGridlines(column, yScale, width, height) {
