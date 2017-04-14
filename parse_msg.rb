@@ -1,3 +1,5 @@
+require_relative 'helpers'
+
 mud_data = ''
 mudMsg = File.open("log/mudmsg.txt", "r") do |file|
   mud_data = file.read.chomp
@@ -12,9 +14,8 @@ data_arr.each do |line|
 	new_data << new_line
 end
 
-File.open("data/mudMsg.js", 'w') do |file|
-	file.write("var mudMsg = #{new_data}")
-end
+writeArrayToJSFile("data/mudMsg.js", "mudMsg", new_data)
+
 
 
 

@@ -24,25 +24,8 @@ end
 
 data = insert_missing_depths_to_lith(new_data)
 
+writeArrayToJSFile("data/lith.js", "lith", data)
 
-# data_arr.each do |line|
-# 	new_line = line.split("\r\n")
-# 	new_data << new_line
-# end
-
-File.open("data/lith.js", 'w') do |file|
-	file.write("var lith = [\n\t")
-	file.write(data[0])
-	i = 0
-	data.each do |line|
-		if i > 0
-			file.write(",\n\t")
-			file.write(line)
-		end
-		i += 1
-	end
-		file.write("\n]")
-end
 
 
 

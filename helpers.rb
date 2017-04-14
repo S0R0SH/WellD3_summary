@@ -78,3 +78,32 @@ def insert_missing_depths_to_lith(lith)
 
 	new_lith_arr = new_hash.to_a.reverse
 end
+
+def writeArrayToJSFile(fileToWrite, var_name, data)
+	p 'in  writeArrayToJSFile'
+	File.open(fileToWrite, 'w') do |file|
+		file.write("var #{var_name} = [\n\t")
+		file.write(data[0])
+		i = 0
+		data.each do |line|
+			if i > 0
+				file.write(",\n\t")
+				file.write(line)
+			end
+			i += 1
+		end
+			file.write("\n]")
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
+
