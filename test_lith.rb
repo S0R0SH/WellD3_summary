@@ -1,47 +1,3 @@
-def is_number(str)
-	if (/\d+/.match(str) != nil)
-		true
-	else
-		false
-	end
-end
-
-def create_msg_arr(str)
-	str_arr = str.split("\r\n")
-	depth = str_arr.shift.to_i
-	txt = str_arr.join(' ')
-
-	[depth, txt]
-end
-
-def count_lith(lith)
-	lith = lith.split(',')
-	hash = {}
-
-	# Proccess precentages separated by a colon
-	lith.each do |l|
-		if l.include?(';')
-			l = l.split(';')
-			l.each do |i|
-				if !hash.has_key?(i)
-					hash[i] = 10
-				else
-					hash[i] += 10
-				end
-			end
-			next
-		end
-
-		if !hash.has_key?(l)
-			hash[l] = 20
-		else
-			hash[l] += 20
-		end
-	end
-
-	hash
-end
-
 def get_lith_by_depth(depth, lith_arr)
 	lith_arr.each do |line|
 		if (line[0] == depth)
@@ -51,9 +7,23 @@ def get_lith_by_depth(depth, lith_arr)
 	"no lith"
 end
 
+lith = [
+	[60, "{\"B\":100}"],
+	[70, "{\"G\":100}"],
+	[80, "{\"G\":80,\"S\":20}"],
+	[120, "{\"C\":40,\"S\":10,\"A\":40},\"I\":10"],
+	[130, "{\"G\":80,\"S\":20}"],
+	[140, "{\"G\":80,\"S\":20}"],
+	[150, "{\"C\":10,\"G\":70,\"S\":20}"],
+	[160, "{\"G\":100}"],
+	[200, "{\"R\":100}"],
+	[210, "{\"H\":100}"]
+]
+
 def insert_missing_depths_to_lith(lith)
 	last_lith = ''
 	new_lith_arr = []
+	new_lith= []
 	new_hash = {}
 	lith_hash = {}
 	min_depth = lith[0][0]
@@ -65,7 +35,6 @@ def insert_missing_depths_to_lith(lith)
 		lith_hash[depth] = get_lith_by_depth(depth, lith)
 		depth += 10
 	end
-
 	lith_hash.reverse_each do |line|
 		if (line[1] == 'no lith')
 			new_hash[line[0]] = last_lith
@@ -78,3 +47,5 @@ def insert_missing_depths_to_lith(lith)
 
 	new_lith_arr = new_hash.to_a.reverse
 end
+
+p insert_missing_depths_to_lith(lith)

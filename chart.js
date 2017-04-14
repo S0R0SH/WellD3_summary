@@ -122,12 +122,9 @@ $(document).ready(function(){
 			}
 		});
 
-		console.log(symArr)
 	}
 
 	formatLith(tempLith)
-	console.log(lith)
-
 
 });
 
