@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	 hello();
 
 	var margin = 10;
 	var pageHeight = 800;
@@ -94,7 +95,7 @@ $(document).ready(function(){
 		.x(function(d) { return wobScale(d[2]) })
 		.y(function(d) { return yScale(d[0]) })
 
-	for (var i = 0; i < 4; i++ ){
+	for (var i = 0; i < 5; i++ ){
 		if (i === 3 || i === 0) { continue };
 		addHorizontalGridlines(columns[i], yScale, columnDimensions[i].width, chartHeight)
 	}
@@ -120,10 +121,15 @@ $(document).ready(function(){
 	var wobTotalLength = wobPath.node().getTotalLength();
 
 	// time it takes for tracks to animate
-	var timeLength = 1000;
+	var timeLength = 2000;
 
-	animateLine(ropPath, ropTotalLength, timeLength, d3.easeLinear)
-	animateLine(wobPath, wobTotalLength, timeLength, d3.easeLinear)
+	var easing = [
+    "easeElastic", "easeBounce", "easeLinear",
+    "easeSin", "easeQuad", "easeCubic", "easePoly",
+    "easeCircle", "easeExp", "easeBack"];
+
+	animateLine(ropPath, ropTotalLength, timeLength, d3.easeExp)
+	animateLine(wobPath, wobTotalLength, timeLength, d3.easeExp)
 
 	var text = writeText(desMsg, descColumn, yScale, textSize);
 
@@ -145,18 +151,17 @@ $(document).ready(function(){
 		note: { "label": "Losing 20 bbls/hr" }
 	}]
 
-
 	var tempLith = {depth: "630", lith: ['G', 'G', 'G', 'S', 'S']}
 
-	function formatLith(lith){
-		var symArr = [];
-		lith.lith.forEach(function(d){
-			if (!symArr.includes(d)){
-				symArr.push(d)
-			}
-		});
+	// function formatLith(lith){
+	// 	var symArr = [];
+	// 	lith.lith.forEach(function(d){
+	// 		if (!symArr.includes(d)){
+	// 			symArr.push(d)
+	// 		}
+	// 	});
 
-	}
+	// }
 
 	// formatLith(tempLith)
 
@@ -174,6 +179,8 @@ $(document).ready(function(){
 		addLith(lithColumn, yScale(i), lithColDimension.width, yScale(100), getRandomColor())
 	}
 
+	console.log(lithColDimension.width, yScale(100))
+
 	// var twist = fullPage.append("svg")
 	// 		.attr('width', 600)
 	// 		.attr('height', 800)
@@ -187,17 +194,36 @@ $(document).ready(function(){
 	//       .attr("stroke", getRandomColor())
 	//       .attr('viewbox', 0, 0, 50, 50 )
 
-   animateLine(twist, twist.node().getTotalLength(), 5000, d3.easeBounce)
+	 // animateLine(twist, twist.node().getTotalLength(), 5000, d3.easeBounce)
+
+	 var gs = insertLithSymbol(".liths", 'liths/greenstone')
+	 var serp = insertLithSymbol(".liths", 'liths/serp')
+	 var chert = insertLithSymbol(".liths", 'liths/chert')
+	 var argillite = insertLithSymbol(".liths", 'liths/arg')
+	 var gw = insertLithSymbol(".liths", 'liths/gw')
+	 var blueschist = insertLithSymbol(".liths", 'liths/blueschist')
+
+	 var logo = insertLithSymbol(".logo", 'img/logo')
 
 });
 
+function insertLithSymbol(selector, symbol) {
+	d3.select(selector)
+		.append('div')
+			.attr('class', symbol)
+		.append('img')
+			.attr('src', symbol + ".svg")
+			// .style('border', '1px solid black')
+			.attr('width', '50%')
+	}
+
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++ ) {
-      color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+	var letters = '0123456789ABCDEF';
+	var color = '#';
+	for (var i = 0; i < 6; i++ ) {
+			color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
 }
 
 function addLith(selector, depth, w, h, color) {
@@ -228,7 +254,6 @@ function addHorizontalGridlines(column, yScale, width, height) {
 			.attr('class', 'y-axis')
 			.call(createYGridlines(yScale, width, height))
 }
-
 
 
 // tests ======================================

@@ -1,3 +1,24 @@
+function parseLithFile() {
+	console.log("in parseLith")
+	d3.text("log/lith.txt").get(function(error, data){
+		dataArr = data.split("\n")
+
+		var lithData = [];
+		dataArr.forEach(function(d){
+			var dataObj = {};
+			var arr = (d.split(' '))
+			dataObj['depth'] = arr[0];
+			dataObj['lith'] = arr[1];
+			lithData.push(dataObj)
+		})
+		return lithData;
+	});
+}
+
+function hello(){
+	console.log('Hello')
+}
+
 function submit_download_form(output_format) {
 	// Get the d3js SVG element
 	var tmp = document.getElementById("svg-container");
@@ -12,18 +33,6 @@ function submit_download_form(output_format) {
 	form['data'].value = svg_xml ;
 	form.submit();
 }
-
-// function getLith() {
-// 	var lithArr = [];
-// 	lith.forEach(function(d){
-// 		var lithObj = {};
-// 		var d = d.split(' ')
-// 		lithObj.depth = d[0];
-// 		lithObj.lith = d[1].split(',');
-// 		lithArr.push(lithObj);
-// 	});
-// 	return lithArr;
-// }
 
 function createYGridlines(yScale, tickSize, height){
 	return d3.axisRight(yScale)
