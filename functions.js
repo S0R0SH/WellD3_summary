@@ -1,22 +1,20 @@
-function parseLithFile() {
+function parseLithFile(arr) {
 	console.log("in parseLith")
+	var lithData = [];
 	d3.text("log/lith.txt").get(function(error, data){
 		dataArr = data.split("\n")
 
-		var lithData = [];
 		dataArr.forEach(function(d){
-			var dataObj = {};
+			// var dataObj = {};
 			var arr = (d.split(' '))
-			dataObj['depth'] = arr[0];
-			dataObj['lith'] = arr[1];
-			lithData.push(dataObj)
-		})
-		return lithData;
-	});
-}
+			// dataObj['depth'] = arr[0];
+			// dataObj['lith'] = arr[1];
 
-function hello(){
-	console.log('Hello')
+			lithData.push(arr[0], arr[1]);
+			// arr.push(dataObj)
+		})
+	});
+	return lithData;
 }
 
 function submit_download_form(output_format) {

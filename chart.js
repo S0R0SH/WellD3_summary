@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	 hello();
 
 	var margin = 10;
 	var pageHeight = 800;
@@ -23,7 +22,7 @@ $(document).ready(function(){
 			descColDimension,
 			trackColDimension
 	];
-	var spiral = "m 347.14285,528.07648 c 0.14325,5.08546 -6.78443,2.70209 -8.45238,0.23809 -4.52003,-6.67728 1.48621,-14.87387 7.97619,-17.14285 11.60907,-4.05869 23.14837,5.08737 25.83334,16.19048 3.94029,16.29425 -8.70157,31.56897 -24.40477,34.5238 -20.92989,3.93832 -40.04589,-12.3157 -43.21428,-32.61905 -3.9871,-25.54971 15.92864,-48.55073 40.83334,-51.90476 30.16292,-4.06218 57.0715,19.5407 60.59523,49.04763 4.15259,34.77289 -23.15216,65.60225 -57.26192,69.2857 -39.38106,4.2527 -74.13965,-26.76322 -77.97618,-65.4762 -4.3593,-43.98814 30.37403,-82.68172 73.69049,-86.66665 48.59453,-4.47049 91.22719,33.98463 95.35713,81.90477 4.58502,53.20044 -37.59511,99.7752 -90.11906,104.04761"
+
 	// test: do column widths / total width = 1?
 	columnWidthsEqual1(columnDimensions, chartWidth);
 
@@ -124,11 +123,12 @@ $(document).ready(function(){
 	var timeLength = 2000;
 
 	var easing = [
-    "easeElastic", "easeBounce", "easeLinear",
-    "easeSin", "easeQuad", "easeCubic", "easePoly",
-    "easeCircle", "easeExp", "easeBack"];
+    d3.easeElastic, d3.easeBounce, d3.easeLinear,
+		d3.easeSin, d3.easeQuad, d3.easeCubic, d3.easePoly,
+		d3.easeCircle, d3.easeExp, d3.easeBack
+		];
 
-	animateLine(ropPath, ropTotalLength, timeLength, d3.easeExp)
+	animateLine(ropPath, ropTotalLength, timeLength, easing[0])
 	animateLine(wobPath, wobTotalLength, timeLength, d3.easeExp)
 
 	var text = writeText(desMsg, descColumn, yScale, textSize);
@@ -151,19 +151,8 @@ $(document).ready(function(){
 		note: { "label": "Losing 20 bbls/hr" }
 	}]
 
-	var tempLith = {depth: "630", lith: ['G', 'G', 'G', 'S', 'S']}
 
-	// function formatLith(lith){
-	// 	var symArr = [];
-	// 	lith.lith.forEach(function(d){
-	// 		if (!symArr.includes(d)){
-	// 			symArr.push(d)
-	// 		}
-	// 	});
 
-	// }
-
-	// formatLith(tempLith)
 
 	const makeAnnotations = d3.annotation()
 		.editMode(true)
@@ -181,33 +170,22 @@ $(document).ready(function(){
 
 	console.log(lithColDimension.width, yScale(100))
 
-	// var twist = fullPage.append("svg")
-	// 		.attr('width', 600)
-	// 		.attr('height', 800)
-	// 		.attr('x', 0)
-	// 		.attr('y', 0)
-	// 		.append("path")
-	// 			.attr('dx', 200)
-	//       .attr("d", spiral)
-	//       .attr("fill", "none")
-	//       .attr("stroke-width", 20)
-	//       .attr("stroke", getRandomColor())
-	//       .attr('viewbox', 0, 0, 50, 50 )
+	 var gs = insertSymbol(".liths", 'liths/greenstone')
+	 var serp = insertSymbol(".liths", 'liths/serp')
+	 var chert = insertSymbol(".liths", 'liths/chert')
+	 var argillite = insertSymbol(".liths", 'liths/arg')
+	 var gw = insertSymbol(".liths", 'liths/gw')
+	 var blueschist = insertSymbol(".liths", 'liths/blueschist')
 
-	 // animateLine(twist, twist.node().getTotalLength(), 5000, d3.easeBounce)
+	 var logo = insertSymbol(".logo", 'img/logo')
 
-	 var gs = insertLithSymbol(".liths", 'liths/greenstone')
-	 var serp = insertLithSymbol(".liths", 'liths/serp')
-	 var chert = insertLithSymbol(".liths", 'liths/chert')
-	 var argillite = insertLithSymbol(".liths", 'liths/arg')
-	 var gw = insertLithSymbol(".liths", 'liths/gw')
-	 var blueschist = insertLithSymbol(".liths", 'liths/blueschist')
+	 var tempLith = [90, {"G":80,"S":20}]
 
-	 var logo = insertLithSymbol(".logo", 'img/logo')
+	 console.log(tempLith[1]["G"])
 
 });
 
-function insertLithSymbol(selector, symbol) {
+function insertSymbol(selector, symbol) {
 	d3.select(selector)
 		.append('div')
 			.attr('class', symbol)

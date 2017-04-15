@@ -1,22 +1,38 @@
 $(document).ready(function(){
 
-var svg = d3.select("#sandbox").append('svg');
-
-svg.append('g')
-	.append('rect')
-		.attr('x', 200)
-		.attr('y', 50)
-		.attr('width', 200)
-		.attr('height', 200)
-		.attr('fill', 'green')
-	.append('path')
-		.attr('d', "M50,100 L131,66 L259,115 L339,50 L400,98 M350,150 L100,150")
-		.attr('fill', 'none')
-		.attr('stroke', 'blue')
+	console.log("in Sandbox");
 
 
+	d3.text("day.txt").get(function(error, data){
 
+		console.log(data)
 
+		var myTabPositions = [];
+		var myNewLinePositions = [];
 
+		var tabVal = "\\b\t\\b";
+		var tabMod = 'g';
+		var tabRegExp = new RegExp(tabVal, tabMod);
 
-})
+		console.log(tabRegExp)
+
+		var lineVal = "\\b\n\\b";
+		var lineMod = 'g';
+		var lineRegExp = new RegExp(tabVal, tabMod);
+
+		console.log(lineRegExp)
+
+		data.replace(tabRegExp, function(a, b){
+			console.log("a ", a);
+			myTabPositions.push(b); return a;
+		})
+
+		data.replace(lineRegExp, function(a, b){ myNewLinePositions.push(b); return a; })
+
+		console.log(myTabPositions)
+		console.log(myNewLinePositions)
+
+	})
+
+});
+

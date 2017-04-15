@@ -1,3 +1,5 @@
+require_relative 'helpers'
+
 rows = []
 rows_10 = []
 count = 0
@@ -21,13 +23,9 @@ File.foreach("log/depth.txt") do |line|
 	count += 1
 end
 
-File.open("data/depth_data.txt", 'w') do |file|
-	file.write("var depth_data = #{rows}")
-end
+writeArrayToJSFile("data/depth_data.js", "depth_data", rows)
+writeArrayToJSFile("data/depth_data_summary.js", "depth_data_summary", rows_10)
 
-File.open("data/depth_data_summary.txt", 'w') do |file|
-	file.write("var depth_data_summary = #{rows_10}")
-end
 
 
 
