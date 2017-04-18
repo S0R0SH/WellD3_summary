@@ -12,8 +12,8 @@ $(document).ready(function(){
 	var depthColDimension = { height: chartHeight, width: (chartWidth * 0.066667) };
 	var lithColDimension  = { height: chartHeight, width: (chartWidth * 0.100000) };
 	var minColDimension   = { height: chartHeight, width: (chartWidth * 0.100000) };
-	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.500000) };
-	var trackColDimension = { height: chartHeight, width: (chartWidth * 0.233333) };
+	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.600000) };
+	var trackColDimension = { height: chartHeight, width: (chartWidth * 0.133333) };
 
 	var columnDimensions = [
 			depthColDimension,
@@ -151,9 +151,6 @@ $(document).ready(function(){
 		note: { "label": "Losing 20 bbls/hr" }
 	}]
 
-
-
-
 	const makeAnnotations = d3.annotation()
 		.editMode(true)
 		.type(type)
@@ -165,23 +162,82 @@ $(document).ready(function(){
 
 	// addLith(selector, depth, w, h, color)
 	for (var i = 0; i < 5000; i += 100) {
-		addLith(lithColumn, yScale(i), lithColDimension.width, yScale(100), getRandomColor())
+		// addLith(lithColumn, yScale(i), lithColDimension.width, yScale(100), getRandomColor())
 	}
 
 	console.log(lithColDimension.width, yScale(100))
 
-	 var gs = insertSymbol(".liths", 'liths/greenstone')
-	 var serp = insertSymbol(".liths", 'liths/serp')
-	 var chert = insertSymbol(".liths", 'liths/chert')
-	 var argillite = insertSymbol(".liths", 'liths/arg')
-	 var gw = insertSymbol(".liths", 'liths/gw')
-	 var blueschist = insertSymbol(".liths", 'liths/blueschist')
+	var gs = insertSymbol(".liths", 'liths/greenstone')
+	var serp = insertSymbol(".liths", 'liths/serp')
+	var chert = insertSymbol(".liths", 'liths/chert')
+	var argillite = insertSymbol(".liths", 'liths/arg')
+	var gw = insertSymbol(".liths", 'liths/gw')
+	var blueschist = insertSymbol(".liths", 'liths/blueschist')
 
-	 var logo = insertSymbol(".logo", 'img/logo')
+	var logo = insertSymbol(".logo", 'img/logo')
 
-	 var tempLith = [90, {"G":80,"S":20}]
+	var tempLith = [90, {G:80,S:20}]
 
-	 console.log(tempLith[1]["G"])
+	var lithArr = [];
+	// console.log(lith[12])
+
+	// $('.logo').html(lith[12])
+	var d = [200, [["G", "S", "Y"], [20, 40, 40]]];
+	//=> [200, {"G":20, "S":40, "Y":40}]
+
+	var testData = [
+		[ 210, {"G":20, "S":40, "Y":40}],
+		[ 220, {"G":30, "C":20, "Y":50}]
+	]
+	console.log(formatLithData(d))
+
+	var lithArr = [];
+
+	var lithData = lith.forEach(function(d){
+		lithArr.push(formatLithData(d))
+	})
+
+	console.log(lithArr[55])
+
+	descColumn.append('svg')
+			.attr('class', "greenstone")
+		.append('img')
+			.attr('src', "liths/greenstone.svg")
+			// .style('border', '1px solid black')
+			.attr('width', '60')
+			.attr('height', '15')
+			.attr('x', 0)
+			.attr('y', 100)
+
+	function makeLine() {
+		d3.select('line')
+			.attr('x1', 5)
+			.attr('y1', 200)
+			.attr('x2', 300)
+			.attr('y2', 700)
+			.attr('stroke-width', 5)
+			.attr('stroke', 'blue')
+
+	}
+
+	var sq = d3.select('.rect')
+		.append('svg')
+			.attr('width', 225)
+		.append('g');
+
+	sq.append('rect')
+		.attr('width', 350)
+		.attr('height',200)
+		.attr('x', 0)
+		.attr('y', 0)
+		.attr('fill', 'red')
+		.attr('border', '1px solid black')
+
+	sq.append('path')
+			.attr('d', 'M250 0 L200 100 L300 100 Z M150 0 L100 100 L200 100 Z')
+			.attr("stroke", "black")
+      .attr("stroke-width", 2)
+      .attr("fill", "none");
 
 });
 
@@ -189,11 +245,34 @@ function insertSymbol(selector, symbol) {
 	d3.select(selector)
 		.append('div')
 			.attr('class', symbol)
+			.attr('overflow', 'hidden')
 		.append('img')
 			.attr('src', symbol + ".svg")
 			// .style('border', '1px solid black')
 			.attr('width', '50%')
+			.attr('margin', '-50')
+
 	}
+
+function formatLithData(lith) {
+	var depth = lith[0];
+	var sym = lith[1][0];
+	var count = lith[1][1];
+	var arr = [depth];
+
+	// console.log(depth, sym, count)
+	var i = 0;
+	var lithObj = {};
+	// lithObj['depth'] = depth;
+	var obj = {};
+	sym.forEach(function(d){
+		obj[d] = count[i]
+		// arr.push(obj)
+		i++;
+	})
+	arr.push(obj)
+	return arr;
+}
 
 function getRandomColor() {
 	var letters = '0123456789ABCDEF';

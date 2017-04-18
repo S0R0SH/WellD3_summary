@@ -15,8 +15,10 @@ def create_msg_arr(str)
 end
 
 def count_lith(lith)
+	# p lith
 	lith = lith.split(',')
 	hash = {}
+
 
 	# Proccess precentages separated by a colon
 	lith.each do |l|
@@ -39,7 +41,16 @@ def count_lith(lith)
 		end
 	end
 
-	hash
+
+	symArr = []
+	countArr = []
+	hash.each do |sym, count|
+		symArr << sym
+		countArr << count
+	end
+
+	[symArr, countArr]
+
 end
 
 def get_lith_by_depth(depth, lith_arr)

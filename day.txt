@@ -1,0 +1,8 @@
+day amount
+sun 65
+mon 12
+tues  34
+wed 90
+thurs 94
+fri 56
+sat 43
