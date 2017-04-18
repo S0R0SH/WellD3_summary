@@ -179,7 +179,6 @@ $(document).ready(function(){
 	var tempLith = [90, {G:80,S:20}]
 
 	var lithArr = [];
-	// console.log(lith[12])
 
 	// $('.logo').html(lith[12])
 	var d = [200, [["G", "S", "Y"], [20, 40, 40]]];
@@ -189,7 +188,8 @@ $(document).ready(function(){
 		[ 210, {"G":20, "S":40, "Y":40}],
 		[ 220, {"G":30, "C":20, "Y":50}]
 	]
-	console.log(formatLithData(d))
+	// console.log(formatLithData(d))
+
 
 	var lithArr = [];
 
@@ -198,6 +198,39 @@ $(document).ready(function(){
 	})
 
 	console.log(lithArr[55])
+
+	var avgLith = getAvgLith(lithArr);
+
+	console.log(avgLith)
+
+	console.log(testAverageLith(avgLith))
+
+	function getAvgLith(lithData) {
+		var numOfRecords = lithData.length
+
+		var avgLith = {};
+
+		lithData.forEach(function(d){
+			lithObj = d[1]
+			for (sym in lithObj) {
+				// if lithObj does not already have the symbol then create it
+				if (!avgLith.hasOwnProperty((sym))){
+					avgLith[sym] = lithObj[sym];
+					// if the symbol exists then add percentage to it
+				} else {
+					// console.log(lithObj[sym])
+					avgLith[sym] += lithObj[sym];
+				}
+			}
+		});
+
+		for (percentage in avgLith) {
+			avgLith[percentage] = avgLith[percentage] /numOfRecords
+		}
+
+		return avgLith;
+	}
+
 
 	descColumn.append('svg')
 			.attr('class', "greenstone")
@@ -217,7 +250,6 @@ $(document).ready(function(){
 			.attr('y2', 700)
 			.attr('stroke-width', 5)
 			.attr('stroke', 'blue')
-
 	}
 
 	var sq = d3.select('.rect')
@@ -240,6 +272,16 @@ $(document).ready(function(){
       .attr("fill", "none");
 
 });
+
+function testAverageLith(lithObj){
+	var total = 0;
+
+	for (percentage in lithObj) {
+		total += lithObj[percentage];
+	}
+
+	return total;
+}
 
 function insertSymbol(selector, symbol) {
 	d3.select(selector)
