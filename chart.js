@@ -197,22 +197,26 @@ $(document).ready(function(){
 		lithArr.push(formatLithData(d))
 	})
 
-	console.log(lithArr[55])
+	// console.log(lithArr[55])
 
 	var avgLith = getAvgLith(lithArr);
 
-	console.log(avgLith)
+	// console.log(avgLith[1][1])
 
-	console.log(testAverageLith(avgLith))
 
 	function getAvgLith(lithData) {
-		var numOfRecords = lithData.length
+		var numOfRecords = 0;
 
+		var avgLithArr = [];
 		var avgLith = {};
 
 		lithData.forEach(function(d){
-			lithObj = d[1]
+			var lithObj = d[1];
+			var depth = d[0];
+
+
 			for (sym in lithObj) {
+
 				// if lithObj does not already have the symbol then create it
 				if (!avgLith.hasOwnProperty((sym))){
 					avgLith[sym] = lithObj[sym];
@@ -222,13 +226,22 @@ $(document).ready(function(){
 					avgLith[sym] += lithObj[sym];
 				}
 			}
+
+			if (depth % 100 == 0){
+				for (percentage in avgLith) {
+					avgLith[percentage] = (avgLith[percentage] / numOfRecords)
+				}
+				avgLithArr.push([depth, avgLith])
+				// avgLithArr.push(avgLith)
+				avgLith = {};
+				numOfRecords = 0;
+			}
+			numOfRecords += 1;
 		});
 
-		for (percentage in avgLith) {
-			avgLith[percentage] = avgLith[percentage] /numOfRecords
-		}
 
-		return avgLith;
+
+		return avgLithArr;
 	}
 
 
