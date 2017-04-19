@@ -164,5 +164,46 @@ var wrap = function wrap(text, width) {
   });
 };
 
+function getAvgLith(lithData) {
+		var numOfRecords = 1;
+
+		var avgLithArr = [];
+		var avgLith = {};
+		var i = 0;
+
+		lithData.forEach(function(d){
+			var lithObj = d[1];
+			var depth = d[0];
+
+
+			for (sym in lithObj) {
+
+				// if lithObj does not already have the symbol then create it
+				if (!avgLith.hasOwnProperty((sym))){
+					avgLith[sym] = lithObj[sym];
+					// if the symbol exists then add percentage to it
+				} else {
+					// console.log(lithObj[sym])
+					avgLith[sym] += lithObj[sym];
+				}
+			}
+
+			if (depth % 100 === 0 || i === lithData.length - 1){
+				console.log(numOfRecords)
+				for (percentage in avgLith) {
+					avgLith[percentage] = (avgLith[percentage] / numOfRecords)
+				}
+				avgLithArr.push([depth, avgLith])
+				// avgLithArr.push(avgLith)
+				avgLith = {};
+				numOfRecords = 0;
+			}
+			numOfRecords += 1;
+			i += 1;
+		});
+
+		return avgLithArr;
+	}
+
 
 

@@ -201,48 +201,11 @@ $(document).ready(function(){
 
 	var avgLith = getAvgLith(lithArr);
 
-	// console.log(avgLith[1][1])
+	avgLith.forEach(function(d){
+		console.log(d)
+	})
 
 
-	function getAvgLith(lithData) {
-		var numOfRecords = 0;
-
-		var avgLithArr = [];
-		var avgLith = {};
-
-		lithData.forEach(function(d){
-			var lithObj = d[1];
-			var depth = d[0];
-
-
-			for (sym in lithObj) {
-
-				// if lithObj does not already have the symbol then create it
-				if (!avgLith.hasOwnProperty((sym))){
-					avgLith[sym] = lithObj[sym];
-					// if the symbol exists then add percentage to it
-				} else {
-					// console.log(lithObj[sym])
-					avgLith[sym] += lithObj[sym];
-				}
-			}
-
-			if (depth % 100 == 0){
-				for (percentage in avgLith) {
-					avgLith[percentage] = (avgLith[percentage] / numOfRecords)
-				}
-				avgLithArr.push([depth, avgLith])
-				// avgLithArr.push(avgLith)
-				avgLith = {};
-				numOfRecords = 0;
-			}
-			numOfRecords += 1;
-		});
-
-
-
-		return avgLithArr;
-	}
 
 
 	descColumn.append('svg')
