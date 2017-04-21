@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
 	var margin = 10;
-	var pageHeight = 800;
+	var pageHeight = 1000;
 	var chartHeight = pageHeight - (margin * 2);
-	var pageWidth = 600;
+	var pageWidth = 750;
 	var chartWidth = pageWidth - (margin * 2);
 	var maxDepth = d3.max(depth_data, function(d) { return d[0]} );
 	var data = depth_data_summary;
@@ -16,11 +16,11 @@ $(document).ready(function(){
 	var trackColDimension = { height: chartHeight, width: (chartWidth * 0.133333) };
 
 	var columnDimensions = [
-			depthColDimension,
-			lithColDimension,
-			minColDimension,
-			descColDimension,
-			trackColDimension
+								depthColDimension,
+								lithColDimension,
+								minColDimension,
+								descColDimension,
+								trackColDimension
 	];
 
 	// test: do column widths / total width = 1?
@@ -32,6 +32,10 @@ $(document).ready(function(){
 	var wobScale = d3.scaleLinear()
 		.range([0, trackColDimension.width])
 		.domain([0, 200]);
+
+	var lithScale = d3.scaleLinear()
+		.range([0, lithColDimension.width])
+		// .domain([0, 200]);
 
 	var xScale = d3.scaleLinear()
 		.range([0, trackColDimension.width])
@@ -65,12 +69,6 @@ $(document).ready(function(){
 	var tracksColumn = createColumn(chartHeight, trackColDimension.width, descColDimension.width + minColDimension.width + lithColDimension.width + depthColDimension.width, 0);
 
 	var fullPage = createColumn(chartHeight, pageWidth, 0, 0);
-
-	// depthColDimension
-	// lithColDimension
-	// minColDimension
-	// descColDimension
-	// trackColDimension
 
 	var columns = [depthColumn, lithColumn, minColumn, descColumn, tracksColumn];
 
@@ -113,14 +111,14 @@ $(document).ready(function(){
 		.attr("stroke-width", function(d){ return (d%500 === 0 ) ?  "1" : ".25" })
 
 	// Draw data tracks
-	var ropPath = drawTrack(tracksColumn, data, ropTrack, "firebrick", 2);
-	var wobPath = drawTrack(tracksColumn, data, wobTrack, "midnightblue", 2);
+	var ropPath = drawTrack(tracksColumn, data, ropTrack, "firebrick", 1);
+	var wobPath = drawTrack(tracksColumn, data, wobTrack, "midnightblue", 1);
 
 	var ropTotalLength = ropPath.node().getTotalLength();
 	var wobTotalLength = wobPath.node().getTotalLength();
 
 	// time it takes for tracks to animate
-	var timeLength = 2000;
+	var timeLength = 10;
 
 	var easing = [
     d3.easeElastic, d3.easeBounce, d3.easeLinear,
@@ -128,8 +126,8 @@ $(document).ready(function(){
 		d3.easeCircle, d3.easeExp, d3.easeBack
 		];
 
-	animateLine(ropPath, ropTotalLength, timeLength, easing[0])
-	animateLine(wobPath, wobTotalLength, timeLength, d3.easeExp)
+	animateLine(ropPath, ropTotalLength, timeLength, easing[4])
+	animateLine(wobPath, wobTotalLength, timeLength, easing[4])
 
 	var text = writeText(desMsg, descColumn, yScale, textSize);
 
@@ -176,21 +174,6 @@ $(document).ready(function(){
 
 	var logo = insertSymbol(".logo", 'img/logo')
 
-	var tempLith = [90, {G:80,S:20}]
-
-	var lithArr = [];
-
-	// $('.logo').html(lith[12])
-	var d = [200, [["G", "S", "Y"], [20, 40, 40]]];
-	//=> [200, {"G":20, "S":40, "Y":40}]
-
-	var testData = [
-		[ 210, {"G":20, "S":40, "Y":40}],
-		[ 220, {"G":30, "C":20, "Y":50}]
-	]
-	// console.log(formatLithData(d))
-
-
 	var lithArr = [];
 
 	var lithData = lith.forEach(function(d){
@@ -201,22 +184,10 @@ $(document).ready(function(){
 
 	var avgLith = getAvgLith(lithArr);
 
-	avgLith.forEach(function(d){
-		console.log(d)
-	})
+	// avgLith.forEach(function(d){
+	// 	console.log(d)
+	// });
 
-
-
-
-	descColumn.append('svg')
-			.attr('class', "greenstone")
-		.append('img')
-			.attr('src', "liths/greenstone.svg")
-			// .style('border', '1px solid black')
-			.attr('width', '60')
-			.attr('height', '15')
-			.attr('x', 0)
-			.attr('y', 100)
 
 	function makeLine() {
 		d3.select('line')
@@ -228,24 +199,15 @@ $(document).ready(function(){
 			.attr('stroke', 'blue')
 	}
 
-	var sq = d3.select('.rect')
-		.append('svg')
-			.attr('width', 225)
-		.append('g');
-
-	sq.append('rect')
-		.attr('width', 350)
-		.attr('height',200)
-		.attr('x', 0)
-		.attr('y', 0)
-		.attr('fill', 'red')
-		.attr('border', '1px solid black')
-
-	sq.append('path')
-			.attr('d', 'M250 0 L200 100 L300 100 Z M150 0 L100 100 L200 100 Z')
-			.attr("stroke", "black")
-      .attr("stroke-width", 2)
-      .attr("fill", "none");
+	  lithColumn.append('svg')
+	  	.attr('width', 50)
+	  	.attr('height', yScale(100))
+		  .append("image")
+				.attr("xlink:href", 'liths/gsLarge.png')
+				.attr("x", "0")
+				.attr("y", "0")
+				.attr("width", lithColDimension.width)
+				.attr("height", yScale(100));
 
 });
 

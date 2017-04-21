@@ -110,7 +110,7 @@ function createSVGCode(){
 	//Optional: prettify the XML with proper indentations
 	svg_xml = vkbeautify.xml(svg_xml);
 
-	console.log(svg_xml)
+	// console.log(svg_xml)
 	// Set the content of the <pre> element with the XML
 	// $("#svg_code").text(svg_xml);
 
@@ -189,7 +189,7 @@ function getAvgLith(lithData) {
 			}
 
 			if (depth % 100 === 0 || i === lithData.length - 1){
-				console.log(numOfRecords)
+				// console.log(numOfRecords)
 				for (percentage in avgLith) {
 					avgLith[percentage] = (avgLith[percentage] / numOfRecords)
 				}
