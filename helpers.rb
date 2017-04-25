@@ -14,11 +14,13 @@ def create_msg_arr(str)
 	[depth, txt]
 end
 
-
 def count_lith(lith)
+	# p lith
 	lith = lith.split(',')
 	hash = {}
 
+
+	# Proccess precentages separated by a colon
 	lith.each do |l|
 		if l.include?(';')
 			l = l.split(';')
@@ -39,5 +41,80 @@ def count_lith(lith)
 		end
 	end
 
-	hash
+
+	symArr = []
+	countArr = []
+	hash.each do |sym, count|
+		symArr << sym
+		countArr << count
+	end
+
+	[symArr, countArr]
+
 end
+
+def get_lith_by_depth(depth, lith_arr)
+	lith_arr.each do |line|
+		if (line[0] == depth)
+			return line[1]
+		end
+	end
+	"no lith"
+end
+
+def insert_missing_depths_to_lith(lith)
+	last_lith = ''
+	new_lith_arr = []
+	new_hash = {}
+	lith_hash = {}
+	min_depth = lith[0][0]
+	max_depth = lith[-1][0]
+	num_of_records = ((max_depth - min_depth) / 10) + 1
+
+	depth = min_depth
+	num_of_records.times do |i|
+		lith_hash[depth] = get_lith_by_depth(depth, lith)
+		depth += 10
+	end
+
+	lith_hash.reverse_each do |line|
+		if (line[1] == 'no lith')
+			new_hash[line[0]] = last_lith
+			next
+		end
+
+		new_hash[line[0]] = line[1]
+		last_lith = line[1]
+	end
+
+	new_lith_arr = new_hash.to_a.reverse
+end
+
+def writeArrayToJSFile(fileToWrite, var_name, data)
+	p 'in  writeArrayToJSFile'
+	File.open(fileToWrite, 'w') do |file|
+		file.write("var #{var_name} = [\n\t")
+		file.write(data[0])
+		i = 0
+		data.each do |line|
+			if i > 0
+				file.write(",\n\t")
+				file.write(line)
+			end
+			i += 1
+		end
+			file.write("\n]")
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
+

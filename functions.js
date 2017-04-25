@@ -1,3 +1,22 @@
+function parseLithFile(arr) {
+	console.log("in parseLith")
+	var lithData = [];
+	d3.text("log/lith.txt").get(function(error, data){
+		dataArr = data.split("\n")
+
+		dataArr.forEach(function(d){
+			// var dataObj = {};
+			var arr = (d.split(' '))
+			// dataObj['depth'] = arr[0];
+			// dataObj['lith'] = arr[1];
+
+			lithData.push(arr[0], arr[1]);
+			// arr.push(dataObj)
+		})
+	});
+	return lithData;
+}
+
 function submit_download_form(output_format) {
 	// Get the d3js SVG element
 	var tmp = document.getElementById("svg-container");
@@ -12,18 +31,6 @@ function submit_download_form(output_format) {
 	form['data'].value = svg_xml ;
 	form.submit();
 }
-
-// function getLith() {
-// 	var lithArr = [];
-// 	lith.forEach(function(d){
-// 		var lithObj = {};
-// 		var d = d.split(' ')
-// 		lithObj.depth = d[0];
-// 		lithObj.lith = d[1].split(',');
-// 		lithArr.push(lithObj);
-// 	});
-// 	return lithArr;
-// }
 
 function createYGridlines(yScale, tickSize, height){
 	return d3.axisRight(yScale)
@@ -103,7 +110,7 @@ function createSVGCode(){
 	//Optional: prettify the XML with proper indentations
 	svg_xml = vkbeautify.xml(svg_xml);
 
-	console.log(svg_xml)
+	// console.log(svg_xml)
 	// Set the content of the <pre> element with the XML
 	// $("#svg_code").text(svg_xml);
 
@@ -127,6 +134,76 @@ function createScale(range, dom){
 	.range(range)
 	.domain(dom);
 }
+
+//Text wrapping code adapted from Mike Bostock
+var wrap = function wrap(text, width) {
+  text.each(function () {
+    var text = (0, _d3Selection.select)(this),
+        words = text.text().split(/[ \t\r\n]+/).reverse(),
+
+    // lineNumber = 0,
+    lineHeight = .2,
+        //ems
+    // y = text.attr("y"),
+    dy = parseFloat(text.attr("dy")) || 0;
+
+    var word = void 0,
+        line = [],
+        tspan = text.text(null).append("tspan").attr("x", 0).attr("dy", dy + "em");
+
+    while (word = words.pop()) {
+      line.push(word);
+      tspan.text(line.join(" "));
+      if (tspan.node().getComputedTextLength() > width && line.length > 1) {
+        line.pop();
+        tspan.text(line.join(" "));
+        line = [word];
+        tspan = text.append("tspan").attr("x", 0).attr("dy", lineHeight + dy + "em").text(word);
+      }
+    }
+  });
+};
+
+function getAvgLith(lithData) {
+		var numOfRecords = 1;
+
+		var avgLithArr = [];
+		var avgLith = {};
+		var i = 0;
+
+		lithData.forEach(function(d){
+			var lithObj = d[1];
+			var depth = d[0];
+
+
+			for (sym in lithObj) {
+
+				// if lithObj does not already have the symbol then create it
+				if (!avgLith.hasOwnProperty((sym))){
+					avgLith[sym] = lithObj[sym];
+					// if the symbol exists then add percentage to it
+				} else {
+					// console.log(lithObj[sym])
+					avgLith[sym] += lithObj[sym];
+				}
+			}
+
+			if (depth % 100 === 0 || i === lithData.length - 1){
+				// console.log(numOfRecords)
+				for (percentage in avgLith) {
+					avgLith[percentage] = (avgLith[percentage] / numOfRecords)
+				}
+				avgLithArr.push([depth, avgLith])
+				// avgLithArr.push(avgLith)
+				avgLith = {};
+				numOfRecords = 0;
+			}
+			numOfRecords += 1;
+			i += 1;
+		});
+
+		return avgLithArr;
+	}
 
 
 
