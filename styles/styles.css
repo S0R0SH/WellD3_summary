@@ -21,14 +21,8 @@ div.tooltip {
 
 
 #lith-col {
-width: 100px;
-
+  width: 100px;
 }
-
-/*.main {
-  background-color: lightgray;
-  border-radius: 10px;
-}*/
 
 .main {
   background: url(../images/vintage_paper.jpg) transparent  5px 5px;

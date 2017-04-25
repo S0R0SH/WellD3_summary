@@ -35,7 +35,7 @@ $(document).ready(function(){
 
 	var lithScale = d3.scaleLinear()
 		.range([0, lithColDimension.width])
-		// .domain([0, 200]);
+		.domain([0, 100]);
 
 	var xScale = d3.scaleLinear()
 		.range([0, trackColDimension.width])
@@ -81,7 +81,8 @@ $(document).ready(function(){
 	var ropTrack = d3.line()
 		.x(function(d) { return ropScale(d[1]) })
 		.y(function(d) { return yScale(d[0]) })
-		.curve(d3.curveStepAfter);
+		// .curve(d3.curveStepAfter)
+		.curve(d3.curveCardinal);
 
 	var mudTrack = d3.line()
 		.x(function(d) { return mudScale(d[7]) })
@@ -121,7 +122,7 @@ $(document).ready(function(){
 	var timeLength = 10;
 
 	var easing = [
-    d3.easeElastic, d3.easeBounce, d3.easeLinear,
+		d3.easeElastic, d3.easeBounce, d3.easeLinear,
 		d3.easeSin, d3.easeQuad, d3.easeCubic, d3.easePoly,
 		d3.easeCircle, d3.easeExp, d3.easeBack
 		];
@@ -159,9 +160,9 @@ $(document).ready(function(){
 			.call(makeAnnotations)
 
 	// addLith(selector, depth, w, h, color)
-	for (var i = 0; i < 5000; i += 100) {
-		// addLith(lithColumn, yScale(i), lithColDimension.width, yScale(100), getRandomColor())
-	}
+	// for (var i = 0; i < 5000; i += 100) {
+	// 	// addLith(lithColumn, yScale(i), lithColDimension.width, yScale(100), getRandomColor())
+	// }
 
 	console.log(lithColDimension.width, yScale(100))
 
@@ -182,10 +183,12 @@ $(document).ready(function(){
 
 	// console.log(lithArr[55])
 
-	var avgLith = getAvgLith(lithArr);
+	var lith100 = getAvgLith(lithArr);
 
-	// avgLith.forEach(function(d){
-	// 	console.log(d)
+	// console.log(lith100)
+
+	// lith100.forEach(function(d){
+	// 	console.log(d[0],d[1])
 	// });
 
 
@@ -199,17 +202,78 @@ $(document).ready(function(){
 			.attr('stroke', 'blue')
 	}
 
-	  lithColumn.append('svg')
-	  	.attr('width', 50)
-	  	.attr('height', yScale(100))
-		  .append("image")
-				.attr("xlink:href", 'liths/gsLarge.png')
-				.attr("x", "0")
-				.attr("y", "0")
-				.attr("width", lithColDimension.width)
-				.attr("height", yScale(100));
+		var totalDepth = d3.max(data, function(d) { return d[0]; })
+		console.log('td', totalDepth)
 
+		var boxWidth = 100;
+		var lithSvg = lithColumn.append('svg').attr('height', yScale(totalDepth))
+		var yOffset = .5;
+		lith100.forEach(function(d){
+
+			var row = d[1];
+
+			var xPosition = 0;
+
+			for (var sym in row) {
+				lithSvg.append('rect')
+					.attr('x', xPosition)
+					.attr("y", function(){
+							if (d[0]% 100 == 0) {
+								return yScale(d[0] - 100) + yOffset
+							} else {
+								return yScale((Math.ceil(d[0]/100) * 100) - 100) + yOffset
+							}
+					})
+					.attr('width', (lithColDimension.width * (row[sym])/100))
+					.attr('height', yScale(100))
+					.attr('class', `${sym} lith`);
+
+				xPosition += lithColDimension.width * (row[sym])/100
+		}
+
+
+			// var totalDepth = d3.max(d, function(d) { return d[0]} );
+
+			// lithColumn.append('svg')
+			// 	.attr('height', yScale(totalDepth))
+			// 	.attr('width', function(){
+			// 		if (d[1]['G']) {
+			// 			return lithScale(d[1]['G'])
+			// 		} else {
+			// 			return 0
+			// 		}
+			// 	})
+			// .append('g')
+			// 	.attr('height', yScale(100))
+			// 	.attr('fill', 'red')
+			// 	.append("image")
+			// 		.attr("xlink:href", 'liths/gsLarge.svg')
+			// 		.attr("x", 0)
+			// 		.attr("y", function(){
+			// 			if (d[0]% 100 == 0) {
+			// 				return yScale(d[0] - 100)
+			// 			} else {
+			// 				return yScale((Math.ceil(d[0]/100) * 100) - 100)
+			// 			}
+			// 		})
+			// 		.attr("height", yScale(100))
+			// 		.attr("width", lithColDimension.width)
+		})
+
+	// lithColumn.append('svg')
+		//   	.attr('width', 50)
+		//   	.attr('height', yScale(100))
+		// 	  .append("image")
+		// 	  	.data([lith100])
+		// 			.attr("xlink:href", 'liths/graywacke.png')
+		// 			.attr("x", function(d){console.log(d[0])})
+		// 			.attr("y", "1")
+		// 			.attr("width", lithColDimension.width)
+		// 			.attr("height", yScale(100));
 });
+
+
+
 
 function testAverageLith(lithObj){
 	var total = 0;

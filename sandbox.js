@@ -1,48 +1,47 @@
+$(document).ready(function(){
 
 	var testData = [
 		[ 60, {"G":20, "S":40, "Y":40}],
 		[ 70, {"G":30, "C":20, "Y":50}],
-		[ 80, {"G":30, "C":20, "Y":50}],
-		[ 90, {"G":30, "C":20, "Y":50}],
-		[ 100, {"G":30, "C":20, "Y":50}],
-		[ 110, {"G":30, "C":20, "Y":50}],
-		[ 120, {"G":30, "C":20, "Y":50}],
-		[ 130, {"G":30, "C":20, "Y":50}],
-		[ 140, {"G":30, "C":20, "Y":50}],
-		[ 150, {"G":30, "C":20, "Y":50}],
-		[ 160, {"G":30, "C":20, "Y":50}],
-		[ 170, {"G":30, "C":20, "Y":50}],
-		[ 180, {"G":30, "C":20, "Y":50}],
-		[ 190, {"G":30, "C":20, "Y":50}],
-		[ 200, {"G":30, "C":20, "Y":50}]
+		[ 80, {"G":50, "C":10, "Y":40}],
+		[ 90, {"G":60, "C":20, "Y":20}],
+		[ 100, {"G":10, "C":30, "Y":60}],
+		[ 110, {"G":90, "C":10, "Y":0}],
+		[ 120, {"G":60, "C":30, "Y":10}],
+		[ 130, {"G":60, "C":10, "Y":30}],
+		[ 140, {"G":30, "C":60, "Y":10}],
+		[ 150, {"G":60, "C":20, "Y":20}],
+		[ 160, {"G":80, "C":10, "Y":10}],
+		[ 170, {"G":20, "C":70, "Y":10}],
+		[ 180, {"G":10, "C":70, "Y":20}],
+		[ 190, {"G":50, "C":10, "Y":40}],
+		[ 200, {"G":60, "C":20, "Y":20}]
 	];
 
-	var lith = [220, {"G":30, "C":20, "Y":50}]
-	var lithObj = lith[1]
-	// console.log(lith[1])
+	var testLith = [ 100, {"C":20, "G":40, "Y":40}]
 
-	// console.log(lith[1].hasOwnProperty('G'))
 
-	var avgLith = {};
+	var boxWidth = 100;
+	var lithSvg = d3.select('.lith').append('svg')
 
 	testData.forEach(function(d){
-		lithObj = d[1]
-		for (sym in lithObj) {
-			// if lithObj does not already have the symbol then create it
-			if (!avgLith.hasOwnProperty((sym))){
-				avgLith[sym] = lithObj[sym];
-				// if the symbol exists then add percentage to it
-			} else {
-				console.log(lithObj[sym])
-				avgLith[sym] += lithObj[sym];
-			}
-		}
 
+		var row = d[1];
+
+		var xPosition = 0;
+
+		for (var sym in row) {
+			lithSvg.append('rect')
+				.attr('x', xPosition)
+				.attr('y', d[0])
+				.attr('width', (boxWidth * (row[sym])/100))
+				.attr('height', 10)
+				.attr('class', sym);
+
+			xPosition += boxWidth * (row[sym])/100
+		}
 	})
 
-
-	console.log(avgLith)
-
-
+});
 
 
