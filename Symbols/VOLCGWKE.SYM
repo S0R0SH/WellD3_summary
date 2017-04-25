@@ -1,0 +1,9 @@
+; Calpine %lith symbol for Volcanic Graywacke
+0.08; Cell size
+C1
+D 500 800 500 800 U
+D 500 200 500 200 U
+D 250 650 500 350 750 650 U
+C13
+D 0 0 1000 0 1000 1000 0 1000 F U
+

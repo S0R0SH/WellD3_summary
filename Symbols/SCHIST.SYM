@@ -1,0 +1,8 @@
+; Geysers %lith symbol for schist, primarily Blueschist
+0.08; Cell size
+C1;color
+D 900 900 800 880 700 830 600 760 540 680 520 630 500 540 500 460
+480 370 440 320 400 240 300 170 200 120 100 100 U
+C15
+D 0 0 1000 0 1000 1000 0 1000 F U
+

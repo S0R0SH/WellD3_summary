@@ -1,0 +1,11 @@
+; Calpine Geysers %lith symbol for Greenstone
+0.08; Cell size
+; Greenstone with pen 1
+C1
+D  100 500 900 500 U
+D 300 750 200 250 U
+D 550 750 450 250 U
+D 800 750 700 250 U
+C13
+D 0 0 1000 0 1000 1000 0 1000 F U
+

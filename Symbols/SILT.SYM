@@ -1,0 +1,14 @@
+; Mudlog
+; Symbol Definition <silt.lit>
+; Lithology : Silt/Siltstone
+;
+1; Cellsize
+c1;color
+D 0 0 0 1000 1000 1000 1000 0 0 0 F U
+COLOUR 1   ; Pen Colour 3
+
+D 0 1000 500 1000 U
+D 750 1000 750 1000 U
+D 250 500 250 500 U
+D 500 500 1000 500 U
+

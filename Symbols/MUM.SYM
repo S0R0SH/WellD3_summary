@@ -1,0 +1,8 @@
+; CALPINE Geysers %lith symbol for Clay
+.075:cell
+c1:color
+D 100 600 50 950 400 900 U
+D 800 800 550 500 900 400 U
+D 50 350 350 500 400 150 U
+C15
+D 0 0 1000 0 1000 1000 0 1000 F U

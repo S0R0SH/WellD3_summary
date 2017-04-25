@@ -1,36 +1,56 @@
 $(document).ready(function(){
 
 	var margin = 10;
-	var pageHeight = 800;
+	var pageHeight = 1000;
 	var chartHeight = pageHeight - (margin * 2);
-	var pageWidth = 600;
+	var pageWidth = 750;
 	var chartWidth = pageWidth - (margin * 2);
 	var maxDepth = d3.max(depth_data, function(d) { return d[0]} );
 	var data = depth_data_summary;
+	var textSize = 12;
 
-	// console.log("Max Depth: ", maxDepth);
+	var depthColDimension = { height: chartHeight, width: (chartWidth * 0.066667) };
+	var lithColDimension  = { height: chartHeight, width: (chartWidth * 0.100000) };
+	var minColDimension   = { height: chartHeight, width: (chartWidth * 0.100000) };
+	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.600000) };
+	var trackColDimension = { height: chartHeight, width: (chartWidth * 0.133333) };
 
-	var columnDimension1 = { height: chartHeight, width: (chartWidth * 0.066667) };
-	var columnDimension2 = { height: chartHeight, width: (chartWidth * 0.100000) };
-	var columnDimension3 = { height: chartHeight, width: (chartWidth * 0.100000) };
-	var columnDimension4 = { height: chartHeight, width: (chartWidth * 0.366667) };
-	var columnDimension5 = { height: chartHeight, width: (chartWidth * 0.366667) };
+	var columnDimensions = [
+								depthColDimension,
+								lithColDimension,
+								minColDimension,
+								descColDimension,
+								trackColDimension
+	];
 
-	var columnDimensions = [columnDimension1, columnDimension2, columnDimension3, columnDimension4, columnDimension5];
+	// test: do column widths / total width = 1?
+	columnWidthsEqual1(columnDimensions, chartWidth);
 
-	var ropScale = d3.scaleLinear()
-		.range([columnDimension4.width, 0])
-		.domain([0, 100]);
+	var ropScale = createScale([0, trackColDimension.width], [200, 0])
 
+	// call create scale function for these
 	var wobScale = d3.scaleLinear()
-		.range([0, columnDimension4.width])
+		.range([0, trackColDimension.width])
+		.domain([0, 200]);
+
+	var lithScale = d3.scaleLinear()
+		.range([0, lithColDimension.width])
 		.domain([0, 100]);
+
+	var xScale = d3.scaleLinear()
+		.range([0, trackColDimension.width])
+		.domain([0, 200]);
+
+	var mudScale = d3.scaleLinear()
+		.range([0, trackColDimension.width/4])
+		.domain([200, 600]);
 
 	var yScale = d3.scaleLinear()
 		.range([0, chartHeight])
-		.domain([0, maxDepth]);
+		.domain([0, maxDepth + 100]);
 
 	var group = d3.select("#svg-container")
+		.attr('width', pageWidth)
 		.append('g')
 
 	var svg = d3.select('g')
@@ -42,36 +62,43 @@ $(document).ready(function(){
 			.attr('id', 'svg-group')
 			.attr("transform", "translate(10, 10)");
 
-	var depthLabels  = createColumn(columnDimension1.height,columnDimension1.width, 0, 0);
-	var lithColumn   = createColumn(columnDimension2.height,columnDimension2.width,columnDimension1.width, 0);
-	var minColumn    = createColumn(columnDimension3.height,columnDimension3.width,columnDimension1.width + columnDimension2.width, 0);
-	var tracksColumn = createColumn(columnDimension4.height,columnDimension4.width,columnDimension1.width + columnDimension2.width + columnDimension3.width, 0);
-	var dataColumn   = createColumn(columnDimension5.height,columnDimension5.width,columnDimension1.width + columnDimension2.width + columnDimension3.width + columnDimension4.width, 0);
+	var depthColumn  = createColumn(chartHeight, depthColDimension.width, 0, 0);
+	var lithColumn   = createColumn(chartHeight, lithColDimension.width, depthColDimension.width, 0);
+	var minColumn    = createColumn(chartHeight, minColDimension .width, lithColDimension.width + depthColDimension.width, 0);
+	var descColumn   = createColumn(chartHeight, descColDimension.width, minColDimension.width + lithColDimension.width + depthColDimension.width, 0);
+	var tracksColumn = createColumn(chartHeight, trackColDimension.width, descColDimension.width + minColDimension.width + lithColDimension.width + depthColDimension.width, 0);
 
-	var columns = [depthLabels, lithColumn, minColumn, tracksColumn, dataColumn];
+	var fullPage = createColumn(chartHeight, pageWidth, 0, 0);
+
+	var columns = [depthColumn, lithColumn, minColumn, descColumn, tracksColumn];
 
 	columns.forEach(function(d, i){
 		createBorder(d, columnDimensions[i].width, chartHeight, 1.5)
 	})
 
-	// createBorder(svg, chartWidth, chartHeight, 1);
+	createBorder(svg, chartWidth, chartHeight, 1);
 
-	var ropLine = d3.line()
+	var ropTrack = d3.line()
 		.x(function(d) { return ropScale(d[1]) })
 		.y(function(d) { return yScale(d[0]) })
-		.curve(d3.curveStepAfter);
+		// .curve(d3.curveStepAfter)
+		.curve(d3.curveCardinal);
 
-	var wobLine = d3.line()
+	var mudTrack = d3.line()
+		.x(function(d) { return mudScale(d[7]) })
+		.y(function(d) { return yScale(d[0]) })
+		// .curve(d3.curveStepAfter);
+
+	var wobTrack = d3.line()
 		.x(function(d) { return wobScale(d[2]) })
 		.y(function(d) { return yScale(d[0]) })
 
-		for (var i = 1; i < 4; i++ ){
-				columns[i].append('g')
-					.attr('class', 'y-axis')
-					.call(createYGridlines(yScale, columnDimensions[i].width, chartHeight))
-		}
+	for (var i = 0; i < 5; i++ ){
+		if (i === 3 || i === 0) { continue };
+		addHorizontalGridlines(columns[i], yScale, columnDimensions[i].width, chartHeight)
+	}
 
-	depthLabels.append('g')
+	depthColumn.append('g')
 		.attr('transform', "translate(17, 1)")
 		.attr('class', 'depth-label')
 		.call(createYGridlines(yScale, 0, chartHeight))
@@ -84,394 +111,267 @@ $(document).ready(function(){
 		.attr("visibility", function(d){ return (d%500 === 0)  ?  "visible" : "hidden" })
 		.attr("stroke-width", function(d){ return (d%500 === 0 ) ?  "1" : ".25" })
 
-	tracksColumn.append('path')
-		.data([data])
-		.attr('class', 'line')
-		.attr('d', ropLine)
-		.attr("stroke-width", 1)
-		.attr("stroke", "Maroon")
+	// Draw data tracks
+	var ropPath = drawTrack(tracksColumn, data, ropTrack, "firebrick", 1);
+	var wobPath = drawTrack(tracksColumn, data, wobTrack, "midnightblue", 1);
 
-	tracksColumn.append('path')
-		.data([data])
-		.attr('class', 'line')
-		.attr('d', wobLine)
-		.attr("stroke-width", 1)
-		.attr("stroke", "black")
+	var ropTotalLength = ropPath.node().getTotalLength();
+	var wobTotalLength = wobPath.node().getTotalLength();
 
-	var line = d3.select('.main')
-		.append('line')
-		.attr('x1', 50)
-		.attr('y1', margin)
-		.attr('x2', 50)
-		.attr('y2', chartHeight + margin)
-		.attr('stroke', '#B3B7B7')
-		.attr('stroke-width', 0)
+	// time it takes for tracks to animate
+	var timeLength = 10;
 
+	var easing = [
+		d3.easeElastic, d3.easeBounce, d3.easeLinear,
+		d3.easeSin, d3.easeQuad, d3.easeCubic, d3.easePoly,
+		d3.easeCircle, d3.easeExp, d3.easeBack
+		];
+
+	animateLine(ropPath, ropTotalLength, timeLength, easing[4])
+	animateLine(wobPath, wobTotalLength, timeLength, easing[4])
+
+	var text = writeText(desMsg, descColumn, yScale, textSize);
+
+	const type = d3.annotationCallout
+
+	const annotation = [{
+		note: { label: "Longer text to show text wrapping"},
+		x: wobScale(20),
+		y: yScale(1500),
+		dy: 50,
+		dx: 50,
+		connector: { "end": "arrow" }
+	},
+	{
+		x: xScale(40), "y": yScale(2720.22046937348),
+		dx: 50, "dy": 10,
+		connector: { "end": "arrow" },
+		subject: { "radius": 140.31076794375 },
+		note: { "label": "Losing 20 bbls/hr" }
+	}]
+
+	const makeAnnotations = d3.annotation()
+		.editMode(true)
+		.type(type)
+		.annotations(annotation)
+
+		tracksColumn.append("g")
+			.attr("class", "annotation")
+			.call(makeAnnotations)
+
+	// addLith(selector, depth, w, h, color)
+	// for (var i = 0; i < 5000; i += 100) {
+	// 	// addLith(lithColumn, yScale(i), lithColDimension.width, yScale(100), getRandomColor())
+	// }
+
+	console.log(lithColDimension.width, yScale(100))
+
+	var gs = insertSymbol(".liths", 'liths/greenstone')
+	var serp = insertSymbol(".liths", 'liths/serp')
+	var chert = insertSymbol(".liths", 'liths/chert')
+	var argillite = insertSymbol(".liths", 'liths/arg')
+	var gw = insertSymbol(".liths", 'liths/gw')
+	var blueschist = insertSymbol(".liths", 'liths/blueschist')
+
+	var logo = insertSymbol(".logo", 'img/logo')
+
+	var lithArr = [];
+
+	var lithData = lith.forEach(function(d){
+		lithArr.push(formatLithData(d))
+	})
+
+	// console.log(lithArr[55])
+
+	var lith100 = getAvgLith(lithArr);
+
+	// console.log(lith100)
+
+	// lith100.forEach(function(d){
+	// 	console.log(d[0],d[1])
+	// });
+
+
+	function makeLine() {
+		d3.select('line')
+			.attr('x1', 5)
+			.attr('y1', 200)
+			.attr('x2', 300)
+			.attr('y2', 700)
+			.attr('stroke-width', 5)
+			.attr('stroke', 'blue')
+	}
+
+		var totalDepth = d3.max(data, function(d) { return d[0]; })
+		console.log('td', totalDepth)
+
+		var boxWidth = 100;
+		var lithSvg = lithColumn.append('svg').attr('height', yScale(totalDepth))
+		var yOffset = .5;
+		lith100.forEach(function(d){
+
+			var row = d[1];
+
+			var xPosition = 0;
+
+			for (var sym in row) {
+				lithSvg.append('rect')
+					.attr('x', xPosition)
+					.attr("y", function(){
+							if (d[0]% 100 == 0) {
+								return yScale(d[0] - 100) + yOffset
+							} else {
+								return yScale((Math.ceil(d[0]/100) * 100) - 100) + yOffset
+							}
+					})
+					.attr('width', (lithColDimension.width * (row[sym])/100))
+					.attr('height', yScale(100))
+					.attr('class', `${sym} lith`);
+
+				xPosition += lithColDimension.width * (row[sym])/100
+		}
+
+
+			// var totalDepth = d3.max(d, function(d) { return d[0]} );
+
+			// lithColumn.append('svg')
+			// 	.attr('height', yScale(totalDepth))
+			// 	.attr('width', function(){
+			// 		if (d[1]['G']) {
+			// 			return lithScale(d[1]['G'])
+			// 		} else {
+			// 			return 0
+			// 		}
+			// 	})
+			// .append('g')
+			// 	.attr('height', yScale(100))
+			// 	.attr('fill', 'red')
+			// 	.append("image")
+			// 		.attr("xlink:href", 'liths/gsLarge.svg')
+			// 		.attr("x", 0)
+			// 		.attr("y", function(){
+			// 			if (d[0]% 100 == 0) {
+			// 				return yScale(d[0] - 100)
+			// 			} else {
+			// 				return yScale((Math.ceil(d[0]/100) * 100) - 100)
+			// 			}
+			// 		})
+			// 		.attr("height", yScale(100))
+			// 		.attr("width", lithColDimension.width)
+		})
+
+	// lithColumn.append('svg')
+		//   	.attr('width', 50)
+		//   	.attr('height', yScale(100))
+		// 	  .append("image")
+		// 	  	.data([lith100])
+		// 			.attr("xlink:href", 'liths/graywacke.png')
+		// 			.attr("x", function(d){console.log(d[0])})
+		// 			.attr("y", "1")
+		// 			.attr("width", lithColDimension.width)
+		// 			.attr("height", yScale(100));
 });
 
-function createYGridlines(yScale, tickSize, height){
-	return d3.axisRight(yScale)
-		.tickSize(tickSize)
-		.ticks(height/20);
+
+
+
+function testAverageLith(lithObj){
+	var total = 0;
+
+	for (percentage in lithObj) {
+		total += lithObj[percentage];
+	}
+
+	return total;
 }
 
-function createXGridlines(scale, tickSize){
-	return d3.axisRight(scale)
-		.tickSize(tickSize)
+function insertSymbol(selector, symbol) {
+	d3.select(selector)
+		.append('div')
+			.attr('class', symbol)
+			.attr('overflow', 'hidden')
+		.append('img')
+			.attr('src', symbol + ".svg")
+			// .style('border', '1px solid black')
+			.attr('width', '50%')
+			.attr('margin', '-50')
+
+	}
+
+function formatLithData(lith) {
+	var depth = lith[0];
+	var sym = lith[1][0];
+	var count = lith[1][1];
+	var arr = [depth];
+
+	// console.log(depth, sym, count)
+	var i = 0;
+	var lithObj = {};
+	// lithObj['depth'] = depth;
+	var obj = {};
+	sym.forEach(function(d){
+		obj[d] = count[i]
+		// arr.push(obj)
+		i++;
+	})
+	arr.push(obj)
+	return arr;
 }
 
-var createColumn = function(height, width, x, y){
-	return d3.select('#svg-group')
-		.append('svg')
-		.attr("class", "column")
-		.attr("height", height)
-		.attr('width', width)
-		.attr('x', x)
-		.attr('y', y)
+function getRandomColor() {
+	var letters = '0123456789ABCDEF';
+	var color = '#';
+	for (var i = 0; i < 6; i++ ) {
+			color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
 }
 
-var createBorder = function(selector, w, h, borderWidth) {
+function addLith(selector, depth, w, h, color) {
 	selector.append('rect')
 		.attr('width', w)
 		.attr('height', h)
-		.attr('class', 'border')
-		.attr('fill', 'none')
-		.attr("stroke-width", borderWidth)
+		.attr('x', 0)
+		.attr('y', depth)
+		.attr('class', 'lith')
+		.attr('fill', color)
+		.attr("stroke-width", 0)
 		.attr("stroke", "#B3B7B7")
+}
+
+function animateLine(path, lineLength, timeLength,easeStyle){
+		path
+		.attr("stroke-dasharray", lineLength + " " + lineLength)
+		.attr("stroke-dashoffset", lineLength)
+		.transition()
+			.duration(timeLength)
+			.ease(easeStyle)
+			.attr("stroke-dashoffset", 1)
+			// .attr("stroke-dasharray", "4, 2" );
+}
+
+function addHorizontalGridlines(column, yScale, width, height) {
+		column.append('g')
+			.attr('class', 'y-axis')
+			.call(createYGridlines(yScale, width, height))
+}
+
+
+// tests ======================================
+
+// do column widths = 1?
+function columnWidthsEqual1(columns, chartWidth){
+	var w = 0;
+	columns.forEach(function(d){
+		w += d.width/chartWidth
+	})
+	console.log("Column widths = 1: ", w === 1)
 }
 
 
 
 
 
-
-
-
-
-
-// var defaultColWidth = 80;
-// var widths = {
-// 	depthLabelCol: 30,
-// 	ropCol:        200,
-// 	col2:          200,
-// 	lithCol:       20,
-// 	minCol:        120,
-// 	tempCol:       defaultColWidth,
-// 	pitCol:        defaultColWidth,
-// 	presCol:       defaultColWidth,
-// 	desCol:        120
-// }
-
-// var padding = 10;
-// var chartColor = "F0F2EF";
-
-// var ropMaxScale = 100;
-// var wobMaxScale = 80;
-// var tempsMaxScale = 200;
-// var pressMaxScale = 1200;
-// var mudMaxScale = 1000;
-// var numOfDivisions = 4;
-
-// // var depth_data = seed_data;
-
-// var maxDepth   = d3.max( depth_data, function(d) { return d[0] });
-// var minDepth   = d3.min( depth_data, function(d) { return d[0] });
-// var ropMax     = d3.max( depth_data, function(d) { return d[1] });
-// var ropMin     = d3.min( depth_data, function(d) { return d[1] });
-// var wobMax     = d3.max( depth_data, function(d) { return d[2] });
-// var wobMin     = d3.min( depth_data, function(d) { return d[2] });
-// var tempInMax  = d3.max( depth_data, function(d) { return d[3] });
-// var tempInMin  = d3.min( depth_data, function(d) { return d[3] });
-// var tempOutMax = d3.max( depth_data, function(d) { return d[4] });
-// var tempOutMin = d3.min( depth_data, function(d) { return d[4] });
-
-// var ropDivision   = (ropMaxScale   / numOfDivisions)
-// var wobDivision   = (wobMaxScale   / numOfDivisions)
-// var tempsDivision = (tempsMaxScale / numOfDivisions)
-// var pressDivision = (pressMaxScale / numOfDivisions)
-// var mudDivision   = (mudMaxScale   / numOfDivisions)
-
-// var formatNumber = d3.format(",d");
-// var height = (maxDepth - minDepth) * 2;
-// var depthRange = [minDepth, maxDepth]
-
-// // Setup Columns =============================================================
-
-// var ropCol = createColumn("#rop-col", widths.ropCol);
-// var depthLabelCol = createColumn("#depthlabel-col", widths.depthLabelCol);
-// var lithCol = createColumn("#lith-col", widths.lithCol);
-// var minCol = createColumn("#min-col", widths.minCol);
-// var pitCol = createColumn("#mud-col", widths.pitCol);
-// var tempCol = createColumn("#temp-col", widths.tempCol);
-// var pressCol = createColumn("#press-col", widths.presCol);
-// var desCol = createColumn("#des-col", widths.desCol);
-
-// // Scales ====================================================================
-
-// var ropXScale = createXScale(ropMaxScale, widths.ropCol)
-// var mudXScale = createXScale(mudMaxScale, widths.pitCol)
-// var tempsXScale = createXScale(tempsMaxScale, widths.tempCol)
-// var pressXScale = createXScale(pressMaxScale, widths.presCol)
-
-// var yScale = d3.scaleLinear()
-// 	.domain(depthRange)
-// 	.range([0, height])
-
-// // Axes ======================================================================
-
-// var ropXAxis = d3.axisTop(ropXScale)
-// 		.tickValues([ropDivision, ropDivision * 2 , ropDivision * 3])
-// 		.tickSize(height);
-
-// var mudXAxis = d3.axisTop(mudXScale)
-// 		.tickValues([mudDivision, mudDivision * 2 , mudDivision * 3])
-// 		.tickSize(height);
-
-// var tempsXAxis = d3.axisTop(tempsXScale)
-// 		.tickValues([tempsDivision, tempsDivision * 2 , tempsDivision * 3])
-// 		.tickSize(height);
-
-// var pressXAxis = d3.axisTop(pressXScale)
-// 		.tickValues([pressDivision, pressDivision * 2 , pressDivision * 3])
-// 		.tickSize(height);
-
-// var yAxis = createYAxis(widths.ropCol);
-
-// var depthAxis = d3.axisRight(yScale)
-// 	.tickSize(widths.ropCol)
-// 	.tickFormat(function(d) { return formatNumber(d) })
-// 	.ticks(height/20);
-
-// ropCol.append("g")
-// 		.attr("class", "x-axis")
-// 		.attr("transform", "translate(0," + (height - 4) + ")")
-// 		.append("g")
-// 		.call(ropXAxis)
-// 		.select(".domain").remove()
-// 		.selectAll(".tick text")
-
-// pitCol.append("g")
-// 		.attr("class", "x-axis")
-// 		.attr("transform", "translate(0," + (height - 4) + ")")
-// 		.append("g")
-// 		.call(mudXAxis)
-// 		.select(".domain").remove()
-// 		.selectAll(".tick text")
-
-// tempCol.append("g")
-// 		.attr("class", "x-axis")
-// 		.attr("transform", "translate(0," + (height - 4) + ")")
-// 		.append("g")
-// 		.call(tempsXAxis)
-// 		.select(".domain").remove()
-// 		.selectAll(".tick text")
-
-// pressCol.append("g")
-// 		.attr("class", "x-axis")
-// 		.attr("transform", "translate(0," + (height - 4) + ")")
-// 		.append("g")
-// 		.call(pressXAxis)
-// 		.select(".domain").remove()
-// 		.selectAll(".tick text")
-
-
-
-// // ROP Track =====================================================
-
-// var ropScale = d3.scaleLinear()
-// 	.domain([0, ropMaxScale])
-// 	.range([widths.ropCol, 0])
-
-// var ropLine = d3.line()
-// 	.x(function(d){ return ropScale(d[1]) })
-// 	.y(function(d){ return yScale(d[0]) })
-// 	.curve(d3.curveStepAfter)
-
-// ropCol.append("path")
-// 	.data([depth_data])
-// 	.attr("class", "line")
-// 	.attr("d", ropLine)
-// 	.attr("stroke-width", .75)
-// 	.attr("stroke", "red")
-
-// // WOB Track =======================================================
-
-// var wobScale = d3.scaleLinear()
-// 	.domain([0, wobMaxScale])
-// 	.range([0, widths.ropCol])
-
-// var wobLine = d3.line()
-// 	.x(function(d){ return wobScale(d[2]) })
-// 	.y(function(d){ return yScale(d[0]) })
-
-// ropCol.append("path")
-// 	.data([depth_data])
-// 	.attr("class", "line")
-// 	.attr("d", wobLine)
-// 	.attr("stroke-width", .75)
-// 	.attr("stroke", "black")
-// 	// .attr("stroke-dasharray", "2,1")
-
-// // Temp Tracks =====================================================
-// var tempScale = d3.scaleLinear()
-// 	.domain([0, tempsMaxScale])
-// 	.range([0, widths.tempCol])
-
-// var tempInLine = d3.line()
-// 	.x(function(d){ return tempScale(d[3]) })
-// 	.y(function(d){ return yScale(d[0]) })
-
-// var tempOutLine = d3.line()
-// 	.x(function(d){ return tempScale(d[4]) })
-// 	.y(function(d){ return yScale(d[0]) })
-
-// tempCol.append("path")
-// 	.data([depth_data])
-// 	.attr("class", "line")
-// 	.attr("d", tempInLine)
-// 	.attr("stroke-width", 1.5)
-// 	.attr("stroke", "blue")
-
-// tempCol.append("path")
-// 	.data([depth_data])
-// 	.attr("class", "line")
-// 	.attr("d", tempOutLine)
-// 	.attr("stroke-width", 1.5)
-// 	.attr("stroke", "red")
-
-// // Mud Tracks =====================================================
-
-// var pitScale = d3.scaleLinear()
-// 	.domain([0, mudMaxScale])
-// 	.range([0, widths.pitCol])
-
-// var pitLine = d3.line()
-// 	.x(function(d){ return pitScale(d[5]) })
-// 	.y(function(d){ return yScale(d[0]) })
-
-// pitCol.append("path")
-// 	.data([depth_data])
-// 	.attr("class", "line")
-// 	.attr("d", pitLine)
-// 	.attr("stroke-width", 1.5)
-// 	.attr("stroke", "red")
-// 	// .attr("stroke-dasharray", "2,1")
-
-// // Pres Tracks =====================================================
-
-// var presScale = d3.scaleLinear()
-// 	.domain([0, pressMaxScale])
-// 	.range([0, widths.presCol])
-
-// var pressLine = d3.line()
-// 	.x(function(d){ return presScale(+d[6]) })
-// 	.y(function(d){ return yScale(d[0]) })
-
-// pressCol.append("path")
-// 	.data([depth_data])
-// 	.attr("class", "line")
-// 	.attr("d", pressLine)
-// 	.attr("stroke-width", 1.5)
-// 	.attr("stroke", "brown")
-// 	// .attr("stroke-dasharray", "2,1")
-
-// //===================================================================
-
-// depthLabelCol.append("g")
-// 	.attr("class", "depth-axis")
-// 	.call(customDepthAxis)
-
-// addYTicks(pitCol)
-// addYTicks(ropCol)
-// addYTicks(tempCol)
-// addYTicks(pressCol)
-// addYTicks(lithCol)
-// addYTicks(minCol)
-
-// pitCol.selectAll("p")
-// 	.data(mudMsg)
-// 	.enter()
-// 	.append("text")
-// 	.text(function(d) {
-// 			if (d.length > 2) {
-// 				return d[1] + "\n\n" + d[2]
-// 			} else {
-// 				return d[1]
-// 			}
-// 	 })
-// 	.attr("y", function(d) {
-// 			return yScale(d[0]) })
-// 		.attr("x", 10)
-// 		.attr("font-family", "Courier New")
-// 		.attr("font-size", "12")
-// 		.attr("stroke", "#13527d");
-
-// d3.selectAll("g.y-axis g.tick line")
-// 		// .attr("x2", function(d){ return d%100 === 0 ?  width : width/2})
-// 		.attr("opacity", function(d){ return (d%100 === 0 || d%100 === 50)  ?  ".75" : ".25" })
-// 		.attr("stroke-width", function(d){ return (d%100 === 0 || d%100 === 50) ?  "1.5" : ".5" })
-
-// d3.selectAll("g.x-axis g.tick line")
-// 	.attr("opacity", .75)
-// 	.attr("stroke-width", .5)
-// 	// .attr("stroke-dasharray", "2,1")
-
-
-// function customYAxis(g) {
-// 	g.call(yAxis);
-// 	g.select(".domain").remove()
-// 	g.selectAll(".y-axis .tick line")
-// 	g.selectAll(".tick text")
-// 	.attr("x", 20)
-// 	.attr("dy", -2)
-// 	.attr("opacity", function(d){ return (d%100 === 0 || d%100 === 50) ?  "1" : "0" })
-// }
-
-// function customXAxis(g) {
-// 	g.call(ropXAxis);
-// 	g.select(".domain").remove();
-// 	g.selectAll(".tick text")
-// }
-
-// function customDepthAxis(g) {
-// 	g.call(depthAxis);
-// 	g.select(".domain").remove()
-// 	g.selectAll(".depth-axis line").remove()
-// 	g.selectAll(".tick text")
-// 		.attr("x", 2)
-// 		.attr("dy", 4)
-// 		.attr("opacity", function(d){ return (d%100 === 0 || d%100 === 50) ?  "1" : "0" })
-// 		.attr("text-anchor", "middle")
-// 		.attr("transform", "translate(14, 0)")
-
-// }
-
-// function createColumn(id, width) {
-// 	return d3.select(id)
-// 		.attr("height", height)
-// 		.attr("width", width)
-// 		.style("background-color", chartColor)
-// 		.append("g")
-// }
-
-// function createXScale(maxScale, range) {
-// 	return d3.scaleLinear()
-// 		.domain([0, maxScale])
-// 		.range([0, range])
-// }
-
-// function createYAxis(colWidth) {
-// 	return d3.axisRight(yScale)
-// 		.tickSize(colWidth)
-// 		.ticks(height/20)
-// 		.tickFormat(function(d) { return formatNumber(d) })
-// }
-
-// function addYTicks(column){
-// 	column.append("g")
-// 	.attr("class", "y-axis")
-// 	.call(yAxis)
-// }
 
 
 

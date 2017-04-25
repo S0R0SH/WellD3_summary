@@ -1,0 +1,7 @@
+; Mudlog
+; Symbol Definition <csg.sym>
+; Symbol: Casing Shoe (left)
+;
+1
+COLOUR 1  ; Use Pen Colour 1
+D 200 0 1000 0 1000 1000 1000 900 300 0 F U
