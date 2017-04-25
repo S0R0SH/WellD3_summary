@@ -1,4 +1,4 @@
-# Wellview in D3
+# Well Summary in D3 - Work in Progress
 ## A Data Visualiztion Project
 Wellview in D3 is a work in progress that uses data collected over monthw while drilling a geothermal well to produce electricity for municipalities in the area. The data is compiled into a graphical representation using a javascript library called D3.js.
 
