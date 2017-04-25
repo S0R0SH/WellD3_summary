@@ -38,7 +38,7 @@ $(document).ready(function(){
 		.domain([0, 100]);
 
 	var xScale = d3.scaleLinear()
-		.range([0, trackColDimension.width])
+		.range([0, pageWidth])
 		.domain([0, 200]);
 
 	var mudScale = d3.scaleLinear()
@@ -135,19 +135,21 @@ $(document).ready(function(){
 	const type = d3.annotationCallout
 
 	const annotation = [{
-		note: { label: "Longer text to show text wrapping"},
-		x: wobScale(20),
-		y: yScale(1500),
-		dy: 50,
-		dx: 50,
+		note: { label: "Annotate what is happening at 1000ft"},
+		x: xScale(0),
+		y: yScale(1000),
+		dy: yScale(-100),
+		dx: xScale(20),
 		connector: { "end": "arrow" }
 	},
 	{
-		x: xScale(40), "y": yScale(2720.22046937348),
-		dx: 50, "dy": 10,
+		x: 0,
+		y: yScale(2500),
+		dx: xScale(20),
+		dy: yScale(-100),
 		connector: { "end": "arrow" },
 		subject: { "radius": 140.31076794375 },
-		note: { "label": "Losing 20 bbls/hr" }
+		note: { "label": "This note is customizable" }
 	}]
 
 	const makeAnnotations = d3.annotation()
@@ -155,7 +157,7 @@ $(document).ready(function(){
 		.type(type)
 		.annotations(annotation)
 
-		tracksColumn.append("g")
+		descColumn.append("g")
 			.attr("class", "annotation")
 			.call(makeAnnotations)
 
