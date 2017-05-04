@@ -1,6 +1,11 @@
 body {
       text-align: center;
     }
+
+#svg-container{
+  /*visibility: hidden;*/
+}
+
 div.tooltip {
   position: absolute;
   top: 100px;

@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+	// URLS
+	var depthDataURL = 'http://localhost:3000/wells/1/depth_data'
+
+
 	var margin = 10;
 	var pageHeight = 1000;
 	var chartHeight = pageHeight - (margin * 2);
@@ -77,6 +81,7 @@ $(document).ready(function(){
 	})
 
 	createBorder(svg, chartWidth, chartHeight, 1);
+
 
 	var ropTrack = d3.line()
 		.x(function(d) { return ropScale(d[1]) })
@@ -210,6 +215,7 @@ $(document).ready(function(){
 		var boxWidth = 100;
 		var lithSvg = lithColumn.append('svg').attr('height', yScale(totalDepth))
 		var yOffset = .5;
+
 		lith100.forEach(function(d){
 
 			var row = d[1];
@@ -217,49 +223,64 @@ $(document).ready(function(){
 			var xPosition = 0;
 
 			for (var sym in row) {
-				lithSvg.append('rect')
-					.attr('x', xPosition)
-					.attr("y", function(){
-							if (d[0]% 100 == 0) {
+
+				console.log(d[0], sym )
+				// append clipPath to svg
+				// give clipPath an id
+				// append rect to clipPath
+				// give rect attrs based on lith data
+
+				lithSvg.append('clipPath')
+					.attr('id', 'clipped')
+					.append('rect')
+						.attr('x', xPosition)
+						.attr('y', function(){
+							if (d[0] % 100 == 0) {
 								return yScale(d[0] - 100) + yOffset
 							} else {
 								return yScale((Math.ceil(d[0]/100) * 100) - 100) + yOffset
 							}
-					})
-					.attr('width', (lithColDimension.width * (row[sym])/100))
+						})
+						.attr('width', (lithColDimension.width * (row[sym])/100))
+						.attr('height', yScale(100))
+						;
+
+				// append svg:image to svg
+				// set x & y to 0
+				// set clip-path, attr to id of rect
+				lithSvg.append('svg:image')
+					.attr('xlink:href', `liths/${sym}.svg`)
+					.attr('x', 0)
+					.attr('y', function(){
+							if (d[0] % 100 == 0) {
+								return yScale(d[0] - 100) + yOffset
+							} else {
+								return yScale((Math.ceil(d[0]/100) * 100) - 100) + yOffset
+							}
+						})
+					.attr('width', lithColDimension.width)
 					.attr('height', yScale(100))
-					.attr('class', `${sym} lith`);
+					.attr('class', `lith`)
+					.attr('clip-path', 'url(#clipped)')
+
+
+				// lithSvg.append('rect')
+				// 	.attr('x', xPosition)
+				// 	.attr("y", function(){
+				// 			if (d[0]% 100 == 0) {
+				// 				return yScale(d[0] - 100) + yOffset
+				// 			} else {
+				// 				return yScale((Math.ceil(d[0]/100) * 100) - 100) + yOffset
+				// 			}
+				// 	})
+				// 	.attr('width', (lithColDimension.width * (row[sym])/100))
+				// 	.attr('height', yScale(100))
+				// 	.attr('class', `${sym} lith`);
 
 				xPosition += lithColDimension.width * (row[sym])/100
 		}
 
 
-			// var totalDepth = d3.max(d, function(d) { return d[0]} );
-
-			// lithColumn.append('svg')
-			// 	.attr('height', yScale(totalDepth))
-			// 	.attr('width', function(){
-			// 		if (d[1]['G']) {
-			// 			return lithScale(d[1]['G'])
-			// 		} else {
-			// 			return 0
-			// 		}
-			// 	})
-			// .append('g')
-			// 	.attr('height', yScale(100))
-			// 	.attr('fill', 'red')
-			// 	.append("image")
-			// 		.attr("xlink:href", 'liths/gsLarge.svg')
-			// 		.attr("x", 0)
-			// 		.attr("y", function(){
-			// 			if (d[0]% 100 == 0) {
-			// 				return yScale(d[0] - 100)
-			// 			} else {
-			// 				return yScale((Math.ceil(d[0]/100) * 100) - 100)
-			// 			}
-			// 		})
-			// 		.attr("height", yScale(100))
-			// 		.attr("width", lithColDimension.width)
 		})
 
 	// lithColumn.append('svg')

@@ -30,7 +30,7 @@
      inkscape:cy="4.7033286"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     showgrid="false"
+     showgrid="true"
      inkscape:window-width="1440"
      inkscape:window-height="851"
      inkscape:window-x="0"
@@ -59,7 +59,16 @@
      id="layer1"
      transform="translate(0,-1037.4377)">
     <rect
-       style="fill:#007d00;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#007d00;
+        fill-opacity:1;
+        fill-rule:evenodd;
+        stroke:#000000;
+        stroke-width:0;
+        stroke-linecap:butt;
+        stroke-linejoin:miter;
+        stroke-miterlimit:4;
+        stroke-dasharray:none;
+        stroke-opacity:1"
        id="rect3406"
        width="57.999992"
        height="14.926991"
