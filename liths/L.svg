@@ -28,7 +28,7 @@
      id="namedview11"
      showgrid="false"
      inkscape:zoom="0.42563709"
-     inkscape:cx="1108.6062"
+     inkscape:cx="1080.4132"
      inkscape:cy="-2.7536824"
      inkscape:window-x="0"
      inkscape:window-y="1"
@@ -42,7 +42,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -68,7 +68,7 @@
          x="53.161289"
          y="70.838707"
          style="font-size:12.5px;" /></flowRegion><flowPara
-       id="flowPara3364"></flowPara></flowRoot>  <flowRoot
+       id="flowPara3364" /></flowRoot>  <flowRoot
      xml:space="preserve"
      id="flowRoot3374"
      style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:180px;line-height:125%;letter-spacing:0px;word-spacing:0px;"><flowRegion
@@ -79,16 +79,16 @@
          x="17.620646"
          y="17.953043"
          style="font-size:180px;" /></flowRegion><flowPara
-       id="flowPara3380"></flowPara></flowRoot>  <text
+       id="flowPara3380" /></flowRoot>  <text
      xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:289.15817261px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="15.004084"
-     y="306.95093"
+     style="font-style:normal;font-weight:normal;font-size:235.12834167px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="-9.0091076"
+     y="363.16428"
      id="text3382"
      sodipodi:linespacing="125%"
-     transform="scale(0.82158048,1.2171662)"><tspan
+     transform="scale(1.0306174,0.9702922)"><tspan
        sodipodi:role="line"
        id="tspan3384"
-       x="15.004084"
-       y="306.95093">Lithic Graywacke</tspan></text>
+       x="-9.0091076"
+       y="363.16428">Lithic Graywacke</tspan></text>
 </svg>

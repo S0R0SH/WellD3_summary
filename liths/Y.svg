@@ -27,9 +27,9 @@
      inkscape:window-height="851"
      id="namedview9"
      showgrid="false"
-     inkscape:zoom="5.3448276"
-     inkscape:cx="29"
-     inkscape:cy="7.4622502"
+     inkscape:zoom="15.117455"
+     inkscape:cx="27.466357"
+     inkscape:cy="4.9163389"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -58,16 +58,82 @@
        width="57.999992"
        id="rect3406"
        style="fill:#cccccc;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    <text
-       id="text4231"
-       y="1449.3865"
-       x="-0.4233008"
-       style="font-style:normal;font-weight:normal;font-size:19.17704773px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"
-       sodipodi:linespacing="125%"
-       transform="scale(1.3816523,0.72377108)"><tspan
-         id="tspan4235"
-         y="1449.3865"
-         x="-0.4233008">Clay </tspan></text>
+    <g
+       id="g3544">
+      <text
+         transform="matrix(1.3510211,1.2046067,-0.56063048,0.24030769,0,0)"
+         sodipodi:linespacing="125%"
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.32604122px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="581.99683"
+         y="1402.9487"
+         id="text4231"><tspan
+           x="581.99683"
+           y="1402.9487"
+           id="tspan4235">Clay </tspan></text>
+      <text
+         transform="matrix(1.3510211,1.2046067,-0.56063048,0.24030769,0,0)"
+         sodipodi:linespacing="125%"
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.32604122px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="584.17456"
+         y="1392.858"
+         id="text3540"><tspan
+           x="584.17456"
+           y="1392.858"
+           id="tspan3542">Clay </tspan></text>
+    </g>
+    <g
+       id="g3550"
+       transform="translate(17.000217,0)">
+      <text
+         id="text3552"
+         y="1402.9487"
+         x="581.99683"
+         style="font-style:normal;font-weight:normal;font-size:5.32604122px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"
+         sodipodi:linespacing="125%"
+         transform="matrix(1.3510211,1.2046067,-0.56063048,0.24030769,0,0)"><tspan
+           id="tspan3554"
+           y="1402.9487"
+           x="581.99683">Clay </tspan></text>
+      <text
+         id="text3556"
+         y="1392.858"
+         x="584.17456"
+         style="font-style:normal;font-weight:normal;font-size:5.32604122px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"
+         sodipodi:linespacing="125%"
+         transform="matrix(1.3510211,1.2046067,-0.56063048,0.24030769,0,0)"><tspan
+           id="tspan3558"
+           y="1392.858"
+           x="584.17456">Clay </tspan></text>
+    </g>
+    <g
+       transform="translate(32.67746,-0.0661487)"
+       id="g3560">
+      <text
+         transform="matrix(1.3510211,1.2046067,-0.56063048,0.24030769,0,0)"
+         sodipodi:linespacing="125%"
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.32604122px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="581.99683"
+         y="1402.9487"
+         id="text3562"><tspan
+           x="581.99683"
+           y="1402.9487"
+           id="tspan3564">Clay </tspan></text>
+      <text
+         transform="matrix(1.3510211,1.2046067,-0.56063048,0.24030769,0,0)"
+         sodipodi:linespacing="125%"
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.32604122px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="584.17456"
+         y="1392.858"
+         id="text3566"><tspan
+           x="584.17456"
+           y="1392.858"
+           id="tspan3568">Clay </tspan></text>
+    </g>
   </g>
 </svg>

@@ -6,6 +6,10 @@ body {
   /*visibility: hidden;*/
 }
 
+.side-bar{
+  background-color: red;
+}
+
 div.tooltip {
   position: absolute;
   top: 100px;

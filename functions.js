@@ -72,7 +72,8 @@ function createBorder(selector, w, h, borderWidth) {
 		.attr('class', 'border')
 		.attr('fill', 'none')
 		.attr("stroke-width", borderWidth)
-		.attr("stroke", "#B3B7B7")
+		// .attr("stroke", "#B3B7B7")
+		.attr("stroke", "black")
 }
 
 function writeText(data, col, scale, fontSize) {
@@ -165,45 +166,127 @@ var wrap = function wrap(text, width) {
 };
 
 function getAvgLith(lithData) {
-		var numOfRecords = 1;
+	var numOfRecords = 1;
 
-		var avgLithArr = [];
-		var avgLith = {};
-		var i = 0;
+	var avgLithArr = [];
+	var avgLith = {};
+	var i = 0;
 
-		lithData.forEach(function(d){
-			var lithObj = d[1];
-			var depth = d[0];
+	lithData.forEach(function(d){
+		var lithObj = d[1];
+		var depth = d[0];
 
 
-			for (sym in lithObj) {
+		for (sym in lithObj) {
 
-				// if lithObj does not already have the symbol then create it
-				if (!avgLith.hasOwnProperty((sym))){
-					avgLith[sym] = lithObj[sym];
-					// if the symbol exists then add percentage to it
-				} else {
-					// console.log(lithObj[sym])
-					avgLith[sym] += lithObj[sym];
-				}
+			// if lithObj does not already have the symbol then create it
+			if (!avgLith.hasOwnProperty((sym))){
+				avgLith[sym] = lithObj[sym];
+				// if the symbol exists then add percentage to it
+			} else {
+				// console.log(lithObj[sym])
+				avgLith[sym] += lithObj[sym];
 			}
+		}
 
-			if (depth % 100 === 0 || i === lithData.length - 1){
-				// console.log(numOfRecords)
-				for (percentage in avgLith) {
-					avgLith[percentage] = (avgLith[percentage] / numOfRecords)
-				}
-				avgLithArr.push([depth, avgLith])
-				// avgLithArr.push(avgLith)
-				avgLith = {};
-				numOfRecords = 0;
+		if (depth % 100 === 0 || i === lithData.length - 1){
+			// console.log(numOfRecords)
+			for (percentage in avgLith) {
+				avgLith[percentage] = (avgLith[percentage] / numOfRecords)
 			}
-			numOfRecords += 1;
-			i += 1;
-		});
+			avgLithArr.push([depth, avgLith])
+			// avgLithArr.push(avgLith)
+			avgLith = {};
+			numOfRecords = 0;
+		}
+		numOfRecords += 1;
+		i += 1;
+	});
 
-		return avgLithArr;
-	}
+	return avgLithArr;
+}
+
+function getAvgLithArray(lithData) {
+
+	var lithArray = [];
+	var avgLithArr = [];
+	var avgLith = {};
+	var syms = [];
+	var percents = [];
+	var i = 0;
+
+	lithData.forEach(function(d){
+		var syms = [];
+		var percents = [];
+		var lithObj = d[1];
+		var depth = d[0];
+
+
+		for (sym in lithObj) {
+			syms.push(sym)
+			percents.push(lithObj[sym])
+		}
+
+		lithArray.push([depth, syms, percents])
+
+	});
+
+	// console.log(lithArray)
+
+	// console.log(avgLithArr)
+
+	// avgLithArr.forEach(function(d){
+	// 	console.log(d[0], d[1], d[2])
+	// })
+	// return avgLithArr;
+}
+
+var testLith = [
+	[ 10,  ['T', 'D', 'S'], [20, 30, 50] ],
+	[ 20,  ['G', 'D', 'S'], [50, 40, 10] ],
+	[ 30,  ['G', 'D', 'S'], [40, 20, 40] ],
+	[ 40,  ['C', 'D', 'S'], [50, 10, 40] ],
+	[ 50,  ['F', 'D', 'S'], [10, 40, 50] ],
+	[ 60,  ['C', 'D'],      [70, 30]     ],
+	[ 70,  ['T', 'D', 'S'], [50, 10, 40] ],
+	[ 80,  ['T', 'D', 'S'], [30, 20, 50] ],
+	[ 90,  ['T', 'D', 'S'], [10, 60, 30] ],
+	[ 100, ['T', 'D', 'S'], [10, 30, 60] ],
+]
+
+function avgLithData(lith) {
+
+	var avgLithData = [];
+
+	lith.forEach(function(d){
+		var depth = d[0];
+		var syms = d[1];
+		var percents = d[2];
+
+	});
+
+};
+
+avgLithData(testLith);
+
+
+// var dataUrl = 'http://localhost:3000/wells/well_data?well_num=1'
+
+// var depthData;
+// d3.json(dataUrl, function (d) {
+// 	depthData = d.data.attributes['depth-data'];
+
+// 	depthData.forEach(function(i){
+// 		console.log(i.depth);
+// 	})
+
+// })
+
+
+
+
+
+
 
 
 

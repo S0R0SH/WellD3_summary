@@ -28,7 +28,7 @@
      id="namedview11"
      showgrid="false"
      inkscape:zoom="0.42563709"
-     inkscape:cx="704.50608"
+     inkscape:cx="1428.1272"
      inkscape:cy="-2.7536824"
      inkscape:window-x="0"
      inkscape:window-y="1"
@@ -42,7 +42,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -81,14 +81,14 @@
          style="font-size:180px;" /></flowRegion><flowPara
        id="flowPara3380" /></flowRoot>  <text
      xml:space="preserve"
-     style="font-style:normal;font-weight:normal;font-size:358.35443115px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     x="5.0860868"
-     y="380.40506"
+     style="font-style:normal;font-weight:normal;font-size:303.48117065px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="0.39902881"
+     y="417.58551"
      id="text3382"
      sodipodi:linespacing="125%"
-     transform="scale(1.0181867,0.9821381)"><tspan
+     transform="scale(1.2022879,0.83174755)"><tspan
        sodipodi:role="line"
        id="tspan3384"
-       x="5.0860868"
-       y="380.40506">Graywacke</tspan></text>
+       x="0.39902881"
+       y="417.58551">Graywacke</tspan></text>
 </svg>
