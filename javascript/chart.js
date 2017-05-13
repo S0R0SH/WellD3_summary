@@ -32,10 +32,12 @@ $(document).ready(function(){
 
 	var headerDimension   = { height: headerHeight, width: chartWidth };
 	var depthColDimension = { height: chartHeight, width: (chartWidth * 0.066667) };
-	var lithColDimension  = { height: chartHeight, width: (chartWidth * 0.100000) };
+	var lithColDimension  = { height: chartHeight, width: (chartWidth * 0.083) };
 	var minColDimension   = { height: chartHeight, width: (chartWidth * 0.100000) };
-	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.600000) };
+	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.617000) };
 	var trackColDimension = { height: chartHeight, width: (chartWidth * 0.133333) };
+
+	console.log("lith Width", lithColDimension.width)
 
 	var columnDimensions = [
 		depthColDimension,
@@ -234,85 +236,71 @@ $(document).ready(function(){
 
 	var lith100 = avgLithArray(newLith);
 
+	console.log(lith100)
+	drawLith(lith100, lithColDimension.width, lithColumn, yScale, maxDepth);
+
 	// var lith100 = getAvgLith(lithArr);
 
-	var lith100Arr = getAvgLithArray(lithArr);
+	// var lith100Arr = getAvgLithArray(lithArr);
 
-	// lith100Arr.forEach(function(d){
-	// 	// console.log(d[0], d[1])
-	// })
+	var boxWidth = 100;
+	var lithSvg = lithColumn.append('svg')
+		.attr('x', 0)
+		.attr('height', yScale(maxDepth))
+		.attr('width', lithColDimension.width)
+	var yOffset = .5;
 
+	lith100.forEach(function(d){
 
-	// console.log(lith100)
+		var depth = d[0];
+		var syms = d[1];
+		var percents = d[2];
+		var xPosition = 0;
 
-	// lith100.forEach(function(d){
-	// 	console.log(d[0],d[1])
-	// });
+		for (var i = 0; i < percents.length; i++) {
 
+			// append clipPath to svg
+			// give clipPath an id
+			// append rect to clipPath
+			// give rect attrs based on lith data
 
-	function makeLine() {
-		d3.select('line')
-			.attr('x1', 5)
-			.attr('y1', 200)
-			.attr('x2', 300)
-			.attr('y2', 700)
-			.attr('stroke-width', 5)
-			.attr('stroke', 'blue')
-	}
-
-		var boxWidth = 100;
-		var lithSvg = lithColumn.append('svg').attr('height', yScale(maxDepth))
-		var yOffset = .5;
-
-		lith100.forEach(function(d){
-
-			var row = d[1];
-
-			var xPosition = 0;
-
-			for (var sym in row) {
-
-				// append clipPath to svg
-				// give clipPath an id
-				// append rect to clipPath
-				// give rect attrs based on lith data
-
-				lithSvg.append('clipPath')
-					.attr('id', 'clipped')
-					.append('rect')
-						.attr('x', xPosition)
-						.attr('y', function(){
-							if (d[0] % 100 == 0) {
-								return yScale(d[0] - 100) + yOffset
-							} else {
-								return yScale((Math.ceil(d[0]/100) * 100) - 100) + yOffset
-							}
-						})
-						.attr('width', (lithColDimension.width * (row[sym])/100))
-						.attr('height', yScale(100))
-						;
-
-				// append svg:image to svg
-				// set x & y to 0
-				// set clip-path, attr to id of rect
-				lithSvg.append('svg:image')
-					.attr('xlink:href', `liths/${sym}.svg`)
-					.attr('x', 0)
+			lithSvg.append('clipPath')
+				.attr('id', 'clipped')
+				.append('rect')
+					.attr('x', xPosition)
 					.attr('y', function(){
-							if (d[0] % 100 == 0) {
-								// return yScale(d[0] - 100) + yOffset
-							} else {
-								// return yScale((Math.ceil(d[0]/100) * 100) - 100) + yOffset
-							}
-						})
-					.attr('width', lithColDimension.width)
-					.attr('height', yScale(100))
-					.attr('class', `lith`)
-					.attr('clip-path', 'url(#clipped)')
+						if (depth % 100 == 0) {
+							return yScale(depth - 100) + yOffset
+						} else {
+							return yScale((Math.ceil(depth/100) * 100) - 100) + yOffset
+						}
+					})
+					.attr('width', (lithColDimension.width * (percents[i]) / 100) )
+					.attr('height', yScale(100));
 
-				xPosition += lithColDimension.width * (row[sym])/100
-		}
-		})
+			// append svg:image to svg
+			// set x & y to 0
+			// set clip-path, attr to id of rect
+			lithSvg.append('svg:image')
+				.attr('xlink:href', `liths/${syms[i]}.svg`)
+				// .attr('fill', 'red')
+				// .attr('stroke', 'black')
+				.attr('x', 0)
+				.attr('y', function(){
+						if (depth % 100 == 0) {
+							return yScale(depth - 100) + yOffset
+						} else {
+							return yScale((Math.ceil(depth/100) * 100) - 100) + yOffset
+						}
+					})
+				.attr('width', lithColDimension.width)
+				.attr('height', yScale(100))
+				.attr('class', `lith`)
+				.attr('clip-path', 'url(#clipped)')
+
+			xPosition += lithColDimension.width * (percents[i])/100
+	}
+	})
 	})
 });
 

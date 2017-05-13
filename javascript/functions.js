@@ -282,6 +282,7 @@ function avgLithArray(arr) {
 	var numOfRecords = 0;
 	var depth = 0;
 	var avgLithArr = [];
+	var syms = ['F', 'X', 'G', 'C', 'T', 'D', 'I', 'L', 'A', 'S', 'Y', 'B'];
 
 	arr.forEach(function(d){
 		depth = d[0];
@@ -304,7 +305,7 @@ function avgLithArray(arr) {
 			percentTotal.forEach(function(d1){
 				avg.push( d1 / ( numOfRecords ))
 			})
-			avgLithArr.push([depth, avg])
+			avgLithArr.push([depth, syms, avg])
 			percentTotal = [];
 			avg = [];
 			numOfRecords = 0;
@@ -313,6 +314,62 @@ function avgLithArray(arr) {
 	})
 
 		return avgLithArr
+}
+
+function drawLith(lith, colWidth, lithCol, yScale, maxDepth ) {
+	// var boxWidth = 100;
+	// var lithSvg = lithCol.append('svg').attr('height', yScale(maxDepth))
+	// var yOffset = .5;
+
+	// lith.forEach(function(d){
+
+	// 	var depth = d[0];
+	// 	var percents = d[2];
+	// 	var syms = d[1];
+	// 	var xPosition = 0;
+
+	// 	for (var i = 0; i < percents.length; i++) {
+
+	// 		// append clipPath to svg
+	// 		// give clipPath an id
+	// 		// append rect to clipPath
+	// 		// give rect attrs based on lith data
+
+	// 		lithSvg.append('clipPath')
+	// 			.attr('id', 'clipped')
+	// 			.append('rect')
+	// 				.attr('x', xPosition)
+	// 				.attr('y', function(){
+	// 					if (depth % 100 == 0) {
+	// 						return yScale(depth - 100) + yOffset
+	// 					} else {
+	// 						return yScale((Math.ceil(depth/100) * 100) - 100) + yOffset
+	// 					}
+	// 				})
+	// 				.attr('width', (colWidth * (percents[i])/100))
+	// 				.attr('height', yScale(100));
+
+	// 		// append svg:image to svg
+	// 		// set x & y to 0
+	// 		// set clip-path, attr to id of rect
+	// 		lithSvg.append('svg:image')
+	// 			.attr('xlink:href', `liths/${syms[i]}.svg`)
+	// 			.attr('x', 0)
+	// 			.attr('y', function(){
+	// 					if (depth % 100 == 0) {
+	// 						return yScale(depth - 100) + yOffset
+	// 					} else {
+	// 						return yScale((Math.ceil(depth/100) * 100) - 100) + yOffset
+	// 					}
+	// 				})
+	// 			.attr('width', colWidth)
+	// 			.attr('height', yScale(100))
+	// 			.attr('class', `lith`)
+	// 			.attr('clip-path', 'url(#clipped)')
+
+	// 		xPosition += colWidth * (percents[i])/100
+	// }
+	// })
 }
 
 
