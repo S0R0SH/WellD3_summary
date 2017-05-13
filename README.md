@@ -4,7 +4,7 @@ Wellview in D3 is a work in progress that uses data collected over monthw while 
 
 This is a work in progress. The colorful column on the left is a lithology log that represents the rock types that were encountered while drilling the well. The tacky colors will be replaced by rock symbols in the coming iterations.
 
-![Initial screen](screenshots/wellview_screenshot.png "Main view")
+![Initial screen](screenshots/well_sum_screenshot.png "Main view")
 
 
 
