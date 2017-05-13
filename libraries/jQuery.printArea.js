@@ -32,8 +32,8 @@
     var standards = { strict : "strict", loose : "loose", html5 : "html5" };
     var defaults = { mode       : modes.iframe,
                      standard   : standards.html5,
-                     popHt      : 500,
-                     popWd      : 400,
+                     popHt      : 800,
+                     popWd      : 600,
                      popX       : 200,
                      popY       : 200,
                      popTitle   : '',

@@ -31,11 +31,14 @@ $(document).ready(function(){
 	var pageTextSize = 10;
 
 	var headerDimension   = { height: headerHeight, width: chartWidth };
-	var depthColDimension = { height: chartHeight, width: (chartWidth * 0.066667) };
+	var depthColDimension = { height: chartHeight, width: (chartWidth * 0.050000) };
 	var lithColDimension  = { height: chartHeight, width: (chartWidth * 0.083) };
-	var minColDimension   = { height: chartHeight, width: (chartWidth * 0.100000) };
+	var minColDimension   = { height: chartHeight, width: (chartWidth * 0.116667) };
 	var descColDimension  = { height: chartHeight, width: (chartWidth * 0.617000) };
 	var trackColDimension = { height: chartHeight, width: (chartWidth * 0.133333) };
+
+	console.log('min width', minColDimension.width/9)
+
 
 	console.log("lith Width", lithColDimension.width)
 
@@ -84,11 +87,11 @@ $(document).ready(function(){
 
 	var headerSvg  = createColumn(headerDimension.height, chartWidth, 0, 0);
 
-	var depthColumn  = createColumn(depthColDimension.height, depthColDimension.width, 0, headerHeight);
-	var lithColumn   = createColumn(lithColDimension.height, lithColDimension.width, depthColDimension.width, headerHeight);
-	var minColumn    = createColumn(minColDimension.height, minColDimension .width, lithColDimension.width + depthColDimension.width, headerHeight);
-	var descColumn   = createColumn(descColDimension.height, descColDimension.width, minColDimension.width + lithColDimension.width + depthColDimension.width, headerHeight);
-	var tracksColumn = createColumn(trackColDimension.height, trackColDimension.width, descColDimension.width + minColDimension.width + lithColDimension.width + depthColDimension.width, headerHeight);
+	var depthColumn  = createColumn( depthColDimension.height, depthColDimension.width, 0, headerHeight);
+	var lithColumn   = createColumn( lithColDimension.height, lithColDimension.width, depthColDimension.width, headerHeight, 'lith');
+	var minColumn    = createColumn( minColDimension.height, minColDimension .width, lithColDimension.width + depthColDimension.width, headerHeight);
+	var descColumn   = createColumn( descColDimension.height, descColDimension.width, minColDimension.width + lithColDimension.width + depthColDimension.width, headerHeight);
+	var tracksColumn = createColumn( trackColDimension.height, trackColDimension.width, descColDimension.width + minColDimension.width + lithColDimension.width + depthColDimension.width, headerHeight);
 
 	var fullPage = createColumn(chartHeight, pageWidth, 0, 0);
 
@@ -99,6 +102,29 @@ $(document).ready(function(){
 	})
 
 	createBorder(headerSvg, chartWidth, headerHeight, 1.5);
+
+
+	// var qtz = minColumn.append('svg')
+	// 			.attr('x', 0)
+	// 			.attr('y', 0)
+	// 			.attr('width', minColDimension.width/9)
+	// 			.attr('height', chartHeight)
+
+	// createMinColumn(x, width, height)
+	var qtz   = createMinColumn(minColumn, 0, minColDimension.width/9, chartHeight, 'qtz')
+	var cal   = createMinColumn(minColumn, minColDimension.width/9, minColDimension.width/9, chartHeight, 'cal')
+	var pyr   = createMinColumn(minColumn, minColDimension.width/9 * 2, minColDimension.width/9, chartHeight, 'pyr')
+	var epid  = createMinColumn(minColumn, minColDimension.width/9 * 3, minColDimension.width/9, chartHeight, 'epid')
+	var pyrh  = createMinColumn(minColumn, minColDimension.width/9 * 4, minColDimension.width/9, chartHeight, 'pyrh')
+	var chl   = createMinColumn(minColumn, minColDimension.width/9 * 5, minColDimension.width/9, chartHeight, 'chl')
+	var axin  = createMinColumn(minColumn, minColDimension.width/9 * 6, minColDimension.width/9, chartHeight, 'axin')
+	var actin = createMinColumn(minColumn, minColDimension.width/9 * 7, minColDimension.width/9, chartHeight, 'actin')
+	var tourm = createMinColumn(minColumn, minColDimension.width/9 * 8, minColDimension.width/9, chartHeight, 'tourm')
+
+
+	console.log('**********')
+	console.log(qtz)
+	console.log(qtz.attr("width"));
 
   ////////////////////////////////////////////////////////////////////
 
@@ -167,16 +193,16 @@ $(document).ready(function(){
 
 		// Draw data tracks
 		var ropPath = drawTrack(tracksColumn, depthData, ropTrack, "blue", 1);
-		var wobPath = drawTrack(tracksColumn, depthData, wobTrack, "black", 1);
+		// var wobPath = drawTrack(tracksColumn, depthData, wobTrack, "black", 1);
 		var tempOutPath = drawTrack(tracksColumn, depthData, tempOutTrack, "red", 1);
 
 		var ropLength = ropPath ? ropPath.node().getTotalLength() : 9999;
-		var wobLength = wobPath ? wobPath.node().getTotalLength() : 9999;
+		// var wobLength = wobPath ? wobPath.node().getTotalLength() : 9999;
 		var tempOutLength = tempOutPath ? tempOutPath.node().getTotalLength() : 9999;
 
 
 		// time it takes for tracks to animate
-		var timeLength = 1000;
+		var timeLength = 500;
 
 		var easing = [
 			d3.easeElastic, d3.easeBounce, d3.easeLinear,
@@ -185,7 +211,7 @@ $(document).ready(function(){
 			];
 
 		animateLine(ropPath, ropLength, timeLength, easing[4])
-		animateLine(wobPath, wobLength, timeLength, easing[4])
+		// animateLine(wobPath, wobLength, timeLength, easing[4])
 		animateLine(tempOutPath, tempOutLength, timeLength, easing[4])
 
 		var text = writeText(desMsg, descColumn, yScale, pageTextSize);
@@ -210,99 +236,124 @@ $(document).ready(function(){
 			note: { "label": "This note is customizable" }
 		}]
 
-	const makeAnnotations = d3.annotation()
-		.editMode(true)
-		.type(type)
-		.annotations(annotation)
+		const makeAnnotations = d3.annotation()
+			.editMode(true)
+			.type(type)
+			.annotations(annotation)
 
-		descColumn.append("g")
-			.attr("class", "annotation")
-			.call(makeAnnotations)
+			descColumn.append("g")
+				.attr("class", "annotation")
+				.call(makeAnnotations)
 
-	var lithArr = [];
+		var lithArr = [];
 
-	var liths = d.data.attributes.lithologies;
+		var liths = d.data.attributes.lithologies;
 
-	// console.log(liths)
+		// console.log(liths)
 
-	// console.log(lith)
-	var lithData = lith.forEach(function(d){
-		lithArr.push(formatLithData(d))
-	})
+		// console.log(lith)
+		var lithData = lith.forEach(function(d){
+			lithArr.push(formatLithData(d))
+		})
 
-	var lithObj = d.data.attributes.lithologies;
+		var lithObj = d.data.attributes.lithologies;
 
-	var newLith = toLithArray(lithObj);
+		var newLith = toLithArray(lithObj);
 
-	var lith100 = avgLithArray(newLith);
+		var lith100 = avgLithArray(newLith);
 
-	console.log(lith100)
-	drawLith(lith100, lithColDimension.width, lithColumn, yScale, maxDepth);
+		console.log(lith100)
+		drawLith(lith100, lithColDimension.width, lithColumn, yScale, maxDepth);
 
-	// var lith100 = getAvgLith(lithArr);
+		// var lith100 = getAvgLith(lithArr);
 
-	// var lith100Arr = getAvgLithArray(lithArr);
+		// var lith100Arr = getAvgLithArray(lithArr);
 
-	var boxWidth = 100;
-	var lithSvg = lithColumn.append('svg')
-		.attr('x', 0)
-		.attr('height', yScale(maxDepth))
-		.attr('width', lithColDimension.width)
-	var yOffset = .5;
+		var boxWidth = 100;
+		var lithSvg = lithColumn.append('svg')
+			.attr('x', 0)
+			.attr('height', yScale(maxDepth))
+			.attr('width', lithColDimension.width)
+		var yOffset = .5;
 
-	lith100.forEach(function(d){
+		lith100.forEach(function(d){
 
-		var depth = d[0];
-		var syms = d[1];
-		var percents = d[2];
-		var xPosition = 0;
+			var depth = d[0];
+			var syms = d[1];
+			var percents = d[2];
+			var xPosition = 0;
 
-		for (var i = 0; i < percents.length; i++) {
+			for (var i = 0; i < percents.length; i++) {
 
-			// append clipPath to svg
-			// give clipPath an id
-			// append rect to clipPath
-			// give rect attrs based on lith data
+				// append clipPath to svg
+				// give clipPath an id
+				// append rect to clipPath
+				// give rect attrs based on lith data
 
-			lithSvg.append('clipPath')
-				.attr('id', 'clipped')
-				.append('rect')
-					.attr('x', xPosition)
+				lithSvg.append('clipPath')
+					.attr('id', 'clipped')
+					.append('rect')
+						.attr('x', xPosition)
+						.attr('y', function(){
+							if (depth % 100 == 0) {
+								return yScale(depth - 100) + yOffset
+							} else {
+								return yScale((Math.ceil(depth/100) * 100) - 100) + yOffset
+							}
+						})
+						.attr('width', (lithColDimension.width * (percents[i]) / 100) )
+						.attr('height', yScale(100));
+
+				// append svg:image to svg
+				// set x & y to 0
+				// set clip-path, attr to id of rect
+				lithSvg.append('svg:image')
+					.attr('xlink:href', `liths/${syms[i]}.svg`)
+					// .attr('fill', 'red')
+					// .attr('stroke', 'black')
+					.attr('x', 0)
 					.attr('y', function(){
-						if (depth % 100 == 0) {
-							return yScale(depth - 100) + yOffset
-						} else {
-							return yScale((Math.ceil(depth/100) * 100) - 100) + yOffset
-						}
-					})
-					.attr('width', (lithColDimension.width * (percents[i]) / 100) )
-					.attr('height', yScale(100));
+							if (depth % 100 == 0) {
+								return yScale(depth - 100) + yOffset
+							} else {
+								return yScale((Math.ceil(depth/100) * 100) - 100) + yOffset
+							}
+						})
+					.attr('width', lithColDimension.width)
+					.attr('height', yScale(100))
+					.attr('class', `lith`)
+					.attr('clip-path', 'url(#clipped)')
 
-			// append svg:image to svg
-			// set x & y to 0
-			// set clip-path, attr to id of rect
-			lithSvg.append('svg:image')
-				.attr('xlink:href', `liths/${syms[i]}.svg`)
-				// .attr('fill', 'red')
-				// .attr('stroke', 'black')
-				.attr('x', 0)
-				.attr('y', function(){
-						if (depth % 100 == 0) {
-							return yScale(depth - 100) + yOffset
-						} else {
-							return yScale((Math.ceil(depth/100) * 100) - 100) + yOffset
-						}
-					})
-				.attr('width', lithColDimension.width)
-				.attr('height', yScale(100))
-				.attr('class', `lith`)
-				.attr('clip-path', 'url(#clipped)')
+				xPosition += lithColDimension.width * (percents[i])/100
+		 }
+	 })
 
-			xPosition += lithColDimension.width * (percents[i])/100
-	}
-	})
+		var min = d.data.attributes.mineralogies;
+
+		min.forEach(function(d){
+			drawMinLine(qtz,   'quartz',     d, yScale, 'blue')
+			drawMinLine(cal,   'calcite',    d, yScale, 'black')
+			drawMinLine(pyr,   'pyrite',     d, yScale, 'gold')
+			drawMinLine(epid,  'epidote',    d, yScale, 'yellow')
+			drawMinLine(pyrh,  'pyrhotite',  d, yScale, 'orange')
+			drawMinLine(chl,   'chlorite',   d, yScale, 'green')
+			drawMinLine(axin,  'axinite',    d, yScale, 'pink')
+			drawMinLine(actin, 'actinolite', d, yScale, '#287458')
+			drawMinLine(tourm, 'tourmaline', d, yScale, 'gray')
+		})
+
 	})
 });
+
+function drawMinLine(svg, mineral, data, yScale, color) {
+	return svg.append('line')
+				.attr("x1", svg.attr("width")/2)
+				.attr("y1", yScale(data.depth))
+				.attr("x2", svg.attr("width")/2)
+				.attr("y2", yScale(data.depth + 10))
+				.attr('stroke-width', data[mineral])
+				.attr('stroke', color);
+}
 
 function testAverageLith(lithObj){
 	var total = 0;

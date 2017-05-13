@@ -43,7 +43,7 @@ function createXGridlines(scale, tickSize){
 		.tickSize(tickSize)
 }
 
-function createColumn(height, width, x, y){
+function createColumn(height, width, x, y, cl='col'){
 	return d3.select('#svg-group')
 		.append('svg')
 		.attr("class", "column")
@@ -51,6 +51,15 @@ function createColumn(height, width, x, y){
 		.attr('width', width)
 		.attr('x', x)
 		.attr('y', y)
+		.attr('class', cl)
+}
+function createMinColumn(svgCol, x, width, height, cl=''){
+	return svgCol.append('svg')
+				.attr('x', x)
+				.attr('y', 0)
+				.attr('width', width)
+				.attr('height', height)
+				.attr('class', `min ${cl}`)
 }
 
 function createDivColumn(height, width, x, y){
