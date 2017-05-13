@@ -232,13 +232,9 @@ $(document).ready(function(){
 
 	var newLith = toLithArray(lithObj);
 
-	console.log(avgLithArray(newLith))
+	var lith100 = avgLithArray(newLith);
 
-
-	// console.log('newLith', newLith)
-	// console.log()
-
-	var lith100 = getAvgLith(lithArr);
+	// var lith100 = getAvgLith(lithArr);
 
 	var lith100Arr = getAvgLithArray(lithArr);
 
