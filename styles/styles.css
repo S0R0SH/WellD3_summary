@@ -1,6 +1,42 @@
 body {
       text-align: center;
     }
+
+.header{
+  /*border-bottom: 200px;*/
+  padding-bottom: 70px;
+}
+
+.sidebar-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 40px;
+    padding-top: 100px;
+    margin-top: 100px;
+    margin: 10px;
+    padding-bottom: 10px;
+    list-style: none;
+}
+
+li {
+  padding-bottom: 10px;
+}
+
+
+#svg-container{
+  position: absolute;
+  padding-left: 50px;
+  margin-left: 100px;
+  /*margin-top: 50px;*/
+    /*padding-top: 200px;*/
+  /*visibility: hidden;*/
+}
+
+.side-bar{
+  background-color: red;
+}
+
 div.tooltip {
   position: absolute;
   top: 100px;
@@ -21,11 +57,12 @@ div.tooltip {
 
 
 #lith-col {
-  width: 100px;
+  /*width: 100px;*/
 }
 
 .main {
-  background: url(../images/vintage_paper.jpg) transparent  5px 5px;
+/*  background: url(../images/vintage_paper.jpg) transparent  5px 5px;*/
+  background: url(../images/background_dark_stripes.png) transparent  5px 5px;
   background-color: whitesmoke;
 }
 

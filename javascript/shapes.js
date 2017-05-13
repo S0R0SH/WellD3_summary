@@ -80,6 +80,56 @@ $(document).ready(function(e){
 
 	// }
 
+// <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+//   <defs>
+//     <clipPath id="cut-off-bottom">
+//       <rect x="0" y="0" width="200" height="100" />
+//     </clipPath>
+//   </defs>
+
+//   <circle cx="100" cy="100" r="100" clip-path="url(#cut-off-bottom)" />
+// </svg>
+
+var svg = d3.select('.rect').append('svg')
+	// .attr('height', 500)
+	// .attr('width', 500)
+
+svg.append('clipPath')
+  	.attr('id', 'clipped')
+  	.append('rect')
+  		.attr('x', 0)
+  		.attr('y', 0)
+  		.attr('width', 30)
+  		.attr('height', 100)
+
+svg.append('svg:image')
+	.attr('xlink:href', 'liths/G.svg')
+	.attr('x', '0')
+	.attr('y', '0')
+	.attr('clip-path', 'url(#clipped)')
+
+// svg.append('circle')
+// 	.attr('cx', '100')
+// 	.attr('cy', '100')
+// 	.attr('r', '100')
+// 	.attr('clip-path', 'url(#clipped)')
+
+
+
+		// .append("svg:image")
+  // 		.attr("xlink:href", "liths/greenstone.svg")
+  // 		.attr("xlink:href", "liths/greenstone.svg")
+		// 	.attr('x', 0)
+		// 	.attr("y", 0)
+		// 	.attr('width', 50)
+		// 	.attr('height', 20)
+
+// svg.append("rect")
+// 		.attr('width', 20)
+// 		.attr('height', 50)
+// 		.attr('stroke', 'black')
+// 		.attr("fill", "none")
+// 		.attr('clip-path', 'url(#clipped');
 
 
 
