@@ -65,15 +65,14 @@ function createDivColumn(height, width, x, y){
 		.attr('background-color', 'powderblue')
 }
 
-function createBorder(selector, w, h, borderWidth) {
+function createBorder(selector, w, h, borderWidth, color="black") {
 	selector.append('rect')
 		.attr('width', w)
 		.attr('height', h)
 		.attr('class', 'border')
 		.attr('fill', 'none')
 		.attr("stroke-width", borderWidth)
-		// .attr("stroke", "#B3B7B7")
-		.attr("stroke", "black")
+		.attr("stroke", color)
 }
 
 function writeText(data, col, scale, fontSize) {
@@ -166,6 +165,7 @@ var wrap = function wrap(text, width) {
 };
 
 function getAvgLith(lithData) {
+	// console.log(lithData)
 	var numOfRecords = 1;
 
 	var avgLithArr = [];
@@ -230,57 +230,90 @@ function getAvgLithArray(lithData) {
 		lithArray.push([depth, syms, percents])
 
 	});
+}
 
-	// console.log(lithArray)
 
-	// console.log(avgLithArr)
+function toLithArray(lithology) {
 
-	// avgLithArr.forEach(function(d){
-	// 	console.log(d[0], d[1], d[2])
-	// })
-	// return avgLithArr;
+	var lithArray = [];
+	lithology.forEach(function(d){
+		var percents = [];
+
+		for (sym in d) {
+			percents = [
+				d.felsite,
+				d.blueschist,
+				d.greenstone,
+				d.chert,
+				d.peridotite,
+				d.mum,
+				d.silicic_graywacke,
+				d.lithic_graywacke,
+				d.argillite,
+				d.serpentine,
+				d.clay,
+				d.blank
+			]
+		}
+			lithArray.push([d.depth, percents])
+	});
+
+	return lithArray
 }
 
 var testLith = [
-	[ 10,  ['T', 'D', 'S'], [20, 30, 50] ],
-	[ 20,  ['G', 'D', 'S'], [50, 40, 10] ],
-	[ 30,  ['G', 'D', 'S'], [40, 20, 40] ],
-	[ 40,  ['C', 'D', 'S'], [50, 10, 40] ],
-	[ 50,  ['F', 'D', 'S'], [10, 40, 50] ],
-	[ 60,  ['C', 'D'],      [70, 30]     ],
-	[ 70,  ['T', 'D', 'S'], [50, 10, 40] ],
-	[ 80,  ['T', 'D', 'S'], [30, 20, 50] ],
-	[ 90,  ['T', 'D', 'S'], [10, 60, 30] ],
-	[ 100, ['T', 'D', 'S'], [10, 30, 60] ],
+	[ 10,  [ 20, 50, 50, 0 ] ],
+	[ 20,  [ 50, 50, 10, 0 ] ],
+	[ 30,  [ 40, 100, 40, 0 ] ],
+	[ 40,  [ 50, 100, 40, 0 ] ],
+	[ 50,  [ 10, 100, 50, 0 ] ],
+	[ 60,  [ 70, 100, 0 , 10 ] ],
+	[ 70,  [ 50, 100, 40, 0 ] ],
+	[ 80,  [ 30, 100, 50, 0 ] ],
+	[ 90,  [ 10, 100, 30, 0 ] ],
+	[ 100, [ 10, 100, 60, 0 ] ],
 ]
 
-function avgLithData(lith) {
+// console.log(avgLithArray(testLith))
 
-	var avgLithData = [];
+function avgLithArray(arr) {
+	var percentTotal = [];
+	var avg = [];
+	var numOfRecords = 0;
+	var depth = 0;
+	var avgLithArr = [];
 
-	lith.forEach(function(d){
-		var depth = d[0];
-		var syms = d[1];
-		var percents = d[2];
+	arr.forEach(function(d){
+		depth = d[0];
+		var percents = d[1];
 
-	});
+		// console.log(percents);
+		var i = 0;
+		// for (var i = 0; i < percents.)
+		percents.forEach(function(d1){
+			// console.log('d1', d1)
+			if (percentTotal[i]) {
+				percentTotal[i] += d1
+			} else {
+				percentTotal[i] = d1
+			}
+			i++;
+		})
 
-};
+		if (depth % 100 === 0 || i === arr.length - 1) {
+			percentTotal.forEach(function(d1){
+				avg.push( d1 / ( numOfRecords ))
+			})
+			avgLithArr.push([depth, avg])
+			percentTotal = [];
+			avg = [];
+			numOfRecords = 0;
+		}
+			numOfRecords++;
+	})
 
-avgLithData(testLith);
-
-
-// var dataUrl = 'http://localhost:3000/wells/well_data?well_num=1'
-
-// var depthData;
-// d3.json(dataUrl, function (d) {
-// 	depthData = d.data.attributes['depth-data'];
-
-// 	depthData.forEach(function(i){
-// 		console.log(i.depth);
-// 	})
-
-// })
+		return avgLithArr
+}
 
 
 

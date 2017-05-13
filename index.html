@@ -4,9 +4,12 @@
 	<meta charset="UTF-8">
 	<title>D3</title>
 	<link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/lithStyles.css">
+	<link rel="stylesheet" href="styles/lithStyles.css">
+	<!-- <link rel="stylesheet" href="styles/simple-sidebar.css"> -->
 
-	<script src="jQuery.min.js"></script>
+
+	<script src="libraries/jQuery.min.js"></script>
+	<script src="libraries/jquery.PrintArea.js"></script>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -18,41 +21,78 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-	<script src="d3.v4"></script>
-  <script src="shapes.js"></script>
-  <script src="annotations.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/1.11.0/d3-annotation.css"></script> -->
-  <script src="data/depth_data.js"></script>
-  <script src="data/depth_data_summary.js"></script>
-  <script src="data/mudMsg.js"></script>
-  <script src="data/seed_data.txt"></script>
-  <script src="data/lith.js"></script>
-  <!-- <script src="liths/liths.js"></script> -->
-  <script src="data/desMsg.js"></script>
-  <script src="functions.js"></script>
-	<script src="sandbox.js"></script>
-  <script src="chart.js"></script>
-  <script src="APICalls.js"></script>
-	<script src="vkbeautify.0.99.00.beta.js"></script>
-  <!-- <script type="text/javascript" src="http://canvg.github.io/canvg/rgbcolor.js"></script>
-  <script type="text/javascript" src="http://canvg.github.io/canvg/StackBlur.js"></script>
-  <script type="text/javascript" src="http://canvg.github.io/canvg/canvg.js"></script>-->
+	<script src="libraries/d3.v4"></script>
+	<script src="javascript/shapes.js"></script>
+	<script src="libraries/annotations.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/1.11.0/d3-annotation.css"></script> -->
+	<script src="data/depth_data.js"></script>
+	<script src="data/depth_data_summary.js"></script>
+	<script src="data/mudMsg.js"></script>
+	<script src="data/seed_data.txt"></script>
+	<script src="data/lith.js"></script>
+	<!-- <script src="liths/liths.js"></script> -->
+	<script src="data/desMsg.js"></script>
+	<script src="javascript/functions.js"></script>
+	<script src="javascript/sandbox.js"></script>
+	<script src="javascript/chart.js"></script>
+	<script src="javascript/APICalls.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+	<script src="libraries/vkbeautify.0.99.00.beta.js"></script>
+	<script src="javascript/print.js"></script>
+	<script src="javascript/buttons.js"></script>
+
+
 </head>
 
 <body>
-  <div class="container row">
-  <section class="controls">
-      <button id="load-data" class="btn btn-primary">Load Data</button>
-      <button id="open-file">Open File</button>
-      <button id="save-markdown" disabled>Save File</button>
-      <button id="revert" disabled>Revert</button>
-      <button id="save-html">Save HTML</button>
-    </section>
-    <div class="col-md-8" id="svg-container"></div>
-    <div class="col-md-4 side-bar"></div>
 
-  </div>
+<div class="container">
+	<!-- Header -->
+	<div class="header">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
 
+			<div class="navbar-header">
+				<a class="navbar-brand" id="logo" href="/">Log Summary</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right" id="menu-items">
+				<li><a href="#">Login</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Help</a></li>
+			</ul>
+
+		</nav>
+	</div>
+
+	<!-- Sidebar -->
+		<div class="col-md-4" id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <button id="load-data" class="btn btn-primary">Load Data</button>
+                </li>
+                <li>
+                    <button id="printButton" class="btn btn-primary">Print</button>
+                </li>
+            </ul>
+        </div>
+      </div>
+        <!-- /#sidebar-wrapper -->
+
+	<div>
+		<div class="col-md-8 chart-area" id="svg-container"></div>
+		<!-- <div class="col-md-2 side-bar>
+			<div class="dropdown">
+				<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+				<div id="myDropdown" class="dropdown-content">
+					<a href="#">Link 1</a>
+					<a href="#">Link 2</a>
+					<a href="#">Link 3</a>
+				</div>
+			</div> -->
+		</div>
+	</div>
+</div>
 
 
 </body>

@@ -63,6 +63,7 @@ def get_lith_by_depth(depth, lith_arr)
 end
 
 def insert_missing_depths_to_lith(lith)
+	# p lith
 	last_lith = ''
 	new_lith_arr = []
 	new_hash = {}
@@ -87,7 +88,7 @@ def insert_missing_depths_to_lith(lith)
 		last_lith = line[1]
 	end
 
-	new_lith_arr = new_hash.to_a.reverse
+	 p new_lith_arr = new_hash.to_a.reverse
 end
 
 def writeArrayToJSFile(fileToWrite, var_name, data)
