@@ -1,12 +1,5 @@
 $(document).ready(function(){
 
-
-	$(window).on('resize', function(){
-		console.log($(window).width());
-	})
-
-	// URLS
-	// var depthDataURL = 'http://localhost:3000/wells/1/depth_data'
 	var wellNames = [];
 
 	function get_well_names(){
