@@ -1,6 +1,9 @@
-var $ = require("jquery");
-
 $(document).ready(function(){
+
+
+	$(window).on('resize', function(){
+		console.log($(window).width());
+	})
 
 	// URLS
 	// var depthDataURL = 'http://localhost:3000/wells/1/depth_data'
@@ -80,13 +83,14 @@ $(document).ready(function(){
 		.domain([0, 200]);
 
 	var svg = d3.select('#svg-container')
-		.append('svg')
-		.attr('height', pageHeight)
-		.attr('width', pageWidth)
-		.attr('class', 'main')
 		.append('g')
-			.attr('id', 'svg-group')
-			.attr("transform", `translate(${10}, ${10})`);
+				.append('svg')
+				.attr('height', pageHeight)
+				.attr('width', pageWidth)
+				.attr('class', 'main-svg')
+				.append('g')
+					.attr('id', 'svg-group')
+					.attr("transform", `translate(${10}, ${10})`);
 
 	var headerSvg  = createColumn(headerDimension.height, chartWidth, 0, 0);
 
@@ -216,7 +220,7 @@ $(document).ready(function(){
 		animateLine(ropPath, ropLength, timeLength, easing[4])
 		// animateLine(wobPath, wobLength, timeLength, easing[4])
 		animateLine(tempOutPath, tempOutLength, timeLength, easing[4])
-
+		var desMsg = [[60, "Spud CMHC-8 on 02/28/17.  Drill ahead f/69' with 26\"  bit and mud motor assembly."], [530, "Drill 26\" hole to 523'.  Run 16 jnts of 20\", 19.12#,  J-55, BUTT casing to a  depth of 522'. Drill ahead with 17.5\" bit w/Mud Motor and MWD."], [1195, "Water added to pits,cooling mud. Clean temp In probe to verify accurate measure."], [1510, "Mud Cooler On @ 1510'"], [1605, "Pull to shoe to wipe the hole do some rig repairs, run to  bottom, drill ahead."], [1963, "Building too much angle, POH  for new bit and tools."], [2070, "Drill to 2056', pull out of hole to check bit. Bit and  stabs bad: 1-2.5\" out of  gauge."], [2925, "Drill 17.5\" hole to 2934'. Pull tight coming out of hole @2730',work pipe free,wipe hole 2 times,Run 68 jnts of  13.375\",72#,L-80,BUTT casing  to a depth of 2925'."], [2978, "NOTE:Bit#5 was a RRB used for cleaning out cement and no new formation drilled."], [3059, "POH t/BHA, replace MWD tool"], [3240, "ROP dropping due to formation change,POH for tri-cone bit."], [3370, "Altered Zone @3370',only 10' Serp:lt grn-wht,com pink,med  gr-aphan,w/euhed and vng qtz."], [3680, "Tight hole f/3265-3676'."], [3970, "Pump 2 down at 3969'. Begin  losing 80 bbls/hr while  circulating. Pump 60 bbl lcm  pills at 3977' and 4003' to  cure losses."], [4420, "Begin losing 35bph@4421'.Lose 400bph initially at cnx when picking up high.Spot LCM pill and circulate losing ~125bph. Pull to shoe to condition mud."], [4480, "Drill ahead t/4480' w/80bph losses. Set 300' cement plug  @4488'.TOC @4203'.Drill ahead with 12.25\"bit and mud motor."], [4700, "Decr WOB @4680'while repair  pump#1.  120 SPM for pump#2."], [4770, "Shaker failed @4757'.Lose  60bbls over shakers."], [5095, "Begin losing 35bph @5071'. Loss rate increases to 300bph @5089'.Lose total circulation @5098' & during cnx @5106'. Set 200' cement plug#2 @5106'. Clean out cement and drill ahead t/5126' with 100bph  losses.Set 150' cement plug #3 @5126'."]]
 		var text = writeText(desMsg, descColumn, yScale, pageTextSize);
 
 		const type = d3.annotationCallout
@@ -275,11 +279,12 @@ $(document).ready(function(){
 
 		// var lith100Arr = getAvgLithArray(lithArr);
 
-		var boxWidth = 100;
+		// Put in function
 		var lithSvg = lithColumn.append('svg')
 			.attr('x', 0)
 			.attr('height', yScale(maxDepth))
 			.attr('width', lithColDimension.width)
+
 		var yOffset = .5;
 
 		lith100.forEach(function(d){
@@ -315,7 +320,7 @@ $(document).ready(function(){
 				// set clip-path, attr to id of rect
 				lithSvg.append('svg:image')
 					.attr('xlink:href', function(){
-						return `images/lith/${syms[i]}.svg`
+						return `/images/lith/${syms[i]}.svg`
 					})
 					// .attr('fill', 'red')
 					// .attr('stroke', 'black')
@@ -333,7 +338,7 @@ $(document).ready(function(){
 					.attr('clip-path', 'url(#clipped)')
 
 				xPosition += lithColDimension.width * (percents[i])/100
-
+				// end of function
 
 		 }
 	 })
