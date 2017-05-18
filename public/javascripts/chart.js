@@ -268,18 +268,7 @@ $(document).ready(function(){
 		var newLith = toLithArray(lithObj);
 		var lith100 = avgLithArray(newLith);
 
-		// drawLith(lith100, lithColDimension.width, lithColumn, yScale, maxDepth);
-
-		// $(window).on('resize', function(){
-		// 	// console.log('window resized')
-		// 	drawLith(lith100, lithColDimension.width, lithColumn, yScale, maxDepth);
-		// })
-
-		// var lith100 = getAvgLith(lithArr);
-
-		// var lith100Arr = getAvgLithArray(lithArr);
-
-		// Put in function
+		// Put in lith function
 		var lithSvg = lithColumn.append('svg')
 			.attr('x', 0)
 			.attr('height', yScale(maxDepth))
@@ -338,7 +327,7 @@ $(document).ready(function(){
 					.attr('clip-path', 'url(#clipped)')
 
 				xPosition += lithColDimension.width * (percents[i])/100
-				// end of function
+				// end of lith function
 
 		 }
 	 })
