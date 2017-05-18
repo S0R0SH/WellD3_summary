@@ -255,7 +255,11 @@ $(document).ready(function(){
 		var newLith = toLithArray(d.data.attributes.lithologies);
 		var lith100 = avgLithArray(newLith);
 
-		drawLith(lithColumn, yScale, lithColDimension.width, lith100)
+		drawLith(lithColumn, yScale, lithColDimension.width, lith100);
+
+		$(window).on('resize', function(){
+			drawLith(lithColumn, yScale, lithColDimension.width, lith100);
+		})
 
 		// Put in lith function
 		function drawLith(lithColumn, yScale, columnWidth, lith){
