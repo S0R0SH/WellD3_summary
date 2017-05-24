@@ -2,10 +2,12 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var viewsPath = __dirname + '/views/';
+var fs = require('fs')
+var tools = require('./tools.js')();
 
 app.use(express.static('public'))
-// app.use(express.static('public/images'))
 app.use(express.static('libraries'))
+
 
 router.use(function(req, res, next){
 	console.log('/' + req.method);

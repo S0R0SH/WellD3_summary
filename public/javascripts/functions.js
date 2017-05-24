@@ -97,6 +97,7 @@ function writeText(data, col, scale, fontSize) {
 				.style('fill', 'black')
 }
 
+
 function drawTrack(column, data, track, color, lineWidth, fill='none'){
 		return column.append('path')
 		.data([data])

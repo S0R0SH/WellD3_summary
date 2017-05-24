@@ -1,6 +1,8 @@
 // Put in lith function
 function drawLith(lithColumn, yScale, columnWidth, lith){
 
+	var maxDepth = d3.max(lith, function(d) { return d[0]} );
+
 	var lithSvg = lithColumn.append('svg')
 		.attr('x', 0)
 		.attr('height', yScale(maxDepth))
@@ -8,9 +10,7 @@ function drawLith(lithColumn, yScale, columnWidth, lith){
 
 	var yOffset = .5;
 
-	var td = d3.max(lith100, function(d) { return d[0]} );
-
-	lith100.forEach(function(d){
+	lith.forEach(function(d){
 
 		var depth = d[0];
 		var syms = d[1];
