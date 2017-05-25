@@ -8,6 +8,11 @@ $(document).ready(function(){
 	var chartWidth = pageWidth - (margin * 2);
 	var pageTextSize = 10;
 
+	// time it takes for tracks to animate
+	var timeLength = 1.5 * 1000;
+
+	var depthDataUrl = 'http://localhost:3001/wells/well_data?well_num=3'
+
 	var headerDimension   = { height: headerHeight, width: (chartWidth * 1.000) };
 	var depthColDimension = { height: chartHeight,  width: (chartWidth * 0.020) };
 	var lithColDimension  = { height: chartHeight,  width: (chartWidth * 0.095) };
@@ -19,20 +24,18 @@ $(document).ready(function(){
 
 	var descColDimension  = { height: chartHeight,  width: (chartWidth * (1  - tempWidth)) };
 
-	var columnDimensions = [
-		depthColDimension,
-		lithColDimension,
-		minColDimension,
-		symColDimension,
-		descColDimension,
-		trackColDimension
-	];
+	var columnDimensions = [ depthColDimension, lithColDimension, minColDimension, symColDimension, descColDimension, trackColDimension ];
 
-		// test: do column widths / total width = 1?
+	// columnDimensions.forEach(function(d, i){
+	// 	console.log(d.width)
+	// });
+
+	// test: do column widths / total width = 1?
 	columnWidthsEqual1(columnDimensions, chartWidth);
 
 	// var ropScale = createScale([0, trackColDimension.width], [100, 0])
 
+	// Create scales
 	var ropScale = d3.scaleLinear()
 		.range([0, trackColDimension.width])
 		.domain([0, 200]);
@@ -58,49 +61,53 @@ $(document).ready(function(){
 		.range([0, trackColDimension.width])
 		.domain([0, 400]);
 
+	// end create scales
+
 	var svg = d3.select('#svg-container')
 		.append('g')
-				.append('svg')
-				.attr('height', pageHeight)
-				.attr('width', pageWidth)
-				.attr('class', 'main-svg')
-				.append('g')
-					.attr('id', 'svg-group')
-					.attr("transform", `translate(${10}, ${10})`);
+			.append('svg')
+			.attr('height', pageHeight)
+			.attr('width', pageWidth)
+			.attr('class', 'main-svg')
+			.append('g')
+				.attr('id', 'svg-group')
+				.attr("transform", `translate(${10}, ${10})`);
 
-	var headerSvg    = createColumn( headerDimension.height,   chartWidth, 0, 0);
-	var depthColumn  = createColumn( chartHeight, depthColDimension.width, 0, headerHeight);
-	var lithColumn   = createColumn( chartHeight,  lithColDimension.width, depthColDimension.width, headerHeight, 'lithCol');
-	var minColumn    = createColumn( chartHeight,   minColDimension.width, lithColDimension.width + depthColDimension.width, headerHeight);
-	var symColumn    = createColumn( chartHeight,   symColDimension.width, minColDimension.width  + lithColDimension.width + depthColDimension.width, headerHeight);
-	var descColumn   = createColumn( chartHeight,  descColDimension.width, symColDimension.width  + minColDimension.width  + lithColDimension.width + depthColDimension.width, headerHeight);
-	var tracksColumn = createColumn( chartHeight, trackColDimension.width, descColDimension.width + symColDimension.width  + minColDimension.width  + lithColDimension.width + depthColDimension.width, headerHeight);
+	// function createColumn() args: height, width, x location, y location, class[optional]
+	var headerSvg    = createColumn( headerDimension.height,   chartWidth, 0, 0, 'col header');
+	var depthColumn  = createColumn( chartHeight, depthColDimension.width, 0, headerHeight, 'col depthCol' );
+	var lithColumn   = createColumn( chartHeight,  lithColDimension.width, depthColDimension.width, headerHeight,'col lithCol' );
+	var minColumn    = createColumn( chartHeight,   minColDimension.width, lithColDimension.width + depthColDimension.width, headerHeight, 'col minCol');
+	var symColumn    = createColumn( chartHeight,   symColDimension.width, minColDimension.width  + lithColDimension.width + depthColDimension.width, headerHeight, 'col symCol');
+	var descColumn   = createColumn( chartHeight,  descColDimension.width, symColDimension.width  + minColDimension.width  + lithColDimension.width + depthColDimension.width, headerHeight, 'col descCol');
+	var tracksColumn = createColumn( chartHeight, trackColDimension.width, descColDimension.width + symColDimension.width  + minColDimension.width  + lithColDimension.width + depthColDimension.width, headerHeight, 'col trackCol');
 
-	var fullPage = createColumn(chartHeight, pageWidth, 0, 0);
+	var fullPage = createColumn(chartHeight, pageWidth, 0, 0, 'chart');
 
 	var columns = [depthColumn, lithColumn, minColumn, symColumn, descColumn, tracksColumn];
 
+	// Create borders around all columns using column array.
 	columns.forEach(function(d, i){
-		createBorder(d, columnDimensions[i].width, chartHeight, 1.5)
-	})
+		createBorder(d, columnDimensions[i].width, chartHeight)
+	});
 
-	createBorder(headerSvg, chartWidth, headerHeight, 1.5);
-
+	// Create border for header.
+	// function createBorder(), args: selector, width, height, stroke-width, border-color
+	createBorder(headerSvg, chartWidth, headerHeight);
 
 	// Create columns for min
-	var qtz   = createMinColumn(minColumn, 0,                           minColDimension.width/9, chartHeight, 'qtz')
-	var cal   = createMinColumn(minColumn, minColDimension.width/9 * 1, minColDimension.width/9, chartHeight, 'cal')
-	var pyr   = createMinColumn(minColumn, minColDimension.width/9 * 2, minColDimension.width/9, chartHeight, 'pyr')
-	var epid  = createMinColumn(minColumn, minColDimension.width/9 * 3, minColDimension.width/9, chartHeight, 'epid')
-	var pyrh  = createMinColumn(minColumn, minColDimension.width/9 * 4, minColDimension.width/9, chartHeight, 'pyrh')
-	var chl   = createMinColumn(minColumn, minColDimension.width/9 * 5, minColDimension.width/9, chartHeight, 'chl')
-	var axin  = createMinColumn(minColumn, minColDimension.width/9 * 6, minColDimension.width/9, chartHeight, 'axin')
-	var actin = createMinColumn(minColumn, minColDimension.width/9 * 7, minColDimension.width/9, chartHeight, 'actin')
-	var tourm = createMinColumn(minColumn, minColDimension.width/9 * 8, minColDimension.width/9, chartHeight, 'tourm')
+	// function createMinColumn() args: columnToAppendTo, xLocation, width, height, class(optional)
+	var qtz   = createMinColumn(minColumn, 0,                           minColDimension.width/9, chartHeight, 'min qtz')
+	var cal   = createMinColumn(minColumn, minColDimension.width/9 * 1, minColDimension.width/9, chartHeight, 'min cal')
+	var pyr   = createMinColumn(minColumn, minColDimension.width/9 * 2, minColDimension.width/9, chartHeight, 'min pyr')
+	var epid  = createMinColumn(minColumn, minColDimension.width/9 * 3, minColDimension.width/9, chartHeight, 'min epid')
+	var pyrh  = createMinColumn(minColumn, minColDimension.width/9 * 4, minColDimension.width/9, chartHeight, 'min pyrh')
+	var chl   = createMinColumn(minColumn, minColDimension.width/9 * 5, minColDimension.width/9, chartHeight, 'min chl')
+	var axin  = createMinColumn(minColumn, minColDimension.width/9 * 6, minColDimension.width/9, chartHeight, 'min axin')
+	var actin = createMinColumn(minColumn, minColDimension.width/9 * 7, minColDimension.width/9, chartHeight, 'min actin')
+	var tourm = createMinColumn(minColumn, minColDimension.width/9 * 8, minColDimension.width/9, chartHeight, 'min tourm')
 
   ////////////////////////////////////////////////////////////////////
-
-	var depthDataUrl = 'http://localhost:3001/wells/well_data?well_num=1'
 
 	d3.json(depthDataUrl, function (d) {
 		var wellData = d.data.attributes;
@@ -137,8 +144,9 @@ $(document).ready(function(){
 			.x(function(d) { return tempOutScale(d.temp_out) })
 			.y(function(d) { return yScale(d.depth) })
 
-		for (var i = 0; i < columns.length; i++ ){
-			if (i === 4 || i === 0) { continue };
+		// Draw the horizontal gridlines.
+		for ( var i = 0; i < columns.length; i++ ){
+			if (i === 4 || i === 0) { continue }; //skip first and 5th column
 			addHorizontalGridlines(columns[i], yScale, columnDimensions[i].width, chartHeight)
 		}
 
@@ -167,9 +175,6 @@ $(document).ready(function(){
 
 		var ropLength = ropPath ? ropPath.node().getTotalLength() : 9999;
 		var tempOutLength = tempOutPath ? tempOutPath.node().getTotalLength() : 9999;
-
-		// time it takes for tracks to animate
-		var timeLength = 500;
 
 		var easing = [
 			d3.easeElastic, d3.easeBounce, d3.easeLinear,
@@ -251,7 +256,7 @@ $(document).ready(function(){
 
 		$(window).on('resize', function(){
 			drawLith(lithColumn, yScale, lithColDimension.width, lith100);
-		})
+		});
 
 		var min = d.data.attributes.mineralogies;
 
@@ -265,7 +270,26 @@ $(document).ready(function(){
 			drawMinLine(axin,  'axinite',    d, yScale, 'pink')
 			drawMinLine(actin, 'actinolite', d, yScale, '#287458')
 			drawMinLine(tourm, 'tourmaline', d, yScale, 'gray')
-		})
+		});
+
+		descColumn.append('svg:image')
+			.attr('xlink:href', '/images/lith/C.svg')
+			.attr('x', 0)
+			.attr('y', yScale(6000))
+			.attr('width', 300)
+			.attr('height', yScale(500))
+			.attr('preserveAspectRatio', 'none')
+			.attr('class', `lith-test`)
+
+		descColumn.append('svg:image')
+			.attr('xlink:href', '/images/lith/I.svg')
+			.attr('x', 0)
+			.attr('y', yScale(6250))
+			.attr('width', 100)
+			.attr('height', yScale(500))
+			.attr('preserveAspectRatio', 'none')
+			.attr('class', `lith-test`)
+
 	})
 });
 
