@@ -291,12 +291,17 @@ $(document).ready(function(){
 			}
 		})
 
+		// var symbolScale = symColDimension.width/
+		console.log(ntry)
+		console.log(symColDimension.width)
+
 		function addSymbol(shapeData, depth) {
 			symColumn.append('path')
 				.attr('d', shapeData)
 				.attr('class', 'shape')
-			  .attr('transform', `translate(${0}, ${yScale(depth)})`)
-				.style("fill",  'red');
+			  .attr('transform', `translate(${0}, ${yScale(depth)})scale(1.46)`)
+				.style("fill",  'red')
+				.style('opacity', .75);
 		}
 
 

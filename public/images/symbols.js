@@ -1,1 +1,1 @@
-var ntry = 'M0,-10 L10,0 L0,10 Z'
+var ntry = 'M0,-10 L10,0 L0,10 Z';
