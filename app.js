@@ -5,6 +5,8 @@ var viewsPath = __dirname + '/views/';
 var fs = require('fs')
 var tools = require('./tools.js')();
 
+
+
 app.use(express.static('public'))
 app.use(express.static('libraries'))
 

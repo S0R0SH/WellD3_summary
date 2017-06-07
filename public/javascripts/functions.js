@@ -97,15 +97,21 @@ function writeText(data, col, scale, fontSize) {
 				.style('fill', 'black')
 }
 
-
-function drawTrack(column, data, track, color, lineWidth, fill='none'){
+//drawTrack function, args: svgColumn, data, d3.line, color, stroke-width, initialLine fill(opt)
+function drawTrack(column, data, track, color, lineWidth, initialLine, fill='none'){
+		// console.log(track())
+		var t = d3.transition().duration(5000);
 		return column.append('path')
 		.data([data])
+		.attr('d', initialLine)
 		.attr('class', 'line')
-		.attr('d', track)
-		.attr("stroke-width", lineWidth)
+		.attr("stroke-width", 2)
 		.attr("stroke", color)
-		.style("fill", fill);
+		.style("fill", fill)
+		.transition(t)
+		.attr('d', track)
+		.attr("stroke", color)
+		.attr("stroke-width", lineWidth);
 }
 
 function createSVGCode(){
