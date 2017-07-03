@@ -1,10 +1,22 @@
 $(document).ready(function(){
-	// var depthDataURL = 'http://localhost:3000/wells/1/depth_data'
-	// d3.json(depthDataURL, function(d){
-	// 	d.forEach(function(d){
-	// 		console.log(d.depth)
-	// 	})
-	// });
+	console.log("API calls Ready")
 
+	$('#get-data').on('click', function(event) {
+		event.preventDefault();
+
+		var request = $.ajax({
+  		url: '/getdata',
+  		method: 'GET'
+  	});
+
+  	request.done(function(response){
+  		console.log('success');
+  	});
+
+  	request.fail(function(response){
+  		console.log('AJAX request not completed.');
+  	});
+
+	});
 
 })

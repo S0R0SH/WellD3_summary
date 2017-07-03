@@ -11,7 +11,7 @@ $(document).ready(function(){
 	// time it takes for tracks to animate
 	var timeLength = 250;
 
-	var depthDataUrl = 'http://localhost:3001/wells/well_data?well_num=2'
+	var depthDataUrl = 'http://localhost:3001/wells/well_data?well_num=1'
 
 	var headerDimension   = { height: headerHeight, width: (chartWidth * 1.000) };
 	var depthColDimension = { height: chartHeight,  width: (chartWidth * 0.020) };
@@ -106,7 +106,12 @@ $(document).ready(function(){
 
 	////////////////////////////////////////////////////////////////////
 
-	d3.json(depthDataUrl, function (d) {
+	// d3.json("tempData.json", function(err, d){
+	// 	console.log(d);
+	// });
+
+	// d3.json(depthDataUrl, function (d) {
+	d3.json("depthData.json", function (err, d) {
 		var t = d3.transition().duration(1000);
 
 		var wellData = d.data.attributes;
@@ -138,6 +143,14 @@ $(document).ready(function(){
 		var wobLine = d3.line()
 			.x(function(d) { return wobScale(d.wob) })
 			.y(function(d) { return yScale(d.depth) })
+
+	var pOutLine = d3.line()
+			.x(function(d) { return wobScale(d.pressure) })
+			.y(function(d) { return yScale(d.depth) })
+
+
+
+
 
 		var tempOutLine = d3.line()
 			.x(function(d) { return tempOutScale(d.temp_out) })
@@ -260,6 +273,7 @@ $(document).ready(function(){
 		var newLith = toLithArray(d.data.attributes.lithologies);
 		var lith100 = avgLithArray(newLith);
 
+
 		drawLith(lithColumn, yScale, lithColDimension.width, lith100);
 
 		$(window).on('resize', function(){
@@ -282,18 +296,12 @@ $(document).ready(function(){
 
 		var symbolData = d.data.attributes["well-symbols"];
 
-		// console.log(symbolData);
-
+		// Add steam entry symbol to page
 		symbolData.forEach(function(d){
 			if(d.symbol === 'ntry') {
-				console.log(d.depth, d.symbol);
 				addSymbol(ntry, d.depth)
 			}
 		})
-
-		// var symbolScale = symColDimension.width/
-		console.log(ntry)
-		console.log(symColDimension.width)
 
 		function addSymbol(shapeData, depth) {
 			symColumn.append('path')
@@ -301,13 +309,10 @@ $(document).ready(function(){
 				.attr('class', 'shape')
 			  .attr('transform', `translate(${0}, ${yScale(depth)})scale(1.46)`)
 				.style("fill",  'red')
-				.style('opacity', .75);
+				.style('opacity', .5);
 		}
 
-
 	});
-
-
 });
 
 

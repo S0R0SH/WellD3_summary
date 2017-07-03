@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ericbooker12/WellD3_summary#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "d3": "^4.9.0",
     "ejs": "^2.5.6",
@@ -27,6 +28,7 @@
     "jade": "^1.11.0",
     "jquery": "^3.2.1",
     "jsdom": "^10.1.0",
-    "jsonfile": "^3.0.0"
+    "jsonfile": "^3.0.0",
+    "request": "^2.81.0"
   }
 }

@@ -6,6 +6,7 @@
 	<link href="stylesheets/lithStyles.css" rel="stylesheet" type="text/css">
 	<link href="stylesheets/styles.css"     rel="stylesheet" type="text/css">
 	<link href="libraries/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script src="javascripts/main.js"></script>
 
 	<script src="libraries/jQuery.min.js"></script>
 	<script src="libraries/bootstrap.min.js"></script>
@@ -22,6 +23,7 @@
 	<script src="javascripts/print.js"></script>
 	<script src="javascripts/buttons.js"></script>
 	<script src="images/symbols.js"></script>
+	<!-- <script src="../tempData.js"></script> -->
 
 </head>
 <body>
@@ -33,22 +35,39 @@
 				<li><a href="/about">About us</a></li>
 				<li><a href="/contact">Contact us</a></li>
 			</ul>
-	  </div>
+		</div>
 	</nav>
 
 	<div class='container main'>
 			<!-- Sidebar -->
 		<div class="col-md-4 sidebar" id="wrapper">
 
-		      <ul class="sidebar-nav">
-		          <li class="sidebar-brand">
-		              <button id="load-data" class="btn btn-primary">Load Data</button>
-		          </li>
-		          <li>
-		              <button id="printButton" class="btn btn-primary">Print</button>
-		          </li>
-		      </ul>
+					<ul class="sidebar-nav">
+							<li class="sidebar-brand">
+									<button id="load-data" class="btn btn-primary">Load Data</button>
+							</li>
+							<li>
+									<button id="printButton" class="btn btn-primary">Print</button>
+							</li>
+							<li>
+								 <button id="update" class="btn btn-primary"> Update </button>
+							</li>
 
+						<form action="/" method="GET">
+							<input type="float" placeholder="depth" name="depth">
+							<input type="text" placeholder="content" name="content">
+							<input type="integer" placeholder="Well ID" name="well-id">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+						</br>
+						<form action="/" method="GET">
+							<!-- <input type="float" placeholder="depth" name="depth">
+							<input type="text" placeholder="content" name="content">
+							<input type="integer" placeholder="Well ID" name="well-id"> -->
+							<button id="get-data" type="submit" class="btn btn-primary">Get Data</button>
+						</form>
+
+					</ul>
 		</div>
 		<div class="chart-area" id="svg-container"></div>
 

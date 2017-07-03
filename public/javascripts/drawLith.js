@@ -1,7 +1,8 @@
 // Put in lith function
 function drawLith(lithColumn, yScale, columnWidth, lith){
+	console.log("In Draw Lith")
 
-	var maxDepth = d3.max(lith, function(d) { return d[0]} );
+	var maxDepth = d3.max(lith, function(d) { return d[0]; });
 	var yOffset = .5;
 
 	var lithSvg = lithColumn.append('svg')
@@ -10,7 +11,6 @@ function drawLith(lithColumn, yScale, columnWidth, lith){
 		.attr('width', columnWidth);
 
 	lith.forEach(function(d){
-
 		var depth = d[0];
 		var syms = d[1];
 		var percents = d[2];
@@ -22,7 +22,7 @@ function drawLith(lithColumn, yScale, columnWidth, lith){
 			// give clipPath an id
 			// append rect to clipPath
 			// give rect attrs based on lith data
-
+			// console.log(xPosition)
 			lithSvg.append('clipPath')
 				.attr('id', 'clipped')
 				.append('rect')
