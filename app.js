@@ -41,7 +41,7 @@ app.get('/getdata', (req, res) => {
 	  if (!err && response.statusCode == 200) {
 	    console.log("got the data") // Print the google web page.
 
-	    fs.writeFile('public/jsonData/depthData.json', body, function(err){
+	    fs.writeFile('./public/jsonData/depthData.json', body, function(err){
 	    	console.log("File Created");
 	    });
 	  } else {

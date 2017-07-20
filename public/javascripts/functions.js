@@ -53,6 +53,7 @@ function createColumn(height, width, x, y, cl='col'){
 		.attr('y', y)
 		.attr('class', cl)
 }
+
 function createMinColumn(svgCol, x, width, height, cl=''){
 	return svgCol.append('svg')
 				.attr('x', x)

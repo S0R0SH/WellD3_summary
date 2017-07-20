@@ -8,6 +8,8 @@ $(document).ready(function(){
 	var chartWidth = pageWidth - (margin * 2);
 	var pageTextSize = 10;
 
+	console.log('chartHeight', chartHeight)
+
 	// time it takes for tracks to animate
 	var timeLength = 250;
 
@@ -25,7 +27,6 @@ $(document).ready(function(){
 	var descColDimension  = { height: chartHeight,  width: (chartWidth * (1  - tempWidth)) };
 
 	var columnDimensions = [ depthColDimension, lithColDimension, minColDimension, symColDimension, descColDimension, trackColDimension ];
-
 
 	// test: do column widths / total width = 1?
 	columnWidthsEqual1(columnDimensions, chartWidth);
@@ -111,7 +112,7 @@ $(document).ready(function(){
 	// });
 
 	// d3.json(depthDataUrl, function (d) {
-	d3.json("depthData.json", function (err, d) {
+	d3.json("/jsonData/depthData.json", function (err, d) {
 		var t = d3.transition().duration(1000);
 
 		var wellData = d.data.attributes;
@@ -147,10 +148,6 @@ $(document).ready(function(){
 	var pOutLine = d3.line()
 			.x(function(d) { return wobScale(d.pressure) })
 			.y(function(d) { return yScale(d.depth) })
-
-
-
-
 
 		var tempOutLine = d3.line()
 			.x(function(d) { return tempOutScale(d.temp_out) })
@@ -276,6 +273,8 @@ $(document).ready(function(){
 
 		drawLith(lithColumn, yScale, lithColDimension.width, lith100);
 
+		drawLithologies()
+
 		$(window).on('resize', function(){
 			drawLith(lithColumn, yScale, lithColDimension.width, lith100);
 		});
@@ -287,7 +286,7 @@ $(document).ready(function(){
 			drawMinLine(cal,   'calcite',    d, yScale, 'black')
 			drawMinLine(pyr,   'pyrite',     d, yScale, 'gold')
 			drawMinLine(epid,  'epidote',    d, yScale, 'red')
-			drawMinLine(pyrh,  'pyrhotite',  d, yScale, 'brown')
+			drawMinLine(pyrh,  'pyrrhotite',  d, yScale, 'brown')
 			drawMinLine(chl,   'chlorite',   d, yScale, 'green')
 			drawMinLine(axin,  'axinite',    d, yScale, 'pink')
 			drawMinLine(actin, 'actinolite', d, yScale, '#287458')
