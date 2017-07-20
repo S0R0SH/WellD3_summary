@@ -273,7 +273,7 @@ $(document).ready(function(){
 
 		drawLith(lithColumn, yScale, lithColDimension.width, lith100);
 
-		drawLithologies()
+
 
 		$(window).on('resize', function(){
 			drawLith(lithColumn, yScale, lithColDimension.width, lith100);
@@ -302,6 +302,7 @@ $(document).ready(function(){
 			}
 		})
 
+
 		function addSymbol(shapeData, depth) {
 			symColumn.append('path')
 				.attr('d', shapeData)
@@ -310,6 +311,21 @@ $(document).ready(function(){
 				.style("fill",  'red')
 				.style('opacity', .5);
 		}
+
+		var lithScales = {
+			x: lithScale,
+			y: yScale
+		};
+
+		var lithObj = {
+			"depth": 100,
+			"greenstone": 30,
+			"graywacke": 50,
+			"argillite": 20,
+			"chert": 0
+		}
+
+		makeLithologies(lithColumn, lithScales, lithObj)
 
 	});
 });
