@@ -127,58 +127,173 @@ function drawLith(lithColumn, yScale, columnWidth, lith){
 }
 // end of lith function
 
-var lithSymbols = {
-	"greenstone": {
-		pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
-		fill: 'rgb(80,210,141)',
-		lineColor: 'black',
-		lineThickness: 1
-	},
-	"argillite": {
-		pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
-		fill: '#C7CEDB',
-		lineColor: 'gray',
-		lineThickness: 2
-	},
-		"graywacke": {
-		pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
-		fill: '#DEE181',
-		lineColor: 'gray',
-		lineThickness: 2
-	}
-}
+// var lithSymbols = {
+// 	"greenstone": {
+// 		pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
+// 		fill: 'rgb(80,210,141)',
+// 		lineColor: 'black',
+// 		lineThickness: 1
+// 	},
+// 	"argillite": {
+// 		pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
+// 		fill: '#C7CEDB',
+// 		lineColor: 'gray',
+// 		lineThickness: 2
+// 	},
+// 		"graywacke": {
+// 		pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
+// 		fill: '#DEE181',
+// 		lineColor: 'gray',
+// 		lineThickness: 2
+// 	}
+// }
 
-function makeLithologies(svg, scale, lithObj){
-	// console.log(lithObj)
-	var lithDepth = lithObj.depth;
-	// console.log('depth', lithDepth);
+// function makeLithologies(svg, scale, lithObj){
+// 	// console.log(lithObj)
+// 	var lithDepth = lithObj.depth;
+// 	// console.log('depth', lithDepth);
+// 	var xStart = 0;
+
+// 	for(lithName in lithObj){
+// 		if(lithName !== 'depth' && lithObj[lithName] !== 0){
+// 			// console.log("xStart", xStart);
+// 			var percent = lithObj[lithName]
+// 			// console.log(lithName, percent)
+// 			drawLithSquare(lithDepth, lithName, percent, xStart, scale)
+// 			xStart += percent;
+// 		}
+// 	}
+// }
+
+// function drawLithSquare(lithDepth, lithName, percent, xStart, scale){
+// 	console.log('xStart', xStart)
+// 	console.log('depth', lithDepth)
+// 	console.log('lithName', lithName)
+// 	console.log('percent', percent)
+
+// 	percent = percent / 10;
+// 	var numFloored = Math.floor(percent)
+// 	var numCeiling = Math.ceil(percent)
+// 	var numDecimal = percent - numFloored;
+
+// 	for(var i = 0; i < numCeiling; i++){
+// 		// createSymbol(depth, lithSymbols[lith], i * 100, xPos);
+// 	}
+// }
+
+var MakeLithologies = function(svg, scale, dataObj){
+	this.svg = svg;
+	this.dataObj = dataObj;
+
+	var svgWidth = svg.attr('width');
+	var xScale = scale.x;
+	var yScale = scale.y;
+	var yOffset = .5;
+	const depth = yScale(dataObj.depth - 100)
 	var xStart = 0;
+	var percent;
 
-	for(lithName in lithObj){
-		if(lithName !== 'depth' && lithObj[lithName] !== 0){
-			// console.log("xStart", xStart);
-			var percent = lithObj[lithName]
-			// console.log(lithName, percent)
-			drawLithSquare(lithDepth, lithName, percent, xStart, scale)
+	// console.log('yScale', depth)
+
+	var lithSymbols = {
+		"greenstone": {
+			pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
+			fill: 'rgb(80,210,141)',
+			lineColor: 'yellow',
+			lineThickness: 2,
+			borderColor: "yellow",
+			borderWidth: 0
+		},
+		"argillite": {
+			pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
+			fill: '#C7CEDB',
+			lineColor: 'blue',
+			lineThickness: 2,
+			borderColor: "blue",
+			borderWidth: 0
+		},
+			"graywacke": {
+			pattern: 'M10,50 L90,50 M30,75 L20,25 M55,75 L45,25 M80,75 L70,25',
+			fill: '#DEE181',
+			lineColor: 'red',
+			lineThickness: 2,
+			borderColor: "red",
+			borderWidth: 0
+		}
+	}
+
+	var borders = {
+		on: false,
+		width: .25,
+		color: 'black'
+	}
+
+	for(lithName in dataObj){
+		if(lithName !== 'depth' && dataObj[lithName] !== 0){
+			percent = dataObj[lithName];
+			drawLithSquare(lithName, xStart);
 			xStart += percent;
 		}
 	}
-}
 
-function drawLithSquare(lithDepth, lithName, percent, xStart, scale){
-	console.log('xStart', xStart)
-	console.log('depth', lithDepth)
-	console.log('lithName', lithName)
-	console.log('percent', percent)
 
-	percent = percent / 10;
-	var numFloored = Math.floor(percent)
-	var numCeiling = Math.ceil(percent)
-	var numDecimal = percent - numFloored;
+	function drawLithSquare(lithName, xPos){
 
-	for(var i = 0; i < numCeiling; i++){
-		// createSymbol(depth, lithSymbols[lith], i * 100, xPos);
+		var numFloored = Math.floor(percent)
+		var numCeiling = Math.ceil(percent)
+		var numDecimal = percent - numFloored;
+
+		for(var i = 0; i < numCeiling; i++){
+			createSymbol(i * 10, lithSymbols[lithName], xPos, percent);
+		}
 	}
+
+	function createSymbol(xOffset, lithSymbol, xPos, perc){
+
+		x1 = xScale(xOffset);
+		xPos  = xScale(xPos);
+		var lithWidth = xScale(perc);
+
+
+
+		var symbol = svg.append("rect")
+			.attr('x', xPos + x1)
+			.attr('y', depth + yOffset)
+			.attr('width', xScale(svgWidth))
+			.attr('height', yScale(100))
+			.attr('fill', lithSymbol.fill)
+			.attr('stroke-width', function(){
+				if(borders.on){
+					return borders.width
+				} else {
+					return lithSymbol.borderWidth;
+				}
+			})
+			.attr('stroke', function(){
+				if(borders.on){
+					return borders.color;
+				} else {
+					return lithSymbol.borderColor;
+				}
+			});
+
+		console.log(xScale(.1))
+		// console.log("x1", x1)
+		// console.log("xPos", xPos)
+		var pattern = svg.append('path')
+			.attr('width', xScale(svgWidth))
+			// .attr('x', 50)
+			.attr('transform', `translate(${(xPos + x1)}, ${depth}) scale(${xScale(.1)}, ${yScale(1)}) translate(0, 10)`)
+			.attr('stroke-width', lithSymbol.lineThickness)
+			.attr("stroke", lithSymbol.lineColor)
+			.attr('d', lithSymbol.pattern )
+	}
+
+
+
+
+
+
 }
 
 

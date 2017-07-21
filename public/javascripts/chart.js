@@ -168,7 +168,7 @@ $(document).ready(function(){
 		}
 
 		// Write depth labels
-		console.log('Depth Column width =', depthColDimension.width)
+		console.log('Lith Column width =', lithColDimension.width)
 		depthColumn.append('g')
 			.attr('class', 'depth-label')
 			.call(createYGridlines(yScale, 0, chartHeight))
@@ -317,15 +317,50 @@ $(document).ready(function(){
 			y: yScale
 		};
 
-		var lithObj = {
-			"depth": 100,
-			"greenstone": 30,
-			"graywacke": 50,
-			"argillite": 20,
-			"chert": 0
-		}
+		var lithObj = [
+			{
+				"depth": 100,
+				"greenstone": 30,
+				"graywacke": 50,
+				"argillite": 20
+			},
+			{
+				"depth": 200,
+				"greenstone": 40,
+				"graywacke": 20,
+				"argillite": 40
+			},
+			{
+				"depth": 300,
+				"greenstone": 47,
+				"graywacke": 30,
+				"argillite": 23
+			},
+			{
+				"depth": 400,
+				"greenstone": 53,
+				"graywacke": 25,
+				"argillite": 22
+			},
+			{
+				"depth": 500,
+				"greenstone": 50,
+				"graywacke": 20,
+				"argillite": 30
+			},
+			{
+				"depth": 600,
+				"greenstone": 20,
+				"graywacke": 40,
+				"argillite": 40
+			}
+		]
 
-		makeLithologies(lithColumn, lithScales, lithObj)
+		for(var i = 0; i < lithObj.length; i++){
+			var lithologies = new MakeLithologies(lithColumn, lithScales, lithObj[i])
+		}
+		console.log(lithologies.dataObj)
+		// console.log(lithColumn.attr("width"))
 
 	});
 });
