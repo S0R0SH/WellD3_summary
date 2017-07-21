@@ -1,0 +1,53 @@
+.lith-test {
+	background-color: blue;
+}
+
+.lith {
+	opacity: 1;
+}
+
+.C {
+  fill: tan;
+}
+
+.G {
+  /*background: url(../images/kiwi.svg);*/
+  /*background: url(../images/blue-pattern.jpg) transparent  5px 5px;*/
+  /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><circle cx='15' cy='15' r='10' /></svg>")  no-repeat;*/
+  fill:  #ddff99;
+}
+
+.Y {
+  fill: #F0E68C;
+}
+
+.S {
+  fill: pink;
+}
+
+.I {
+  fill: #F0F8FF;
+}
+
+.B {
+  fill: lightgray;
+}
+
+.D {
+  fill: Aqua;
+}
+
+.L {
+  fill: Lavender ;
+}
+
+.A {
+  fill: darkgray ;
+}
+
+.T {
+  fill: LightSeaGreen  ;
+}
+
+
+

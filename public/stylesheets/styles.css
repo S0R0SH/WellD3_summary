@@ -1,0 +1,184 @@
+body {
+
+	text-align: center;
+	padding-top: 100px;
+
+}
+
+.main-svg{
+	/*transform: scale(.5);*/
+}
+
+.sidebar-nav {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 40px;
+	padding-top: 100px;
+	margin-top: 100px;
+	margin: 10px;
+	padding-bottom: 10px;
+	list-style: none;
+}
+
+li {
+	padding-bottom: 10px;
+}
+
+#svg-container{
+	position: absolute;
+	padding-left: 50px;
+	margin-left: 100px;
+	/*margin-top: 50px;*/
+	/*padding-top: 200px;*/
+	/*visibility: hidden;*/
+}
+
+.side-bar{
+	background-color: red;
+}
+
+div.tooltip {
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 1em;
+	background: lightgrey;
+	opacity: 0;
+}
+
+.line {
+	fill: none;
+	/*stroke: steelblue;*/
+	/*stroke-width: .5px;*/
+}
+
+#lith-col {
+	/*width: 100px;*/
+}
+
+.main {
+  /*background: url(../images/vintage_paper.jpg) transparent  5px 5px;*/
+	background: url(../images/background_dark_stripes.png) transparent  5px 5px;
+	background-color: whitesmoke;
+}
+
+.column{
+	border-radius: 20px;
+}
+
+.depth-label .tick line{
+	visibility: hidden;
+}
+
+.depth-label .tick text{
+	text-anchor: middle;
+}
+
+.depth-label .domain{
+	visibility: hidden;
+}
+
+.y-axis .tick text{
+	/*visibility: hidden;*/
+}
+
+.y-axis .tick line{
+	/*stroke-dasharray: 4,1;*/
+	/*stroke-width: .5;*/
+	opacity: 1;
+}
+
+.red {
+	stroke: red;
+	color: red;
+}
+
+.y-axis .domain {
+	visibility: hidden;
+}
+
+.depth-label {
+/*  stroke: red;
+	transform: translate(15px, 10px);
+	transform: rotate(45deg);*/
+}
+
+.mud-msg {
+	font-size: 12px;
+}
+
+:root {
+	--annotation-color: #E8336D;
+}
+
+.annotation path {
+	stroke: var(--annotation-color);
+	fill: none;
+}
+
+.annotation text,
+.annotation .annotation-connector .connector-dot,
+.annotation path.connector-arrow,
+.annotation.callout.rect path.subject{
+	fill: var(--annotation-color);
+}
+
+.annotation-note-title {
+	font-weight: bold;
+}
+
+.annotation-note-bg {
+	fill: rgba(255, 255, 255, 0);
+}
+
+.annotation.callout.rect path.subject{
+	fill-opacity: .1;
+}
+
+.annotation.badge path.subject-pointer, .annotation.badge path.subject {
+	fill: var(--annotation-color);
+	stroke-width: 3px;
+	stroke-linecap: round;
+}
+
+.annotation.badge path.subject-ring {
+	fill: white;
+	stroke-width: 3px;
+}
+
+.annotation.badge .badge-text {
+	fill: white;
+	font-size: .7em;
+}
+
+/* Handling edit mode styles */
+.editable .annotation-subject, .editable .annotation-note {
+	cursor: move;
+}
+
+circle.handle {
+	/*stroke-dasharray: 5;*/
+	/*stroke: var(--annotation-color);*/
+	fill: rgba(255, 255, 255, .2);
+	/*fill: none;*/
+	cursor: move;
+
+	stroke-opacity: .4;
+}
+
+@media (max-width: 768px) {
+  body {
+  	padding-top: 200px;
+  }
+
+  .sidebar-nav {
+		padding-top: 200px;
+	}
+}
+
+
+
