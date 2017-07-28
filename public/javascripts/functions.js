@@ -227,7 +227,7 @@ function getAvgLithArray(lithData) {
 
 	var lithArray = [];
 	var avgLithArr = [];
-	var avgLith = {};
+	var avgLithObj = {};
 	var syms = [];
 	var percents = [];
 	var i = 0;
@@ -294,6 +294,7 @@ var testLith = [
 // console.log(avgLithArray(testLith))
 
 function avgLithArray(arr) {
+	// console.log(arr)
 	var percentTotal = [];
 	var avg = [];
 	var numOfRecords = 0;
@@ -332,6 +333,59 @@ function avgLithArray(arr) {
 
 		return avgLithArr
 }
+
+function avgLithObj(arr) {
+	// console.log(arr)
+	var summaryLiths = []
+	var syms = ['F', 'X', 'G', 'C', 'T', 'D', 'I', 'L', 'A', 'S', 'Y', 'B'];
+
+	arr.forEach(function(d){
+		var obj = 	{
+		"depth": 0,
+		"felsite": 0,
+		"blueschist": 0,
+		"greenstone": 0,
+		"chert": 0,
+		"peridotite": 0,
+		"mum": 0,
+		"silicic_graywacke": 0,
+		"lithic_graywacke": 0,
+		"hornfelsic": 0,
+		"strongly_hornfelsic": 0,
+		"altered": 0,
+		"strongly_altered": 0,
+		"argillite": 0,
+		"serpentine": 0,
+		"clay": 0,
+		"blank": 0
+	};
+		obj.depth = d[0]
+
+		obj['F'] = d[2][0];
+		obj['X'] = d[2][1];
+		obj['G'] = d[2][2];
+		obj['C'] = d[2][3];
+		obj['T'] = d[2][4];
+		obj['D'] = d[2][5];
+		obj['I'] = d[2][6];
+		obj['L'] = d[2][7];
+		obj['A'] = d[2][8];
+		obj['S'] = d[2][9];
+		obj['Y'] = d[2][10];
+		obj['B'] = d[2][11];
+
+
+		summaryLiths.push(obj)
+
+	})
+
+			// console.log(summaryLiths)
+}
+
+
+		function createLithObj(arr){
+
+		}
 
 
 
