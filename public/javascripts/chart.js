@@ -8,7 +8,7 @@ $(document).ready(function(){
 	var chartWidth = pageWidth - (margin * 2);
 	var pageTextSize = 10;
 
-	console.log('chartHeight', chartHeight)
+	// console.log('chartHeight', chartHeight)
 
 	// time it takes for tracks to animate
 	var timeLength = 250;
@@ -116,6 +116,7 @@ $(document).ready(function(){
 		var t = d3.transition().duration(1000);
 
 		var wellData = d.data.attributes;
+		// console.log(wellData.lithologies)
 		var descriptions = wellData['summary-descriptions'];
 
 		var parseTime = d3.timeParse("%d-%b-%y");
@@ -168,7 +169,7 @@ $(document).ready(function(){
 		}
 
 		// Write depth labels
-		console.log('Lith Column width =', lithColDimension.width)
+		// console.log('Lith Column width =', lithColDimension.width)
 		depthColumn.append('g')
 			.attr('class', 'depth-label')
 			.call(createYGridlines(yScale, 0, chartHeight))
@@ -269,15 +270,18 @@ $(document).ready(function(){
 
 		var newLith = toLithArray(d.data.attributes.lithologies);
 		var lith100 = avgLithArray(newLith);
+		// var lith100 = avgLithArray(wellData.lithologies)
+		var obj100 = avgLithObj(lith100);
+		// console.log(lith100)
 
 
-		drawLith(lithColumn, yScale, lithColDimension.width, lith100);
+		// drawLith(lithColumn, yScale, lithColDimension.width, lith100);
 
 
 
-		$(window).on('resize', function(){
-			drawLith(lithColumn, yScale, lithColDimension.width, lith100);
-		});
+		// $(window).on('resize', function(){
+		// 	drawLith(lithColumn, yScale, lithColDimension.width, lith100);
+		// });
 
 		var min = d.data.attributes.mineralogies;
 
@@ -321,8 +325,8 @@ $(document).ready(function(){
 			{
 				"depth": 100,
 				"greenstone": 30,
-				"graywacke": 50,
-				"argillite": 20
+				"felsite": 50,
+				"argillite": 20,
 			},
 			{
 				"depth": 200,
@@ -344,7 +348,7 @@ $(document).ready(function(){
 			},
 			{
 				"depth": 500,
-				"greenstone": 50,
+				"default": 50,
 				"graywacke": 20,
 				"argillite": 30
 			},
@@ -353,14 +357,45 @@ $(document).ready(function(){
 				"greenstone": 20,
 				"graywacke": 40,
 				"argillite": 40
+			},
+			{
+				"depth": 700,
+				"blueschist": 20,
+				"graywacke": 40,
+				"argillite": 40
+			},
+			{
+				"depth": 800,
+				"greenstone": 20,
+				"graywacke": 40,
+				"serpentine": 40
 			}
 		]
 
-		for(var i = 0; i < lithObj.length; i++){
-			var lithologies = new MakeLithologies(lithColumn, lithScales, lithObj[i])
-		}
-		console.log(lithologies.dataObj)
-		// console.log(lithColumn.attr("width"))
+
+		// Draw the litholgy column
+		// var i = 0;
+		// var startDraw = setInterval(function(){
+		// 	// console.log(`iteration: ${i}`);
+		// 	var lithologies = new MakeLithologies(lithColumn, lithScales, lithObj[i])
+
+		// 	i += 1;
+
+		// 	if(i >= lithObj.length){
+		// 		clearInterval(startDraw);
+		// 	}
+		// }, 100);
+
+		var tempLithArray =
+			[500,
+			['F',  'X', 'G',  'C', 'T', 'D', 'I',   'L', 'A', 'S', ' Y', 'B'],
+			[ 10.5, 0,   40.2, 0,   0,   0,   29.5,  0,   9.8, 10,   0,   0 ]];
+
+		var l = new MakeLithologiesArray(lithColumn, lithScales, tempLithArray)
+
+		// console.log(tempLithArray)
+
+
 
 	});
 });
@@ -410,6 +445,26 @@ function insertSymbol(selector, symbol) {
 	}
 
 function formatLithData(lith) {
+	var depth = lith[0];
+	var sym = lith[1][0];
+	var count = lith[1][1];
+	var arr = [depth];
+
+	// console.log(depth, sym, count)
+	var i = 0;
+	var lithObj = {};
+	// lithObj['depth'] = depth;
+	var obj = {};
+	sym.forEach(function(d){
+		obj[d] = count[i]
+		// arr.push(obj)
+		i++;
+	})
+	arr.push(obj)
+	return arr;
+}
+
+function formatLithDataObj(lith) {
 	var depth = lith[0];
 	var sym = lith[1][0];
 	var count = lith[1][1];
